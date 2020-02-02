@@ -17,12 +17,12 @@ class AddCourse extends React.Component {
         <div className="form-inline my-2 my-lg-0 justify-content-end w-75">
           <div className="form-inline my-2 my-lg-0 justify-content-end w-100">
             <input type="text" id="vp-cs5610-course-name-to-add"
-                   className="form-control mr-sm-2 w-75"
+                   className="form-control mr-sm-2 w-75 mt-1"
                    placeholder="New Course Title"
                    onChange={this.updateTextField}
                    value={this.state.courseTitle}
             />
-            <button className="btn btn-md btn-success"
+            <button className="mt-1 ml-2 btn btn-md btn-success"
                     onClick={() => {
                       this.props.addCourse(
                           this.state.courseTitle

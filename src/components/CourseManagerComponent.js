@@ -1,9 +1,10 @@
 import React from "react";
+import {getDate} from "../common/constants"
 
 import {
   createCourse,
   deleteCourse,
-  findAllCourses
+  findAllCourses, updateCourse
 } from "../service/CourseService"
 
 import CourseManagerHeader from "./Header/CourseManagerNavbar";
@@ -41,9 +42,10 @@ class CourseManagerComponent extends React.Component {
   };
 
   addCourse = async(courseTitle) => {
+    console.log(getDate())
     const newCourse = {
       "courseTitle": courseTitle,
-      "dateModified": new Date()
+      "dateModified": getDate()
     };
     await createCourse(newCourse);
 
@@ -62,13 +64,26 @@ class CourseManagerComponent extends React.Component {
     });
   };
 
+  updateCourse = async(courseToUpdate) => {
+    console.log(courseToUpdate);
+    await updateCourse(courseToUpdate._id,courseToUpdate);
+
+    const allCourses = await findAllCourses();
+    this.setState({
+      courses: allCourses
+    });
+  };
+
   render() {
     return (
         <div>
           <CourseManagerHeader addCourse={this.addCourse} />
           <ViewController listView={this.state.listView} toggleView={this.toggleView} newCourseTitle={this.state.newCourseTitle} />
           {this.state.listView &&
-              <CourseListViewComponent courses={this.state.courses} deleteCourse={this.deleteCourse} />
+              <CourseListViewComponent courses={this.state.courses}
+                                       deleteCourse={this.deleteCourse}
+                                       updateCourse={this.updateCourse}
+              />
           }
           {!this.state.listView &&
             <CourseGridComponent deleteCourse={this.deleteCourse} />
