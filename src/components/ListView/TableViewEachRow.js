@@ -1,5 +1,5 @@
 import React from "react"
-import "./course-table-view.css"
+import "./course-list-view.css"
 import {getDate} from "../../common/constants";
 
 class TableViewEachRow extends React.Component {
@@ -10,7 +10,7 @@ class TableViewEachRow extends React.Component {
 
   editCourseTitle = () => {
     this.setState((previousState) => {
-      if(this.state.isEdit) {
+      if (this.state.isEdit) {
         return {
           isEdit: false
         }
@@ -20,6 +20,7 @@ class TableViewEachRow extends React.Component {
         }
       }
     });
+
   };
 
   updateCourseTitle = (event) => {
@@ -45,16 +46,16 @@ class TableViewEachRow extends React.Component {
 
   render() {
     return (
-        <tr>
-          <td className="vp-cs5610-title-column-width">
+        <tr className={`${this.state.isEdit ? "vp-cs5610-highlight-row" : ""}`}>
+          <td className="vp-cs5610-title-column-width pl-5 pt-4">
             {
               !this.state.isEdit &&
-              <span>
+              <div className="w-100 vp-cs5610-overflow">
                 <i className="fas fa-book mr-2"></i>
-                <a href="#" className="">
+                <a href="#" className="vp-cs5610-text-overflow">
                   {this.state.course.courseTitle}
                 </a>
-              </span>
+              </div>
             }
             {
               this.state.isEdit &&
@@ -62,27 +63,30 @@ class TableViewEachRow extends React.Component {
                      className="form-control mr-sm-2 w-100"
                      placeholder="New Course Title"
                      onChange={this.updateCourseTitle}
-                     value={this.state.course.courseTitle} />
+                     value={this.state.course.courseTitle}/>
             }
           </td>
-          <td className="d-sm-table-cell d-none vp-cs5610-owner-column-width">Me</td>
-          <td className="d-md-table-cell d-none">
+          <td className="d-sm-table-cell d-none vp-cs5610-owner-column-width pt-4">Me</td>
+          <td className="d-md-table-cell d-none pt-4">
             {this.state.course.dateModified}
           </td>
           <td className="vp-cs5610-modified-column-width">
             <button className="ml-2 mt-2 btn btn-danger"
-                    onClick={() => this.props.deleteCourse(this.state.course._id)}>
+                    onClick={() => this.props.deleteCourse(
+                        this.state.course._id)}>
               <i className="fas fa-trash-alt"></i>
             </button>
             {
               !this.state.isEdit &&
-              <button className="ml-2 mt-2 btn btn-warning" onClick={this.editCourseTitle}>
+              <button className="ml-2 mt-2 btn btn-warning"
+                      onClick={this.editCourseTitle}>
                 <i className="fas fa-edit"></i>
               </button>
             }
             {
               this.state.isEdit &&
-              <button className="ml-2 mt-2 btn btn-success" onClick={this.updateCourse}>
+              <button className="ml-2 mt-2 btn btn-success"
+                      onClick={this.updateCourse}>
                 <i className="fas fa-check"></i>
               </button>
             }

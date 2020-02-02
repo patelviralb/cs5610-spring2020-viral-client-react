@@ -1,0 +1,25 @@
+.vp-cs5610-title-table-width {
+  width: 40%;
+}
+
+.vp-cs5610-owner-column-width {
+  width: 20%;
+}
+
+.vp-cs5610-modified-column-width {
+  width: 20%;
+}
+
+.vp-cs5610-highlight-row {
+  background-color: lightskyblue !important;
+}
+
+.vp-cs5610-overflow {
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.vp-cs5610-text-overflow {
+  text-overflow: ellipsis;
+}

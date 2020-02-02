@@ -1,11 +1,11 @@
 import React from "react";
-import "./course-table-view.css"
+import "./course-list-view.css"
 
 const TableViewHeader = () =>
     <thead>
       <tr>
         <th scope="col"
-            className="vp-cs5610-title-column-width">Title
+            className="vp-cs5610-title-column-width pl-5">Title
         </th>
         <th scope="col"
             className="d-sm-table-cell d-none vp-cs5610-owner-column-width">Owned
