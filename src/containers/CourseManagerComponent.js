@@ -4,18 +4,19 @@ import {getDate} from "../common/constants"
 import {
   createCourse,
   deleteCourse,
-  findAllCourses, updateCourse
+  findAllCourses,
+  updateCourse
 } from "../service/CourseService"
 
-import CourseManagerHeader from "./Header/CourseManagerNavbar";
-import CourseListViewComponent from "./ListView/CourseListViewComponent";
-import CourseGridComponent from "./CourseGridComponent";
-import ViewController from "./ViewController/ViewController";
+import CourseManagerHeader from "../components/Header/CourseManagerNavbar";
+import CourseListViewComponent from "../components/ListView/CourseListViewComponent";
+import CourseGridViewComponent from "../components/GridView/CourseGridViewComponent";
+import ViewController from "../components/ViewController/ViewController";
 
 class CourseManagerComponent extends React.Component {
 
   state = {
-    listView: true,
+    listView: false,
     newCourseTitle: "",
     courses: []
   };
@@ -86,7 +87,10 @@ class CourseManagerComponent extends React.Component {
               />
           }
           {!this.state.listView &&
-            <CourseGridComponent deleteCourse={this.deleteCourse} />
+            <CourseGridViewComponent courses={this.state.courses}
+                                     deleteCourse={this.deleteCourse}
+                                     updateCourse={this.updateCourse}
+            />
           }
         </div>
     )
