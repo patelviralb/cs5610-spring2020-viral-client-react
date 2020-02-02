@@ -22,7 +22,7 @@ class AddCourse extends React.Component {
                    onChange={this.updateTextField}
                    value={this.state.courseTitle}
             />
-            <button className="btn btn-md btn-secondary"
+            <button className="btn btn-md btn-success"
                     onClick={() => {
                       this.props.addCourse(
                           this.state.courseTitle
@@ -31,7 +31,7 @@ class AddCourse extends React.Component {
                         courseTitle: ""
                       });
                     }}>
-              <i className="fa fa-1x fa-plus vp-cs5610-add-course-button"></i>
+              <i className="fa fa-1x fa-plus"></i>
             </button>
           </div>
         </div>
