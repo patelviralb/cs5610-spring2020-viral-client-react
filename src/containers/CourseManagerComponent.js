@@ -16,7 +16,7 @@ import ViewController from "../components/ViewController/ViewController";
 class CourseManagerComponent extends React.Component {
 
   state = {
-    listView: false,
+    listView: true,
     newCourseTitle: "",
     courses: []
   };

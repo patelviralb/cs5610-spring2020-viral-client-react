@@ -1,25 +1,32 @@
-.vp-cs5610-title-table-width {
-  width: 40%;
+.vp-cs5610-table-layout {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.vp-cs5610-title-column-width {
+  width: 60%;
 }
 
 .vp-cs5610-owner-column-width {
-  width: 20%;
+  width: 15%;
 }
 
 .vp-cs5610-modified-column-width {
-  width: 20%;
+  width: 15%;
+}
+
+.vp-cs5610-extra-column-width {
+  width: 10%;
 }
 
 .vp-cs5610-highlight-row {
   background-color: lightskyblue !important;
 }
 
-.vp-cs5610-overflow {
-  overflow: hidden;
-  white-space: nowrap;
-  text-align: left;
+.vp-cs5610-list-overflow {
+  overflow:hidden;
 }
 
-.vp-cs5610-text-overflow {
-  text-overflow: ellipsis;
+.vp-cs5610-list-text-overflow {
+  height: 30px;
 }

@@ -1,10 +1,11 @@
 import React from "react";
+import "./course-list-view.css"
 import TableViewHeader from "./TableViewHeader"
 import TableViewEachRow from "./TableViewEachRow";
 
 const CourseListViewComponent = ({courses, deleteCourse, updateCourse}) =>
     <div>
-      <table className="table table-striped">
+      <table className="table table-striped vp-cs5610-table-layout">
         <TableViewHeader/>
         <tbody>
         {

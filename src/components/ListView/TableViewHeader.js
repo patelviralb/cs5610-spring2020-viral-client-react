@@ -14,7 +14,7 @@ const TableViewHeader = () =>
             className="d-md-table-cell d-none vp-cs5610-modified-column-width">
           Last Modified date
         </th>
-        <th scope="col">
+        <th scope="col" className="">
 
         </th>
       </tr>
