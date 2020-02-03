@@ -34,17 +34,20 @@ class CourseModuleTabs extends React.Component {
 
   render() {
     return (
-        <div className="col-12 ml-2 ml-lg-0">
-          <div className="nav nav-tabs pt-3 border-dark">
-            {
-              this.state.moduleTabs.map( (eachTab) => {
-                return <ModuleEachTab
-                    eachTab={eachTab}
-                    key={eachTab._id}
-                    allTabs={this.state.moduleTabs}
-                />
-              })
-            }
+        <div className="nav nav-tabs pt-3 border-dark">
+          {
+            this.state.moduleTabs.map((eachTab) => {
+              return <ModuleEachTab
+                  eachTab={eachTab}
+                  key={eachTab._id}
+              />
+            })
+          }
+
+          <div className="nav-item pr-3 vp-cs5610-nav-item mt-2">
+            <button className="form-control btn btn-primary">
+              <i className="fas fa-plus"></i>
+            </button>
           </div>
         </div>
     );
