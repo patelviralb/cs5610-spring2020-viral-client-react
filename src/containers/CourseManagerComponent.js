@@ -14,6 +14,8 @@ import CourseGridViewComponent from "../components/GridView/CourseGridViewCompon
 import ViewController from "../components/ViewController/ViewController";
 import CourseEditorNavigationBar
   from "../components/CourseEditor/CourseEditorNavigationBarComponent";
+import CourseEditorComponent
+  from "../components/CourseEditor/CourseEditorComponent";
 
 class CourseManagerComponent extends React.Component {
 
@@ -94,7 +96,7 @@ class CourseManagerComponent extends React.Component {
                                      updateCourse={this.updateCourse}
             />
           }
-          <CourseEditorNavigationBar/>
+          <CourseEditorComponent/>
         </div>
     )
   }

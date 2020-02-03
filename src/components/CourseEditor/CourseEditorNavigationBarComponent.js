@@ -10,7 +10,8 @@ const CourseEditorNavigationBar = () =>
           <span className="p-3 text-white">&#10005;</span>
         </a>
         <span
-            className="p-2 vp-cs5610-course-editor-span ml-2">CS5610 - Web Development</span>
+            className="p-2 vp-cs5610-course-editor-span ml-2">CS5610 - Web Development
+        </span>
       </div>
     </nav>
 

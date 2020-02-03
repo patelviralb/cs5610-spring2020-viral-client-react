@@ -46,3 +46,13 @@ b
 +src/components/ListView/TableViewEachRow.js,0\0\005ed8c7f1206f137d2c9fdb2e296608c826a6c9
 \
 ,src/components/ListView/course-list-view.css,0\f\0f2e3f39012d30a0b39ec2f471576d4631c280be
+q
+Asrc/components/CourseEditor/CourseEditorNavigationBarComponent.js,0\4\045233a845b6baebb47a57b2fe276cb69558b71d
+j
+:src/components/CourseEditor/course-editor-style-client.css,9\1\91c3bcc9de41706b65d3f574c7c68b67ae6bff80
+d
+4src/components/CourseEditor/CourseEditorComponent.js,2\0\20fe4198b443927746701261f73d0776ef0406d0
+v
+Fsrc/components/CourseEditor/CourseModules/CourseModuleItemComponent.js,0\5\0584283693eb6c92e73e0555854a28964d3af98d
+r
+Bsrc/components/CourseEditor/CourseModules/CourseModuleComponent.js,f\4\f4a43157f650f1c678d3cd2be86ddd906c33af7b
