@@ -1,7 +1,7 @@
 import React from "react";
 import GridViewEachIcon from "./GridViewEachIcon"
 
-const CourseGridViewComponent = ({courses, deleteCourse, updateCourse}) =>
+const CourseGridViewComponent = ({courses, deleteCourse, updateCourse, showCourseEditorPage}) =>
     <div className="container-fluid">
       <div className="row w-100 pl-4">
         {
@@ -10,6 +10,7 @@ const CourseGridViewComponent = ({courses, deleteCourse, updateCourse}) =>
                                      course={course}
                                      deleteCourse={deleteCourse}
                                      updateCourse={updateCourse}
+                                     showCourseEditorPage={showCourseEditorPage}
             />
           })
         }

@@ -51,11 +51,13 @@ class TableViewEachRow extends React.Component {
             {
               !this.state.isEdit &&
               <div className="d-flex justify-content-left vp-cs5610-list-overflow">
-                <i className="fas fa-book mr-2"></i>
-                <a href="#"
-                   title={this.state.course.courseTitle}>
+                <i className="fas fa-book mr-2 mt-1"></i>
+                <button
+                    className="btn btn-link mt-n2"
+                    onClick={this.props.showCourseEditorPage}
+                >
                   <div className="vp-cs5610-list-text-overflow">{this.state.course.courseTitle}</div>
-                </a>
+                </button>
               </div>
             }
             {

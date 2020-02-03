@@ -49,18 +49,25 @@ class GridViewEachIcon extends React.Component {
         <div className="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12 mt-3">
           <div className={`border border-light rounded pb-2 ${this.state.isEdit ? "vp-cs5610-highlight-grid" : ""}`}>
             <div className={`d-flex justify-content-center ${this.state.isEdit ? "vp-cs5610-highlight-grid" : ""}`}>
-              <a href="#" className="">
+              <button
+                  className="btn btn-link"
+                  onClick={this.props.showCourseEditorPage}
+              >
                 <img className={`img-fluid img-thumbnail ${this.state.isEdit ? "vp-cs5610-highlight-grid" : ""}`}
                      src={GridImage} alt="400 X 300 Image" />
-              </a>
+              </button>
             </div>
             <div className="d-flex justify-content-center mt-2">
               {
                   !this.state.isEdit &&
                   <div className="vp-cs5610-grid-overflow w-75">
-                    <a href="#" className="vp-cs5610-grid-text-overflow" title={this.state.course.courseTitle}>
+                    <button
+                        className="btn btn-link vp-cs5610-grid-text-overflow"
+                        title={this.state.course.courseTitle}
+                        onClick={this.props.showCourseEditorPage}
+                    >
                       {this.state.course.courseTitle}
-                    </a>
+                    </button>
                   </div>
                 }
                 {
@@ -73,7 +80,10 @@ class GridViewEachIcon extends React.Component {
                 }
             </div>
             <div className="d-flex justify-content-center">
-              {this.state.course.dateModified}
+              Last Modified Date : {this.state.course.dateModified}
+            </div>
+            <div className="d-flex justify-content-center">
+              Owner : Me
             </div>
             <div className="d-flex justify-content-center">
               <button className="mt-2 btn btn-danger"

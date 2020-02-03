@@ -3,7 +3,7 @@ import "./course-list-view.css"
 import TableViewHeader from "./TableViewHeader"
 import TableViewEachRow from "./TableViewEachRow";
 
-const CourseListViewComponent = ({courses, deleteCourse, updateCourse}) =>
+const CourseListViewComponent = ({courses, deleteCourse, updateCourse, showCourseEditorPage}) =>
     <div>
       <table className="table table-striped vp-cs5610-table-layout">
         <TableViewHeader/>
@@ -14,6 +14,7 @@ const CourseListViewComponent = ({courses, deleteCourse, updateCourse}) =>
                                      course={course}
                                      deleteCourse={deleteCourse}
                                      updateCourse={updateCourse}
+                                     showCourseEditorPage={showCourseEditorPage}
             />
           })
         }

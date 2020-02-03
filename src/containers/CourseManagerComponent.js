@@ -14,8 +14,6 @@ import CourseListViewComponent
 import CourseGridViewComponent
   from "../components/GridView/CourseGridViewComponent";
 import ViewController from "../components/ViewController/ViewController";
-import CourseEditorNavigationBar
-  from "../components/CourseEditor/CourseEditorNavigationBarComponent";
 import CourseEditorComponent
   from "../components/CourseEditor/CourseEditorComponent";
 
@@ -29,6 +27,7 @@ class CourseManagerComponent extends React.Component {
   };
 
   componentDidMount = async () => {
+    console.log(this.state.showCourseEditor)
     const allCourses = await findAllCourses();
     this.setState({
       courses: allCourses
@@ -82,12 +81,27 @@ class CourseManagerComponent extends React.Component {
     });
   };
 
+  showCourseEditorPage = () => {
+    console.log("I am Here");
+    this.setState((previousState) => {
+      if (this.state.showCourseEditor) {
+        return {
+          showCourseEditor: false
+        }
+      } else {
+        return {
+          showCourseEditor: true
+        }
+      }
+    });
+  };
+
   render() {
     return (
         <div>
           {
             !this.state.showCourseEditor
-                &&
+            &&
             <div>
               <CourseManagerHeader addCourse={this.addCourse}/>
               <ViewController listView={this.state.listView}
@@ -97,12 +111,14 @@ class CourseManagerComponent extends React.Component {
               <CourseListViewComponent courses={this.state.courses}
                                        deleteCourse={this.deleteCourse}
                                        updateCourse={this.updateCourse}
+                                       showCourseEditorPage={this.showCourseEditorPage}
               />
               }
               {!this.state.listView &&
               <CourseGridViewComponent courses={this.state.courses}
                                        deleteCourse={this.deleteCourse}
                                        updateCourse={this.updateCourse}
+                                       showCourseEditorPage={this.showCourseEditorPage}
               />
               }
             </div>
@@ -110,7 +126,9 @@ class CourseManagerComponent extends React.Component {
           {
             this.state.showCourseEditor
             &&
-            <CourseEditorComponent/>
+            <CourseEditorComponent
+                showCourseEditorPage={this.showCourseEditorPage}
+            />
           }
         </div>
     )
