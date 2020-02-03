@@ -57,8 +57,8 @@ class GridViewEachIcon extends React.Component {
             <div className="d-flex justify-content-center mt-2">
               {
                   !this.state.isEdit &&
-                  <div className="vp-cs5610-overflow w-75">
-                    <a href="#" className="vp-cs5610-text-overflow" title={this.state.course.courseTitle}>
+                  <div className="vp-cs5610-grid-overflow w-75">
+                    <a href="#" className="vp-cs5610-grid-text-overflow" title={this.state.course.courseTitle}>
                       {this.state.course.courseTitle}
                     </a>
                   </div>
