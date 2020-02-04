@@ -5,7 +5,8 @@ import {getDate} from "../../../common/constants";
 class CourseTableRowComponent extends React.Component {
   state = {
     isEdit: false,
-    course: this.props.course
+    course: this.props.course,
+    isRowSelected: false
   };
 
   editCourseTitle = () => {
@@ -20,7 +21,6 @@ class CourseTableRowComponent extends React.Component {
         }
       }
     });
-
   };
 
   updateCourseTitle = (event) => {
@@ -44,9 +44,25 @@ class CourseTableRowComponent extends React.Component {
     this.props.updateCourse(this.state.course)
   };
 
+  selectRow = () => {
+    this.setState((previousState) => {
+      if (this.state.isRowSelected) {
+        return {
+          isRowSelected: false
+        }
+      } else {
+        return {
+          isRowSelected: true
+        }
+      }
+    });
+  };
+
   render() {
     return (
-        <tr className={`${this.state.isEdit ? "vp-cs5610-highlight-row" : ""}`}>
+        <tr className={`${this.state.isRowSelected || this.state.isEdit
+            ? "vp-cs5610-highlight-row"
+            : ""}`} onClick={this.selectRow}>
           <td className="vp-cs5610-title-column-width pl-5 pt-4">
             {
               !this.state.isEdit &&
@@ -76,27 +92,31 @@ class CourseTableRowComponent extends React.Component {
             {this.state.course.dateModified}
           </td>
           <td className="vp-cs5610-extra-column-width">
-            <div className="float-right float-md-none">
-              <button className="ml-2 mt-2 btn btn-danger"
-                      onClick={() => this.props.deleteCourse(
-                          this.state.course._id)}>
-                <i className="fas fa-trash-alt"></i>
-              </button>
-              {
-                !this.state.isEdit &&
-                <button className="ml-2 mt-2 btn btn-warning"
-                        onClick={this.editCourseTitle}>
-                  <i className="fas fa-edit"></i>
+            {
+              (this.state.isRowSelected || this.state.isEdit)
+              &&
+              <div className="float-right float-md-none">
+                <button className="ml-2 mt-2 btn btn-danger"
+                        onClick={() => this.props.deleteCourse(
+                            this.state.course._id)}>
+                  <i className="fas fa-trash-alt"></i>
                 </button>
-              }
-              {
-                this.state.isEdit &&
-                <button className="ml-2 mt-2 btn btn-success"
-                        onClick={this.updateCourse}>
-                  <i className="fas fa-check"></i>
-                </button>
-              }
-            </div>
+                {
+                  !this.state.isEdit &&
+                  <button className="ml-2 mt-2 btn btn-warning"
+                          onClick={this.editCourseTitle}>
+                    <i className="fas fa-edit"></i>
+                  </button>
+                }
+                {
+                  this.state.isEdit &&
+                  <button className="ml-2 mt-2 btn btn-success"
+                          onClick={this.updateCourse}>
+                    <i className="fas fa-check"></i>
+                  </button>
+                }
+              </div>
+            }
           </td>
         </tr>
     )

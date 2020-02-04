@@ -80,16 +80,16 @@ class CourseCardComponent extends React.Component {
               }
             </div>
 
-            <div className="d-flex justify-content-center">
+            <div className="d-flex justify-content-center border-top rounded">
               Last Modified Date :
             </div>
-            <div className="d-flex justify-content-center">
+            <div className="d-flex justify-content-center border-bottom rounded">
               {this.state.course.dateModified}
             </div>
-            <div className="d-flex justify-content-center">
+            <div className="d-flex justify-content-center border-top border-bottom rounded">
               Owner : Me
             </div>
-            <div className="d-flex justify-content-center">
+            <div className="d-flex justify-content-center border-top rounded">
               <button className="mt-2 btn btn-danger"
                       onClick={() => this.props.deleteCourse(
                           this.state.course._id)}>
