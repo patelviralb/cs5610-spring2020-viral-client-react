@@ -1,7 +1,7 @@
 import React from "react";
-import "./course-list-view.css"
+import "../../../styles/course-table-style-client.css"
 
-const TableViewHeader = () =>
+const CourseTableHeaderComponent = () =>
     <thead>
       <tr>
         <th scope="col"
@@ -20,4 +20,4 @@ const TableViewHeader = () =>
       </tr>
     </thead>
 
-export default TableViewHeader
+export default CourseTableHeaderComponent

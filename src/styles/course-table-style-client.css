@@ -4,6 +4,9 @@
 }
 
 .vp-cs5610-title-column-width {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
   width: 60%;
 }
 
@@ -21,12 +24,4 @@
 
 .vp-cs5610-highlight-row {
   background-color: lightskyblue !important;
-}
-
-.vp-cs5610-list-overflow {
-  overflow:hidden;
-}
-
-.vp-cs5610-list-text-overflow {
-  height: 30px;
 }

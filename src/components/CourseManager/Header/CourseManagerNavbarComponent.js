@@ -1,8 +1,8 @@
 import React from "react";
-import './course-manager-navbar.css';
-import AddCourse from './CourseAdder/AddCourse.js'
+import '../../../styles/course-manager-header-style-client.css';
+import AddCourseComponent from './CourseAdder/AddCourseComponent.js'
 
-const CourseManagerNavbar = ({addCourse, newCourseTitle}) =>
+const CourseManagerNavbarComponent = ({addCourse, newCourseTitle}) =>
 
     <div>
       <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
@@ -15,8 +15,8 @@ const CourseManagerNavbar = ({addCourse, newCourseTitle}) =>
             Course Manager
           </label>
         </div>
-        <AddCourse addCourse={addCourse} newCourseTitle={newCourseTitle} />
+        <AddCourseComponent addCourse={addCourse} newCourseTitle={newCourseTitle} />
       </nav>
     </div>
 
-export default CourseManagerNavbar
+export default CourseManagerNavbarComponent

@@ -1,5 +1,5 @@
 import React from "react"
-import "../../course-editor-style-client.css"
+import "../../../../../styles/course-editor-style-client.css"
 import ModuleEachTab from "./ModuleEachTabComponent";
 
 class CourseModuleTabs extends React.Component {

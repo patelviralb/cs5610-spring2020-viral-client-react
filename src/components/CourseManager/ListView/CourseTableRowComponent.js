@@ -1,8 +1,8 @@
 import React from "react"
-import "./course-list-view.css"
-import {getDate} from "../../common/constants";
+import "../../../styles/course-table-style-client.css"
+import {getDate} from "../../../common/constants";
 
-class TableViewEachRow extends React.Component {
+class CourseTableRowComponent extends React.Component {
   state = {
     isEdit: false,
     course: this.props.course
@@ -50,13 +50,14 @@ class TableViewEachRow extends React.Component {
           <td className="vp-cs5610-title-column-width pl-5 pt-4">
             {
               !this.state.isEdit &&
-              <div className="d-flex justify-content-left vp-cs5610-list-overflow">
-                <i className="fas fa-book mr-2 mt-1"></i>
+              <div className="d-flex justify-content-start w-75">
+                <i className="fas fa-book mt-1"></i>
                 <button
                     className="btn btn-link mt-n2"
+                    title={this.state.course.courseTitle}
                     onClick={this.props.showCourseEditorPage}
                 >
-                  <div className="vp-cs5610-list-text-overflow">{this.state.course.courseTitle}</div>
+                  {this.state.course.courseTitle}
                 </button>
               </div>
             }
@@ -65,6 +66,7 @@ class TableViewEachRow extends React.Component {
               <input type="text" id="vp-cs5610-course-name-to-add"
                      className="form-control mr-sm-2 w-100 mt-n2"
                      placeholder="New Course Title"
+                     maxLength="30"
                      onChange={this.updateCourseTitle}
                      value={this.state.course.courseTitle}/>
             }
@@ -101,4 +103,4 @@ class TableViewEachRow extends React.Component {
   }
 }
 
-export default TableViewEachRow
+export default CourseTableRowComponent

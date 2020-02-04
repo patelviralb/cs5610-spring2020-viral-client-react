@@ -1,16 +1,20 @@
 import React from "react";
 
-const ViewController = ({listView, toggleView}) =>
+const ViewControllerComponent = ({listView, toggleView}) =>
     <div className="mr-3 pt-3 pb-3">
       <div className="col-12 d-flex justify-content-end">
-        {!listView &&
+        {
+          !listView
+          &&
           <button className="btn btn-md" onClick={toggleView}>
             <i className="fas fa-list"
                title="List View"></i>
           </button>
         }
-        {listView &&
-        <button className="btn btn-md" onClick={toggleView}>
+        {
+          listView
+          &&
+          <button className="btn btn-md" onClick={toggleView}>
             <i className="fas fa-th"
                title="Grid View"></i>
           </button>
@@ -18,4 +22,4 @@ const ViewController = ({listView, toggleView}) =>
       </div>
     </div>
 
-export default ViewController
+export default ViewControllerComponent

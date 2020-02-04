@@ -8,12 +8,12 @@ import {
   updateCourse
 } from "../service/CourseService"
 
-import CourseManagerHeader from "../components/Header/CourseManagerNavbar";
-import CourseListViewComponent
-  from "../components/ListView/CourseListViewComponent";
-import CourseGridViewComponent
-  from "../components/GridView/CourseGridViewComponent";
-import ViewController from "../components/ViewController/ViewController";
+import CourseManagerHeader from "../components/CourseManager/Header/CourseManagerNavbarComponent";
+import CourseTableComponent
+  from "../components/CourseManager/ListView/CourseTableComponent";
+import CourseGridComponent
+  from "../components/CourseManager/GridView/CourseGridComponent";
+import ViewControllerComponent from "../components/CourseManager/ViewController/ViewControllerComponent";
 import CourseEditorComponent
   from "../components/CourseEditor/CourseEditorComponent";
 
@@ -27,7 +27,6 @@ class CourseManagerComponent extends React.Component {
   };
 
   componentDidMount = async () => {
-    console.log(this.state.showCourseEditor)
     const allCourses = await findAllCourses();
     this.setState({
       courses: allCourses
@@ -49,7 +48,6 @@ class CourseManagerComponent extends React.Component {
   };
 
   addCourse = async (courseTitle) => {
-    console.log(getDate())
     const newCourse = {
       "courseTitle": courseTitle,
       "dateModified": getDate()
@@ -72,7 +70,6 @@ class CourseManagerComponent extends React.Component {
   };
 
   updateCourse = async (courseToUpdate) => {
-    console.log(courseToUpdate);
     await updateCourse(courseToUpdate._id, courseToUpdate);
 
     const allCourses = await findAllCourses();
@@ -82,7 +79,6 @@ class CourseManagerComponent extends React.Component {
   };
 
   showCourseEditorPage = () => {
-    console.log("I am Here");
     this.setState((previousState) => {
       if (this.state.showCourseEditor) {
         return {
@@ -104,21 +100,21 @@ class CourseManagerComponent extends React.Component {
             &&
             <div>
               <CourseManagerHeader addCourse={this.addCourse}/>
-              <ViewController listView={this.state.listView}
-                              toggleView={this.toggleView}
-                              newCourseTitle={this.state.newCourseTitle}/>
+              <ViewControllerComponent listView={this.state.listView}
+                                       toggleView={this.toggleView}
+                                       newCourseTitle={this.state.newCourseTitle}/>
               {this.state.listView &&
-              <CourseListViewComponent courses={this.state.courses}
-                                       deleteCourse={this.deleteCourse}
-                                       updateCourse={this.updateCourse}
-                                       showCourseEditorPage={this.showCourseEditorPage}
+              <CourseTableComponent courses={this.state.courses}
+                                    deleteCourse={this.deleteCourse}
+                                    updateCourse={this.updateCourse}
+                                    showCourseEditorPage={this.showCourseEditorPage}
               />
               }
               {!this.state.listView &&
-              <CourseGridViewComponent courses={this.state.courses}
-                                       deleteCourse={this.deleteCourse}
-                                       updateCourse={this.updateCourse}
-                                       showCourseEditorPage={this.showCourseEditorPage}
+              <CourseGridComponent courses={this.state.courses}
+                                   deleteCourse={this.deleteCourse}
+                                   updateCourse={this.updateCourse}
+                                   showCourseEditorPage={this.showCourseEditorPage}
               />
               }
             </div>

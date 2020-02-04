@@ -1,5 +1,5 @@
 import React from "react"
-import "./course-editor-style-client.css"
+import "../../styles/course-editor-style-client.css"
 
 const CourseEditorNavigationBar = ({showCourseEditorPage}) =>
     <nav className="navbar navbar-dark bg-dark">

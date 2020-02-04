@@ -1,8 +1,7 @@
 import React from "react"
 import CourseEditorNavigationBar from "./CourseEditorNavigationBarComponent";
 import CourseModuleComponent from "./CourseModules/CourseModuleComponent";
-import CourseModuleDetails from "./ModuleDetails/ModuleDetailsComponent";
-import CourseListViewComponent from "../ListView/CourseListViewComponent";
+import CourseModuleDetails from "./CourseModules/ModuleDetails/ModuleDetailsComponent";
 
 const CourseEditorComponent = ({showCourseEditorPage}) =>
     <div>

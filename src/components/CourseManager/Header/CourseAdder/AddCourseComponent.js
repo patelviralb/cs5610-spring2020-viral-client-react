@@ -1,7 +1,7 @@
 import React from "react";
-import '../course-manager-navbar.css';
+import '../../../../styles/course-manager-header-style-client.css';
 
-class AddCourse extends React.Component {
+class AddCourseComponent extends React.Component {
   state = {
     courseTitle: ""
   };
@@ -19,10 +19,12 @@ class AddCourse extends React.Component {
             <input type="text" id="vp-cs5610-course-name-to-add"
                    className="form-control mr-sm-2 w-75 mt-1"
                    placeholder="New Course Title"
+                   maxLength="30"
                    onChange={this.updateTextField}
                    value={this.state.courseTitle}
             />
             <button className="mt-1 ml-2 btn btn-md btn-success"
+                    title="Add New Course"
                     onClick={() => {
                       this.props.addCourse(
                           this.state.courseTitle
@@ -39,4 +41,4 @@ class AddCourse extends React.Component {
   }
 }
 
-export default AddCourse
+export default AddCourseComponent

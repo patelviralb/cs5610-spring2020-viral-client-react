@@ -1,0 +1,9 @@
+.vp-cs5610-highlight-grid {
+  background-color: lightskyblue !important;
+}
+
+.vp-cs5610-grid-text-overflow {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
