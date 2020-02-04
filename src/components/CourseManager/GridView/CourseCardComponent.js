@@ -54,8 +54,12 @@ class CourseCardComponent extends React.Component {
                   className="btn btn-link"
                   onClick={this.props.showCourseEditorPage}
               >
-                <img src={GridImage} className="figure-img img-fluid rounded"
-                     alt="400 X 300"/>
+                <img
+                    src={GridImage}
+                    className="figure-img img-fluid rounded"
+                    alt="400 X 300"
+                    title={this.state.course.courseTitle}
+                />
               </button>
             </figure>
             <div className="d-flex justify-content-center w-100">
@@ -91,6 +95,7 @@ class CourseCardComponent extends React.Component {
             </div>
             <div className="d-flex justify-content-center border-top rounded">
               <button className="mt-2 btn btn-danger"
+                      title="Delete Course"
                       onClick={() => this.props.deleteCourse(
                           this.state.course._id)}>
                 <i className="fas fa-trash-alt"></i>
@@ -98,6 +103,7 @@ class CourseCardComponent extends React.Component {
               {
                 !this.state.isEdit &&
                 <button className="ml-4 mt-2 btn btn-warning"
+                        title="Edit Course Title"
                         onClick={this.editCourseTitle}>
                   <i className="fas fa-edit"></i>
                 </button>
@@ -105,6 +111,7 @@ class CourseCardComponent extends React.Component {
               {
                 this.state.isEdit &&
                 <button className="ml-4 ml-2 mt-2 btn btn-success"
+                        title="Update Course Title"
                         onClick={this.updateCourse}>
                   <i className="fas fa-check"></i>
                 </button>

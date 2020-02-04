@@ -97,6 +97,7 @@ class CourseTableRowComponent extends React.Component {
               &&
               <div className="float-right float-md-none">
                 <button className="ml-2 mt-2 btn btn-danger"
+                        title="Delete Course"
                         onClick={() => this.props.deleteCourse(
                             this.state.course._id)}>
                   <i className="fas fa-trash-alt"></i>
@@ -104,6 +105,7 @@ class CourseTableRowComponent extends React.Component {
                 {
                   !this.state.isEdit &&
                   <button className="ml-2 mt-2 btn btn-warning"
+                          title="Edit Course Title"
                           onClick={this.editCourseTitle}>
                     <i className="fas fa-edit"></i>
                   </button>
@@ -111,6 +113,7 @@ class CourseTableRowComponent extends React.Component {
                 {
                   this.state.isEdit &&
                   <button className="ml-2 mt-2 btn btn-success"
+                          title="Update Course Title"
                           onClick={this.updateCourse}>
                     <i className="fas fa-check"></i>
                   </button>
