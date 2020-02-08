@@ -1,6 +1,5 @@
 import React from "react"
-import "../../styles/course-editor-style-client.css"
-import { Link } from "react-router-dom"
+import "../../styles/course-editor-style-client.css"  
 
 const CourseEditorNavigationBar = ({ history }) =>
   <nav className="navbar navbar-dark bg-dark">

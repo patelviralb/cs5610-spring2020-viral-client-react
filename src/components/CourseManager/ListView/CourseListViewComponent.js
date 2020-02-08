@@ -2,7 +2,6 @@ import React from "react"
 import CourseManagerHeader from "../Header/CourseManagerNavbarComponent";
 import CourseTableComponent
     from "./CourseTableComponent";
-import ViewControllerComponent from "./ViewController/ViewControllerComponent";
 import { Link } from "react-router-dom";
 
 const CourseListView = ({ addCourse, newCourseTitle, courses, deleteCourse, updateCourse, history }) =>

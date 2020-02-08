@@ -113,7 +113,7 @@ class CourseManagerComponent extends React.Component {
           <Route
             path="/"
             exact={true}
-            render={() =>
+            render={(props) =>
               <Redirect to="/table">
               </Redirect>
             }
