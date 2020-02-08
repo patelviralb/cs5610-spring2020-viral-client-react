@@ -12,7 +12,7 @@ export const createLesson = (moduleID, lesson) => {
 };
 
 export const findLessonsForModule = (moduleID) => {
-    fetch(`${MODULE_API_URL}/${moduleID}/lessons`)
+    return fetch(`${MODULE_API_URL}/${moduleID}/lessons`)
         .then(response => response.json())
 };
 

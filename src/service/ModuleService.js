@@ -12,7 +12,7 @@ export const createModule = (courseID, module) => {
 };
 
 export const findModulesForCourse = (courseID) => {
-    fetch(`${COURSE_API_URL}/${courseID}/modules`)
+    return fetch(`${COURSE_API_URL}/${courseID}/modules`)
         .then(response => response.json())
 };
 

@@ -12,7 +12,7 @@ export const createTopic = (lessonID, topic) => {
 };
 
 export const findtopicsForModule = (lessonID) => {
-    fetch(`${LESSON_API_URL}/${lessonID}/topics`)
+    return fetch(`${LESSON_API_URL}/${lessonID}/topics`)
         .then(response => response.json())
 };
 
