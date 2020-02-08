@@ -1,4 +1,7 @@
-export const API_URL = "https://wbdv-generic-server.herokuapp.com/api/001374158/courses"
+export const COURSE_API_URL = "https://wbdv-generic-server.herokuapp.com/api/001374158/courses"
+export const MODULE_API_URL = "https://wbdv-generic-server.herokuapp.com/api/001374158/modules"
+export const LESSON_API_URL = "https://wbdv-generic-server.herokuapp.com/api/001374158/lessons"
+export const TOPIC_API_URL = "https://wbdv-generic-server.herokuapp.com/api/001374158/topics"
 
 export const getDate = () => {
   const currentDateObject = new Date();

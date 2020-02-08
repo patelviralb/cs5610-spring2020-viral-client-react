@@ -1,7 +1,7 @@
-import {API_URL} from "../common/constants"
+import {COURSE_API_URL} from "../common/constants"
 
 export const createCourse = (course) => {
-  return fetch(API_URL, {
+  return fetch(COURSE_API_URL, {
     method: 'POST',
     headers: {
       'content-type': 'application/json'
@@ -11,15 +11,15 @@ export const createCourse = (course) => {
 };
 
 export const findAllCourses = () => {
-  return fetch(API_URL).then(response => response.json())
+  return fetch(COURSE_API_URL).then(response => response.json())
 };
 
 export const findCourseById = (id) => {
-  return fetch(`${API_URL}/${id}`).then(response => response.json())
+  return fetch(`${COURSE_API_URL}/${id}`).then(response => response.json())
 };
 
 export const updateCourse = (id, course) => {
-  return fetch(`${API_URL}/${id}`, {
+  return fetch(`${COURSE_API_URL}/${id}`, {
     method: 'PUT',
     headers: {
       'content-type': 'application/json'
@@ -29,7 +29,7 @@ export const updateCourse = (id, course) => {
 };
 
 export const deleteCourse = (id) => {
-  return fetch(`${API_URL}/${id}`, {
+  return fetch(`${COURSE_API_URL}/${id}`, {
     method: 'DELETE'
   }).then(response => response.json())
 };
