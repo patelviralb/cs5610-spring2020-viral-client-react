@@ -70,7 +70,7 @@ class CourseCardComponent extends React.Component {
               <Link
                 className="d-flex justify-content-center vp-cs5610-grid-text-overflow btn btn-link mr-sm-2 w-75 ml-1"
                 title={this.state.course.courseTitle}
-                to={`/course-editor/${this.state.course._id}`}
+                to={`/course/${this.state.course._id}`}
               >
                 {this.state.course.courseTitle}
               </Link>

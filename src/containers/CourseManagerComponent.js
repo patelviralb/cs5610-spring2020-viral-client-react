@@ -10,8 +10,9 @@ import {
 
 import CourseEditorComponent
   from "../components/CourseEditor/CourseEditorComponent";
-import CourseListView from "../components/CourseManager/CourseListViewComponent";
-import { BrowserRouter as Router, Route } from "react-router-dom"
+import CourseListView from "../components/CourseManager/ListView/CourseListViewComponent";
+import CourseGridView from "../components/CourseManager/GridView/CourseGridViewComponent";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom"
 
 class CourseManagerComponent extends React.Component {
 
@@ -93,9 +94,9 @@ class CourseManagerComponent extends React.Component {
       <div>
         <Router>
           <Route
-            path="/"
+            path="/table"
             exact={true}
-            render={() =>
+            render={(props) =>
               <CourseListView
                 addCourse={this.addCourse}
                 listView={this.state.listView}
@@ -104,12 +105,39 @@ class CourseManagerComponent extends React.Component {
                 courses={this.state.courses}
                 deleteCourse={this.deleteCourse}
                 updateCourse={this.updateCourse}
+                {...props}
               />
             }
           />
 
           <Route
-            path="/course-editor/:courseID"
+            path="/"
+            exact={true}
+            render={() =>
+              <Redirect to="/table">
+              </Redirect>
+            }
+          />
+
+          <Route
+            path="/grid"
+            exact={true}
+            render={(props) =>
+              <CourseGridView
+                addCourse={this.addCourse}
+                listView={this.state.listView}
+                toggleView={this.toggleView}
+                newCourseTitle={this.state.newCourseTitle}
+                courses={this.state.courses}
+                deleteCourse={this.deleteCourse}
+                updateCourse={this.updateCourse}
+                {...props}
+              />
+            }
+          />
+
+          <Route
+            path="/course/:courseID"
             exact={true}
             render={(props) =>
               <CourseEditorComponent

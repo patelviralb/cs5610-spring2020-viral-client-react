@@ -56,7 +56,7 @@ class CourseTableRowComponent extends React.Component {
               <Link
                 className="btn btn-link mt-n2"
                 title={this.state.course.courseTitle}
-                to={`/course-editor/${this.state.course._id}`}
+                to={`/course/${this.state.course._id}`}
               >
                 {this.state.course.courseTitle}
               </Link>
