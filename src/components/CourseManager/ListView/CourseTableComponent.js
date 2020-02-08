@@ -3,7 +3,7 @@ import "../../../styles/course-table-style-client.css"
 import CourseTableHeaderComponent from "./CourseTableHeaderComponent"
 import CourseTableRowComponent from "./CourseTableRowComponent";
 
-const CourseTableComponent = ({courses, deleteCourse, updateCourse, showCourseEditorPage}) =>
+const CourseTableComponent = ({courses, deleteCourse, updateCourse}) =>
     <div>
       <table className="table table-striped vp-cs5610-table-layout">
         <CourseTableHeaderComponent/>
@@ -14,7 +14,6 @@ const CourseTableComponent = ({courses, deleteCourse, updateCourse, showCourseEd
                                             course={course}
                                             deleteCourse={deleteCourse}
                                             updateCourse={updateCourse}
-                                            showCourseEditorPage={showCourseEditorPage}
             />
           })
         }

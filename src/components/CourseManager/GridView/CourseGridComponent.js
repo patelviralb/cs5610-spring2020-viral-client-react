@@ -1,7 +1,7 @@
 import React from "react";
 import CourseCardComponent from "./CourseCardComponent"
 
-const CourseGridComponent = ({courses, deleteCourse, updateCourse, showCourseEditorPage}) =>
+const CourseGridComponent = ({courses, deleteCourse, updateCourse}) =>
     <div className="container-fluid">
       <div className="row w-100 pl-4">
         {
@@ -10,7 +10,6 @@ const CourseGridComponent = ({courses, deleteCourse, updateCourse, showCourseEdi
                                         course={course}
                                         deleteCourse={deleteCourse}
                                         updateCourse={updateCourse}
-                                        showCourseEditorPage={showCourseEditorPage}
             />
           })
         }

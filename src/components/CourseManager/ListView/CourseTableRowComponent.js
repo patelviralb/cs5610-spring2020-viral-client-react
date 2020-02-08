@@ -1,6 +1,7 @@
 import React from "react"
 import "../../../styles/course-table-style-client.css"
 import { getDate } from "../../../common/constants";
+import { Link } from "react-router-dom";
 
 class CourseTableRowComponent extends React.Component {
   state = {
@@ -52,13 +53,13 @@ class CourseTableRowComponent extends React.Component {
             !this.state.isEdit &&
             <div className="d-flex justify-content-start w-75">
               <i className="fas fa-book mt-1"></i>
-              <button
+              <Link
                 className="btn btn-link mt-n2"
                 title={this.state.course.courseTitle}
-                onClick={this.props.showCourseEditorPage}
+                to={`/course-editor/${this.state.course._id}`}
               >
                 {this.state.course.courseTitle}
-              </button>
+              </Link>
             </div>
           }
           {

@@ -3,9 +3,10 @@ import CourseEditorNavigationBar from "./CourseEditorNavigationBarComponent";
 import CourseModuleComponent from "./CourseModules/CourseModuleComponent";
 import CourseModuleDetails from "./CourseModules/ModuleDetails/ModuleDetailsComponent";
 
-const CourseEditorComponent = ({showCourseEditorPage}) =>
+const CourseEditorComponent = ({match, history}) =>
     <div>
-      <CourseEditorNavigationBar showCourseEditorPage={showCourseEditorPage} />
+      {console.log(history)}
+      <CourseEditorNavigationBar history={history} />
       <div className="container-fluid ml-n3 mr-n3 h-100">
         <div className="row vp-cs5610-course-editor-division h-100">
           <CourseModuleComponent />

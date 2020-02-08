@@ -1,5 +1,5 @@
 import React from "react";
-import {getDate} from "../common/constants"
+import { getDate } from "../common/constants"
 
 import {
   createCourse,
@@ -8,14 +8,10 @@ import {
   updateCourse
 } from "../service/CourseService"
 
-import CourseManagerHeader from "../components/CourseManager/Header/CourseManagerNavbarComponent";
-import CourseTableComponent
-  from "../components/CourseManager/ListView/CourseTableComponent";
-import CourseGridComponent
-  from "../components/CourseManager/GridView/CourseGridComponent";
-import ViewControllerComponent from "../components/CourseManager/ViewController/ViewControllerComponent";
 import CourseEditorComponent
   from "../components/CourseEditor/CourseEditorComponent";
+import CourseListView from "../components/CourseManager/CourseListViewComponent";
+import { BrowserRouter as Router, Route } from "react-router-dom"
 
 class CourseManagerComponent extends React.Component {
 
@@ -94,39 +90,35 @@ class CourseManagerComponent extends React.Component {
 
   render() {
     return (
-        <div>
-          {
-            !this.state.showCourseEditor
-            &&
-            <div>
-              <CourseManagerHeader addCourse={this.addCourse}/>
-              <ViewControllerComponent listView={this.state.listView}
-                                       toggleView={this.toggleView}
-                                       newCourseTitle={this.state.newCourseTitle}/>
-              {this.state.listView &&
-              <CourseTableComponent courses={this.state.courses}
-                                    deleteCourse={this.deleteCourse}
-                                    updateCourse={this.updateCourse}
-                                    showCourseEditorPage={this.showCourseEditorPage}
+      <div>
+        <Router>
+          <Route
+            path="/"
+            exact={true}
+            render={() =>
+              <CourseListView
+                addCourse={this.addCourse}
+                listView={this.state.listView}
+                toggleView={this.toggleView}
+                newCourseTitle={this.state.newCourseTitle}
+                courses={this.state.courses}
+                deleteCourse={this.deleteCourse}
+                updateCourse={this.updateCourse}
               />
-              }
-              {!this.state.listView &&
-              <CourseGridComponent courses={this.state.courses}
-                                   deleteCourse={this.deleteCourse}
-                                   updateCourse={this.updateCourse}
-                                   showCourseEditorPage={this.showCourseEditorPage}
+            }
+          />
+
+          <Route
+            path="/course-editor/:courseID"
+            exact={true}
+            render={(props) =>
+              <CourseEditorComponent
+                {...props}
               />
-              }
-            </div>
-          }
-          {
-            this.state.showCourseEditor
-            &&
-            <CourseEditorComponent
-                showCourseEditorPage={this.showCourseEditorPage}
-            />
-          }
-        </div>
+            }
+          />
+        </Router>
+      </div>
     )
   }
 }
