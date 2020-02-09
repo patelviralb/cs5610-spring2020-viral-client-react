@@ -15,8 +15,8 @@ const CourseEditorComponent = ({ history, match }) =>
         history={history}
         match={match}
       />
-      <div className="container-fluid ml-n3 mr-n3 h-100">
-        <div className="row vp-cs5610-course-editor-division h-100">
+      <div className="container-fluid ml-n3 mr-n3">
+        <div className="row vp-cs5610-course-editor-division">
           <CourseModuleComponent
             match={match}
           />

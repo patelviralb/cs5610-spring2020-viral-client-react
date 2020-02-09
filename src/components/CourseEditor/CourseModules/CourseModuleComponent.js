@@ -17,11 +17,12 @@ class CourseModuleComponent extends React.Component {
         {
           this.props.moduleList
           &&
-          this.props.moduleList.map((module) => {
+          this.props.moduleList.map((module,index) => {
             return <CourseModuleItem
               key={module._id}
               module={module}
               courseID={this.props.match.params.courseID}
+              index={index}
             />
           })
         }
@@ -42,7 +43,8 @@ class CourseModuleComponent extends React.Component {
 
 const stateToPropertyMapper = (state) => {
   return {
-    moduleList: state.modules
+    moduleList: state.modules,
+    selectedIndex: state.selectedIndex
   }
 }
 

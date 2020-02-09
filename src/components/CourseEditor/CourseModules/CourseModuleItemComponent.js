@@ -1,13 +1,13 @@
 import React from "react"
 import { connect } from "react-redux"
 import ModuleService from "../../../service/ModuleService"
-import { deleteModule, updateModule } from "../../../actions/ModuleActions"
+import { deleteModule, updateModule, updateModuleSelection } from "../../../actions/ModuleActions"
 
 class CourseModuleItem extends React.Component {
   state = {
     isEdit: false,
     module: this.props.module,
-    isModuleSelected: false
+    index: this.props.index
   }
 
   editModuleTitle = () => {
@@ -38,6 +38,10 @@ class CourseModuleItem extends React.Component {
     this.props.updateCourse(this.state.module._id, this.state.module)
   };
 
+  editModuleSelection = () => {
+    this.props.updateModuleSelection(this.state.index)
+  };
+
   render() {
     return (
       /* <div className="d-flex justify-content-center mt-4">
@@ -63,7 +67,9 @@ class CourseModuleItem extends React.Component {
             !this.state.isEdit
             &&
             <button
-              className={`${this.state.isModuleSelected ? "btn btn-outline-warning col-10 vp-cs5610-module-title" : "btn btn-dark col-10 vp-cs5610-module-title"}`}>
+              className={`${this.props.selectedIndex === this.state.index ? "btn btn-primary col-10 vp-cs5610-module-title" : "btn btn-dark col-10 vp-cs5610-module-title"}`}
+              onClick={this.editModuleSelection}
+            >
               <i className="fas fa-book mr-2"></i>
           <span
             className="wbdv-module-item-title">{this.state.module.moduleName}
@@ -83,7 +89,7 @@ class CourseModuleItem extends React.Component {
           this.state.isEdit
           &&
           <button
-            className="btn btn-outline-danger col-2"
+            className="btn btn-danger col-2"
             onClick={() => this.props.deleteModule(this.state.module._id)}
           >
             <i className="fas fa-trash-alt"></i>
@@ -93,7 +99,7 @@ class CourseModuleItem extends React.Component {
           this.state.isEdit
           &&
           <button
-            className="btn btn-outline-success col-2"
+            className="btn btn-success col-2"
             onClick={this.updateModule}
           >
             <i className="fas fa-check"></i>
@@ -117,7 +123,7 @@ class CourseModuleItem extends React.Component {
 
 const stateToPropertyMapper = (state) => {
   return {
-    moduleList: state.modules
+    selectedIndex: state.selectedIndex
   }
 }
 
@@ -129,11 +135,16 @@ const dispatcherToPropertyMapper = (dispatch) => {
           dispatch(deleteModule(moduleID))
         )
     },
+
     updateCourse: (moduleID, updatedModule) => {
       ModuleService.updateModule(moduleID, updatedModule)
         .then(status =>
           dispatch(updateModule(moduleID, updatedModule))
         )
+    },
+
+    updateModuleSelection: (index) => {
+      dispatch(updateModuleSelection(index))
     }
   }
 }
@@ -141,5 +152,4 @@ const dispatcherToPropertyMapper = (dispatch) => {
 export default connect(
   stateToPropertyMapper,
   dispatcherToPropertyMapper
-)
-  (CourseModuleItem)
+) (CourseModuleItem)
