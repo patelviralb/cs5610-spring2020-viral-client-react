@@ -123,7 +123,7 @@ class CourseModuleItem extends React.Component {
 
 const stateToPropertyMapper = (state) => {
   return {
-    selectedIndex: state.selectedIndex
+    selectedIndex: state.moduleReducer.selectedIndex
   }
 }
 

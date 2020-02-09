@@ -43,8 +43,8 @@ class CourseModuleComponent extends React.Component {
 
 const stateToPropertyMapper = (state) => {
   return {
-    moduleList: state.modules,
-    selectedIndex: state.selectedIndex
+    moduleList: state.moduleReducer.modules,
+    selectedIndex: state.moduleReducer.selectedIndex
   }
 }
 

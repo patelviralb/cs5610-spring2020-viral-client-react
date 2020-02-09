@@ -3,10 +3,16 @@ import CourseEditorNavigationBar from "./CourseEditorNavigationBarComponent";
 import CourseModuleComponent from "./CourseModules/CourseModuleComponent";
 import CourseModuleDetails from "./CourseModules/ModuleDetails/ModuleDetailsComponent";
 import ModuleReducer from "../../reducers/ModuleReducer"
-import { createStore } from "redux";
+import { combineReducers, createStore } from "redux";
 import { Provider } from "react-redux";
 
-const store = createStore(ModuleReducer)
+const rootReducer = combineReducers({
+  moduleReducer: ModuleReducer/* ,
+  lessonReducer: LessonReducer,
+  topicReducer: TopicReducer */
+})
+
+const store = createStore(rootReducer)
 
 const CourseEditorComponent = ({ history, match }) =>
   <Provider store={store}>
