@@ -21,6 +21,25 @@ const ModuleReducer = (state = initialState, action) => {
             return {
                 modules: state.modules.filter(module => module._id !== action.moduleID)
             }
+        case ModuleActions.UPDATE_MODULE:
+            /* let moduleWithOutUpdatedModule = state.modules.filter(module => module._id !== action.moduleID)
+            console.log(moduleWithOutUpdatedModule)
+            console.log(action.updatedModule)
+            return {
+                modules: [
+                    ...moduleWithOutUpdatedModule,
+                    action.updatedModule
+                ]
+            } */
+            
+            const index = state.modules.findIndex((module) => module._id === action.moduleID)
+            return {
+                modules: [
+                    ...state.modules.slice(0,index),
+                    action.updatedModule,
+                    ...state.modules.slice(index+1)
+                ]
+            }
         default:
             return state
     }

@@ -21,6 +21,7 @@ class CourseModuleComponent extends React.Component {
             return <CourseModuleItem
               key={module._id}
               module={module}
+              courseID={this.props.match.params.courseID}
             />
           })
         }

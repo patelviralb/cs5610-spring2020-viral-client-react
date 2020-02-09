@@ -1,6 +1,7 @@
 const FIND_MODULES_FOR_COURSE = "FIND_MODULES_FOR_COURSE"
 const CREATE_NEW_MODULE = "CREATE_NEW_MODULE"
 const DELETE_MODULE = "DELETE_MODULE"
+const UPDATE_MODULE = "UPDATE_MODULE"
 
 export const findCourseModules = (allFoundModules) => ({
     type: FIND_MODULES_FOR_COURSE,
@@ -17,8 +18,15 @@ export const deleteModule = (moduleID) => ({
     moduleID: moduleID
 })
 
+export const updateModule = (moduleID, updatedModule) => ({
+    type: UPDATE_MODULE,
+    moduleID: moduleID,
+    updatedModule: updatedModule
+})
+
 export default {
     FIND_MODULES_FOR_COURSE,
     CREATE_NEW_MODULE,
-    DELETE_MODULE
+    DELETE_MODULE,
+    UPDATE_MODULE
 }
