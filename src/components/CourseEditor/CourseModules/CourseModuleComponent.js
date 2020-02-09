@@ -3,7 +3,6 @@ import "../../../styles/course-editor-style-client.css"
 import { connect } from "react-redux"
 import CourseModuleItem from "./CourseModuleItemComponent";
 import ModuleService from "../../../service/ModuleService"
-/* import ModuleActions from "../../../actions/ModuleActions" */
 import { findCourseModules, createNewModule } from "../../../actions/ModuleActions"
 
 class CourseModuleComponent extends React.Component {
@@ -43,8 +42,7 @@ class CourseModuleComponent extends React.Component {
 
 const stateToPropertyMapper = (state) => {
   return {
-    moduleList: state.moduleReducer.modules,
-    selectedIndex: state.moduleReducer.selectedIndex
+    moduleList: state.moduleReducer.modules
   }
 }
 

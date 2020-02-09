@@ -25,9 +25,9 @@ export const updateModule = (moduleID, updatedModule) => ({
     updatedModule: updatedModule
 })
 
-export const updateModuleSelection = (index) => ({
+export const updateModuleSelection = (moduleID) => ({
     type: SELECT_MODULE,
-    selectedIndex: index
+    selectedModuleID: moduleID
 })
 
 export default {

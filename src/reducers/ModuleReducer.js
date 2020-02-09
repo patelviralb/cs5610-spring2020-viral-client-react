@@ -2,7 +2,7 @@ import ModuleActions from "../actions/ModuleActions"
 
 const initialState = {
     modules: [],
-    selectedIndex: 0
+    selectedModuleID: null
 }
 
 const ModuleReducer = (state = initialState, action) => {
@@ -10,7 +10,7 @@ const ModuleReducer = (state = initialState, action) => {
         case ModuleActions.FIND_MODULES_FOR_COURSE:
             return {
                 modules: action.allFoundModules,
-                selectedIndex: state.selectedIndex
+                selectedModuleID: state.selectedModuleID
             }
         case ModuleActions.CREATE_NEW_MODULE:
             return {
@@ -18,12 +18,12 @@ const ModuleReducer = (state = initialState, action) => {
                     ...state.modules,
                     action.newAddedModule
                 ],
-                selectedIndex: state.selectedIndex
+                selectedModuleID: state.selectedModuleID
             }
         case ModuleActions.DELETE_MODULE:
             return {
                 modules: state.modules.filter(module => module._id !== action.moduleID),
-                selectedIndex: state.selectedIndex
+                selectedModuleID: state.selectedModuleID
             }
         case ModuleActions.UPDATE_MODULE:
             /* let moduleWithOutUpdatedModule = state.modules.filter(module => module._id !== action.moduleID)
@@ -42,14 +42,14 @@ const ModuleReducer = (state = initialState, action) => {
                     action.updatedModule,
                     ...state.modules.slice(index+1)
                 ],
-                selectedIndex: state.selectedIndex
+                selectedModuleID: state.selectedModuleID
             }
         case ModuleActions.SELECT_MODULE:
             return {
                 modules: [
                     ...state.modules
                 ],
-                selectedIndex: action.selectedIndex
+                selectedModuleID: action.selectedModuleID
             }
         default:
             return state

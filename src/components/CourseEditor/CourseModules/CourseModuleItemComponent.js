@@ -39,7 +39,7 @@ class CourseModuleItem extends React.Component {
   };
 
   editModuleSelection = () => {
-    this.props.updateModuleSelection(this.state.index)
+    this.props.updateModuleSelection(this.state.module._id)
   };
 
   render() {
@@ -67,7 +67,7 @@ class CourseModuleItem extends React.Component {
             !this.state.isEdit
             &&
             <button
-              className={`${this.props.selectedIndex === this.state.index ? "btn btn-primary col-10 vp-cs5610-module-title" : "btn btn-dark col-10 vp-cs5610-module-title"}`}
+              className={`${this.props.selectedModuleID === this.state.module._id ? "btn btn-primary col-10 vp-cs5610-module-title" : "btn btn-dark col-10 vp-cs5610-module-title"}`}
               onClick={this.editModuleSelection}
             >
               <i className="fas fa-book mr-2"></i>
@@ -123,7 +123,7 @@ class CourseModuleItem extends React.Component {
 
 const stateToPropertyMapper = (state) => {
   return {
-    selectedIndex: state.moduleReducer.selectedIndex
+    selectedModuleID: state.moduleReducer.selectedModuleID
   }
 }
 
@@ -143,8 +143,8 @@ const dispatcherToPropertyMapper = (dispatch) => {
         )
     },
 
-    updateModuleSelection: (index) => {
-      dispatch(updateModuleSelection(index))
+    updateModuleSelection: (moduleID) => {
+      dispatch(updateModuleSelection(moduleID))
     }
   }
 }
