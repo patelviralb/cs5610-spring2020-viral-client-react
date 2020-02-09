@@ -1,9 +1,9 @@
 import React from "react"
-import "../../../styles/course-editor-style-client.css"
-import { connect } from "react-redux"
+import "../../../styles/course-editor-style-client.css";
+import { connect } from "react-redux";
 import CourseModuleItem from "./CourseModuleItemComponent";
-import ModuleService from "../../../service/ModuleService"
-import { findCourseModules, createNewModule } from "../../../actions/ModuleActions"
+import ModuleService from "../../../service/ModuleService";
+import { findCourseModules, createNewModule } from "../../../actions/ModuleActions";
 
 class CourseModuleComponent extends React.Component {
   componentDidMount = () => {
@@ -16,12 +16,11 @@ class CourseModuleComponent extends React.Component {
         {
           this.props.moduleList
           &&
-          this.props.moduleList.map((module,index) => {
+          this.props.moduleList.map((module) => {
             return <CourseModuleItem
               key={module._id}
               module={module}
               courseID={this.props.match.params.courseID}
-              index={index}
             />
           })
         }

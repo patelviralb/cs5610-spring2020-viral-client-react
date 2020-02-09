@@ -1,13 +1,15 @@
-import React from "react"
-import { connect } from "react-redux"
-import ModuleService from "../../../service/ModuleService"
-import { deleteModule, updateModule, updateModuleSelection } from "../../../actions/ModuleActions"
+import React from "react";
+import { connect } from "react-redux";
+import ModuleService from "../../../service/ModuleService";
+import { deleteModule, updateModule, updateModuleSelection } from "../../../actions/ModuleActions";
+import LessonService from "../../../service/LessonService";
+import { findModuleLessons } from "../../../actions/LessonActions";
+import {removeTopicsAfterModuleDelete} from "../../../actions/LessonActions"
 
 class CourseModuleItem extends React.Component {
   state = {
     isEdit: false,
-    module: this.props.module,
-    index: this.props.index
+    module: this.props.module
   }
 
   editModuleTitle = () => {
@@ -35,7 +37,7 @@ class CourseModuleItem extends React.Component {
 
   updateModule = (event) => {
     this.editModuleTitle();
-    this.props.updateCourse(this.state.module._id, this.state.module)
+    this.props.updateModule(this.state.module._id, this.state.module)
   };
 
   editModuleSelection = () => {
@@ -44,78 +46,61 @@ class CourseModuleItem extends React.Component {
 
   render() {
     return (
-      /* <div className="d-flex justify-content-center mt-4">
-        <div className="row w-100 vp-cs5610-each-module">
-          <button
-            className="btn btn-dark col-10 vp-cs5610-module-title">
-            <i className="fas fa-book mr-2"></i>
-            <span
-              className="wbdv-module-item-title">{this.state.module.moduleName}
-            </span>
-          </button>
-          <button
-            className="btn btn-dark col-2"
-            onClick={() => this.props.deleteModule(this.state.module._id)}
-          >
-            <i className="fas fa-trash-alt vp-cs5610-trash-icon"></i>
-          </button>
-        </div>
-      </div> */
       <div className="d-flex justify-content-center mt-4">
         <div className="row w-100 vp-cs5610-each-module">
           {
             !this.state.isEdit
             &&
             <button
-              className={`${this.props.selectedModuleID === this.state.module._id ? "btn btn-primary col-10 vp-cs5610-module-title" : "btn btn-dark col-10 vp-cs5610-module-title"}`}
+              className={`${this.props.selectedModuleID === this.state.module._id ? "btn col-10 vp-cs5610-module-title btn-primary" : "btn col-10 vp-cs5610-module-title btn-dark"}`}
               onClick={this.editModuleSelection}
             >
               <i className="fas fa-book mr-2"></i>
-          <span
-            className="wbdv-module-item-title">{this.state.module.moduleName}
-          </span>
+              <span
+                className="wbdv-module-item-title">{this.state.module.moduleName}
+              </span>
             </button>
-        }
+          }
           {
-          this.state.isEdit
-          &&
-          <input
-            className="btn-warning col-8 vp-cs5610-module-title"
-            value={this.state.module.moduleName}
-            onChange={this.updateModuleTitle}
-          />
-        }
-        {
-          this.state.isEdit
-          &&
-          <button
-            className="btn btn-danger col-2"
-            onClick={() => this.props.deleteModule(this.state.module._id)}
-          >
-            <i className="fas fa-trash-alt"></i>
-          </button>
-        }
-        {
-          this.state.isEdit
-          &&
-          <button
-            className="btn btn-success col-2"
-            onClick={this.updateModule}
-          >
-            <i className="fas fa-check"></i>
-          </button>
-        }
-        {
-          !this.state.isEdit
-          &&
-          <button
-            className="btn btn-warning col-2"
-            onClick={this.editModuleTitle}
-          >
-            <i className="fas fa-edit"></i>
-          </button>
-        }
-      </div>
+            this.state.isEdit
+            &&
+            <input
+              className="btn-warning col-8 vp-cs5610-module-title"
+              value={this.state.module.moduleName}
+              onChange={this.updateModuleTitle}
+            />
+          }
+          {
+            this.state.isEdit
+            &&
+            <button
+              className="btn btn-danger col-2"
+              onClick={() => this.props.deleteModule(this.state.module._id)}
+            >
+              <i className="fas fa-trash-alt"></i>
+            </button>
+          }
+          {
+            this.state.isEdit
+            &&
+            <button
+              className="btn btn-success col-2"
+              onClick={this.updateModule}
+            >
+              <i className="fas fa-check"></i>
+            </button>
+          }
+          {
+            !this.state.isEdit
+            &&
+            <button
+              className="btn btn-warning col-2"
+              onClick={this.editModuleTitle}
+            >
+              <i className="fas fa-edit"></i>
+            </button>
+          }
+        </div>
       </div >
     )
   }
@@ -134,9 +119,10 @@ const dispatcherToPropertyMapper = (dispatch) => {
         .then(status =>
           dispatch(deleteModule(moduleID))
         )
+      dispatch(removeTopicsAfterModuleDelete())
     },
 
-    updateCourse: (moduleID, updatedModule) => {
+    updateModule: (moduleID, updatedModule) => {
       ModuleService.updateModule(moduleID, updatedModule)
         .then(status =>
           dispatch(updateModule(moduleID, updatedModule))
@@ -145,6 +131,8 @@ const dispatcherToPropertyMapper = (dispatch) => {
 
     updateModuleSelection: (moduleID) => {
       dispatch(updateModuleSelection(moduleID))
+      LessonService.findLessonsForModule(moduleID)
+        .then(allFoundLessons => dispatch(findModuleLessons(allFoundLessons)))
     }
   }
 }
@@ -152,4 +140,4 @@ const dispatcherToPropertyMapper = (dispatch) => {
 export default connect(
   stateToPropertyMapper,
   dispatcherToPropertyMapper
-) (CourseModuleItem)
+)(CourseModuleItem)

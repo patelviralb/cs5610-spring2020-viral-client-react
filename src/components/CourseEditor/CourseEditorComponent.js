@@ -2,13 +2,14 @@ import React from "react"
 import CourseEditorNavigationBar from "./CourseEditorNavigationBarComponent";
 import CourseModuleComponent from "./CourseModules/CourseModuleComponent";
 import CourseModuleDetails from "./CourseModules/ModuleDetails/ModuleDetailsComponent";
-import ModuleReducer from "../../reducers/ModuleReducer"
+import ModuleReducer from "../../reducers/ModuleReducer";
+import LessonReducer from "../../reducers/LessonReducer";
 import { combineReducers, createStore } from "redux";
 import { Provider } from "react-redux";
 
 const rootReducer = combineReducers({
-  moduleReducer: ModuleReducer/* ,
-  lessonReducer: LessonReducer,
+  moduleReducer: ModuleReducer,
+  lessonReducer: LessonReducer/*,
   topicReducer: TopicReducer */
 })
 
