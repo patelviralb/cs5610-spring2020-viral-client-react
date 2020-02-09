@@ -17,7 +17,7 @@ export const findLessonsForModule = (moduleID) => {
 };
 
 export const findLesson = (lessonID) => {
-    fetch(`${LESSON_API_URL}/${lessonID}`)
+    return fetch(`${LESSON_API_URL}/${lessonID}`)
         .then(response => response.json())
 };
 

@@ -17,7 +17,7 @@ export const findtopicsForModule = (lessonID) => {
 };
 
 export const findTopic = (topicID) => {
-    fetch(`${TOPIC_API_URL}/${topicID}`)
+    return fetch(`${TOPIC_API_URL}/${topicID}`)
         .then(response => response.json())
 };
 
