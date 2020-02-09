@@ -2,7 +2,9 @@ import React from "react"
 import "../../../../../styles/course-editor-style-client.css"
 import { connect } from "react-redux"
 import LessonService from "../../../../../service/LessonService";
+import TopicService from "../../../../../service/TopicService";
 import { deleteLesson, updateLesson, updateLessonSelection } from "../../../../../actions/LessonActions";
+import {findLessonTopics} from "../../../../../actions/TopicActions";
 
 class ModuleEachLesson extends React.Component {
   state = {
@@ -135,8 +137,8 @@ const dispatcherToPropertyMapper = (dispatch) => {
 
     updateLessonSelection: (lessonID) => {
       dispatch(updateLessonSelection(lessonID))
-      /* LessonService.findLessonsForModule(moduleID)
-        .then(allFoundLessons => dispatch(findModuleLessons(allFoundLessons))) */
+      TopicService.findTopicsForLesson(lessonID)
+        .then(allFoundTopics => dispatch(findLessonTopics(allFoundTopics)))
     }
   }
 }

@@ -23,7 +23,7 @@ const ModuleReducer = (state = initialState, action) => {
         case ModuleActions.DELETE_MODULE:
             return {
                 modules: state.modules.filter(module => module._id !== action.moduleID),
-                selectedModuleID: null
+                selectedModuleID: state.selectedModuleID
             }
         case ModuleActions.UPDATE_MODULE:
             /* let moduleWithOutUpdatedModule = state.modules.filter(module => module._id !== action.moduleID)

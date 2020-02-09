@@ -24,7 +24,7 @@ class CourseModuleTabs extends React.Component {
               })
             }
             {
-              this.props.lessonList
+              (this.props.lessonList && this.props.selectedModuleID)
               &&
               <div className="nav-item mt-3 mb-2 vp-cs5610-nav-item btn-group ml-2">
                 <button
@@ -57,7 +57,6 @@ const dispatcherToPropertyMapper = (dispatch) => {
     },
 
     createNewLesson: (moduleID) => {
-      console.log(moduleID)
       const newLesson = {
         "lessonName": "New Lesson"
       }

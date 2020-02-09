@@ -3,8 +3,7 @@ import { connect } from "react-redux";
 import ModuleService from "../../../service/ModuleService";
 import { deleteModule, updateModule, updateModuleSelection } from "../../../actions/ModuleActions";
 import LessonService from "../../../service/LessonService";
-import { findModuleLessons } from "../../../actions/LessonActions";
-import {removeTopicsAfterModuleDelete} from "../../../actions/LessonActions"
+import { findModuleLessons, removeTopicsAfterModuleDelete } from "../../../actions/LessonActions";
 
 class CourseModuleItem extends React.Component {
   state = {
@@ -75,7 +74,7 @@ class CourseModuleItem extends React.Component {
             &&
             <button
               className="btn btn-danger col-2"
-              onClick={() => this.props.deleteModule(this.state.module._id)}
+              onClick={() => this.props.deleteModule(this.state.module._id, this.props.selectedModuleID)}
             >
               <i className="fas fa-trash-alt"></i>
             </button>
@@ -114,12 +113,15 @@ const stateToPropertyMapper = (state) => {
 
 const dispatcherToPropertyMapper = (dispatch) => {
   return {
-    deleteModule: (moduleID) => {
+    deleteModule: (moduleID, selectedModuleID) => {
       ModuleService.deleteModule(moduleID)
         .then(status =>
           dispatch(deleteModule(moduleID))
         )
-      dispatch(removeTopicsAfterModuleDelete())
+      if(moduleID === selectedModuleID) {
+        dispatch(removeTopicsAfterModuleDelete())
+        dispatch(updateModuleSelection(null))
+      }
     },
 
     updateModule: (moduleID, updatedModule) => {

@@ -1,7 +1,7 @@
 import { LESSON_API_URL } from "../common/constants"
 import { TOPIC_API_URL } from "../common/constants"
 
-export const createTopic = (lessonID, topic) => {
+const createTopic = (lessonID, topic) => {
     return fetch(`${LESSON_API_URL}/${lessonID}/topics`, {
         method: 'POST',
         headers: {
@@ -11,17 +11,17 @@ export const createTopic = (lessonID, topic) => {
     }).then(response => response.json())
 };
 
-export const findtopicsForModule = (lessonID) => {
+const findTopicsForLesson = (lessonID) => {
     return fetch(`${LESSON_API_URL}/${lessonID}/topics`)
         .then(response => response.json())
 };
 
-export const findTopic = (topicID) => {
+const findTopic = (topicID) => {
     return fetch(`${TOPIC_API_URL}/${topicID}`)
         .then(response => response.json())
 };
 
-export const updateTopic = (topicID, topic) => {
+const updateTopic = (topicID, topic) => {
     return fetch(`${TOPIC_API_URL}/${topicID}`, {
         method: 'PUT',
         headers: {
@@ -31,8 +31,16 @@ export const updateTopic = (topicID, topic) => {
     }).then(response => response.json())
 };
 
-export const deleteTopic = (topicID) => {
+const deleteTopic = (topicID) => {
     return fetch(`${TOPIC_API_URL}/${topicID}`, {
         method: 'DELETE'
     }).then(response => response.json())
 };
+
+export default {
+    createTopic,
+    findTopicsForLesson,
+    findTopic,
+    updateTopic,
+    deleteTopic
+}
