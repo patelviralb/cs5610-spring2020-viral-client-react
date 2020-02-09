@@ -63,54 +63,54 @@ class CourseModuleItem extends React.Component {
             !this.state.isEdit
             &&
             <button
-              className="btn btn-dark col-10 vp-cs5610-module-title">
+              className={`${this.state.isModuleSelected ? "btn btn-outline-warning col-10 vp-cs5610-module-title" : "btn btn-dark col-10 vp-cs5610-module-title"}`}>
               <i className="fas fa-book mr-2"></i>
-              <span
-                className="wbdv-module-item-title">{this.state.module.moduleName}
-              </span>
+          <span
+            className="wbdv-module-item-title">{this.state.module.moduleName}
+          </span>
             </button>
-          }
+        }
           {
-            this.state.isEdit
-            &&
-            <input
-              className="btn-warning col-8 vp-cs5610-module-title"
-              value={this.state.module.moduleName}
-              onChange={this.updateModuleTitle}
-            />
-          }
-          {
-            this.state.isEdit
-            &&
-            <button
-              className="btn btn-outline-danger col-2"
-              onClick={() => this.props.deleteModule(this.state.module._id)}
-            >
-              <i className="fas fa-trash-alt"></i>
-            </button>
-          }
-          {
-            this.state.isEdit
-            &&
-            <button
-              className="btn btn-outline-success col-2"
-              onClick={this.updateModule}
-            >
-              <i className="fas fa-check"></i>
-            </button>
-          }
-          {
-            !this.state.isEdit
-            &&
-            <button
-              className="btn btn-warning col-2"
-              onClick={this.editModuleTitle}
-            >
-              <i className="fas fa-edit"></i>
-            </button>
-          }
-        </div>
+          this.state.isEdit
+          &&
+          <input
+            className="btn-warning col-8 vp-cs5610-module-title"
+            value={this.state.module.moduleName}
+            onChange={this.updateModuleTitle}
+          />
+        }
+        {
+          this.state.isEdit
+          &&
+          <button
+            className="btn btn-outline-danger col-2"
+            onClick={() => this.props.deleteModule(this.state.module._id)}
+          >
+            <i className="fas fa-trash-alt"></i>
+          </button>
+        }
+        {
+          this.state.isEdit
+          &&
+          <button
+            className="btn btn-outline-success col-2"
+            onClick={this.updateModule}
+          >
+            <i className="fas fa-check"></i>
+          </button>
+        }
+        {
+          !this.state.isEdit
+          &&
+          <button
+            className="btn btn-warning col-2"
+            onClick={this.editModuleTitle}
+          >
+            <i className="fas fa-edit"></i>
+          </button>
+        }
       </div>
+      </div >
     )
   }
 }
@@ -131,7 +131,7 @@ const dispatcherToPropertyMapper = (dispatch) => {
     },
     updateCourse: (moduleID, updatedModule) => {
       ModuleService.updateModule(moduleID, updatedModule)
-        .then(status => 
+        .then(status =>
           dispatch(updateModule(moduleID, updatedModule))
         )
     }
