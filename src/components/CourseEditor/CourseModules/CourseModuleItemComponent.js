@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import ModuleService from "../../../service/ModuleService";
 import { deleteModule, updateModule, updateModuleSelection } from "../../../actions/ModuleActions";
 import LessonService from "../../../service/LessonService";
-import { findModuleLessons, removeTopicsAfterModuleDelete } from "../../../actions/LessonActions";
+import { findModuleLessons, removeLessonsAfterModuleDelete, updateLessonSelection } from "../../../actions/LessonActions";
+import { updateTopicSelection, removeTopicsAfterLessonDelete } from "../../../actions/TopicActions"
 
 class CourseModuleItem extends React.Component {
   state = {
@@ -118,9 +119,12 @@ const dispatcherToPropertyMapper = (dispatch) => {
         .then(status =>
           dispatch(deleteModule(moduleID))
         )
-      if(moduleID === selectedModuleID) {
-        dispatch(removeTopicsAfterModuleDelete())
+      if (moduleID === selectedModuleID) {
+        dispatch(removeLessonsAfterModuleDelete())
         dispatch(updateModuleSelection(null))
+        dispatch(updateLessonSelection(null))
+        dispatch(updateTopicSelection(null))
+        dispatch(removeTopicsAfterLessonDelete())
       }
     },
 
@@ -134,7 +138,12 @@ const dispatcherToPropertyMapper = (dispatch) => {
     updateModuleSelection: (moduleID) => {
       dispatch(updateModuleSelection(moduleID))
       LessonService.findLessonsForModule(moduleID)
-        .then(allFoundLessons => dispatch(findModuleLessons(allFoundLessons)))
+        .then(
+          allFoundLessons => dispatch(findModuleLessons(allFoundLessons)),
+          dispatch(updateLessonSelection(null)),
+          dispatch(updateTopicSelection(null)),
+          dispatch(removeTopicsAfterLessonDelete())
+        )
     }
   }
 }

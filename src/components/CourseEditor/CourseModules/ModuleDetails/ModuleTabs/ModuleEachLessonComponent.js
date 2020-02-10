@@ -5,6 +5,7 @@ import LessonService from "../../../../../service/LessonService";
 import TopicService from "../../../../../service/TopicService";
 import { deleteLesson, updateLesson, updateLessonSelection } from "../../../../../actions/LessonActions";
 import {findLessonTopics} from "../../../../../actions/TopicActions";
+import { updateTopicSelection, removeTopicsAfterLessonDelete } from "../../../../../actions/TopicActions"
 
 class ModuleEachLesson extends React.Component {
   state = {
@@ -90,8 +91,8 @@ class ModuleEachLesson extends React.Component {
             &&
             <button
               className="btn btn-outline-danger"
-              title="Edit Lesson Title"
-              onClick={() => this.props.deleteLesson(this.state.lesson._id)}
+              title="Delete Lesson"
+              onClick={() => this.props.deleteLesson(this.state.lesson._id, this.props.selectedLessonID)}
             >
               <i className="fas fa-trash"></i>
             </button>
@@ -121,11 +122,15 @@ const stateToPropertyMapper = (state) => {
 
 const dispatcherToPropertyMapper = (dispatch) => {
   return {
-    deleteLesson: (lessonID) => {
+    deleteLesson: (lessonID, selectedLessonID) => {
       LessonService.deleteLesson(lessonID)
         .then(status =>
           dispatch(deleteLesson(lessonID))
         )
+        if (lessonID === selectedLessonID) {
+          dispatch(removeTopicsAfterLessonDelete())
+          dispatch(updateTopicSelection(null))
+        }
     },
 
     updateLesson: (lessonID, updatedLesson) => {

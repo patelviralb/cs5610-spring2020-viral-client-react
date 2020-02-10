@@ -31,7 +31,7 @@ export const updateLessonSelection = (lessonID) => ({
     selectedLessonID: lessonID
 })
 
-export const removeTopicsAfterModuleDelete = () => ({
+export const removeLessonsAfterModuleDelete = () => ({
     type: REMOVE_ALL_LESSONS
 })
 

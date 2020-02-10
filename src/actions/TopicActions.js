@@ -15,20 +15,20 @@ export const createNewTopic = (newAddedTopic) => ({
     newAddedTopic: newAddedTopic
 })
 
-export const deleteTopic = (lessonID) => ({
+export const deleteTopic = (topicID) => ({
     type: DELETE_TOPIC,
-    lessonID: lessonID
+    topicID: topicID
 })
 
-export const updateTopic = (lessonID, updatedTopic) => ({
+export const updateTopic = (topicID, updatedTopic) => ({
     type: UPDATE_TOPIC,
-    lessonID: lessonID,
+    topicID: topicID,
     updatedTopic: updatedTopic
 })
 
-export const updateTopicSelection = (lessonID) => ({
+export const updateTopicSelection = (topicID) => ({
     type: SELECT_TOPIC,
-    selectedTopicID: lessonID
+    selectedTopicID: topicID
 })
 
 export const removeTopicsAfterLessonDelete = () => ({

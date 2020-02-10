@@ -4,13 +4,14 @@ import CourseModuleComponent from "./CourseModules/CourseModuleComponent";
 import CourseModuleDetails from "./CourseModules/ModuleDetails/ModuleDetailsComponent";
 import ModuleReducer from "../../reducers/ModuleReducer";
 import LessonReducer from "../../reducers/LessonReducer";
+import TopicReducer from "../../reducers/TopicReducer";
 import { combineReducers, createStore } from "redux";
 import { Provider } from "react-redux";
 
 const rootReducer = combineReducers({
   moduleReducer: ModuleReducer,
-  lessonReducer: LessonReducer/*,
-  topicReducer: TopicReducer */
+  lessonReducer: LessonReducer,
+  topicReducer: TopicReducer
 })
 
 const store = createStore(rootReducer)

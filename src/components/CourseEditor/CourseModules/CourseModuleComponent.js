@@ -4,41 +4,45 @@ import { connect } from "react-redux";
 import CourseModuleItem from "./CourseModuleItemComponent";
 import ModuleService from "../../../service/ModuleService";
 import { findCourseModules, createNewModule, updateModuleSelection } from "../../../actions/ModuleActions";
+import { updateLessonSelection } from "../../../actions/LessonActions";
+import { updateTopicSelection } from "../../../actions/TopicActions";
 
-class CourseModuleComponent extends React.Component {
-  componentDidMount = () => {
-    this.props.findModulesForCourse(this.props.match.params.courseID);
-    this.props.updateModuleSelection(null);
-  };
+  class CourseModuleComponent extends React.Component {
+    componentDidMount = () => {
+      this.props.findModulesForCourse(this.props.match.params.courseID);
+      this.props.updateModuleSelection(null);
+      this.props.updateLessonSelection(null);
+      this.props.updateTopicSelection(null);
+    };
 
-  render() {
-    return (
-      <div className="col-lg-3 col-12 vp-cs5610-module-list">
-        {
-          this.props.moduleList
-          &&
-          this.props.moduleList.map((module) => {
-            return <CourseModuleItem
-              key={module._id}
-              module={module}
-              courseID={this.props.match.params.courseID}
-            />
-          })
-        }
-        <div className="d-flex justify-content-center mt-4 mb-4">
-          <div className="row w-100 vp-cs5610-each-module d-flex justify-content-center">
-            <button
-              className="btn btn-dark col-2"
-              onClick={() => this.props.createNewModule(this.props.match.params.courseID)}
-            >
-              <i className="fas fa-plus vp-cs5610-add-module-button wbdv-module-item-add-btn"></i>
-            </button>
+    render() {
+      return (
+        <div className="col-lg-3 col-12 vp-cs5610-module-list">
+          {
+            this.props.moduleList
+            &&
+            this.props.moduleList.map((module) => {
+              return <CourseModuleItem
+                key={module._id}
+                module={module}
+                courseID={this.props.match.params.courseID}
+              />
+            })
+          }
+          <div className="d-flex justify-content-center mt-4 mb-4">
+            <div className="row w-100 vp-cs5610-each-module d-flex justify-content-center">
+              <button
+                className="btn btn-dark col-2"
+                onClick={() => this.props.createNewModule(this.props.match.params.courseID)}
+              >
+                <i className="fas fa-plus vp-cs5610-add-module-button wbdv-module-item-add-btn"></i>
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    )
+      )
+    }
   }
-}
 
 const stateToPropertyMapper = (state) => {
   return {
@@ -63,6 +67,14 @@ const dispatcherToPropertyMapper = (dispatch) => {
 
     updateModuleSelection: (moduleID) => {
       dispatch(updateModuleSelection(moduleID))
+    },
+
+    updateLessonSelection: (lessonID) => {
+      dispatch(updateLessonSelection(lessonID))
+    },
+
+    updateTopicSelection: (topicID) => {
+      dispatch(updateTopicSelection(topicID))
     }
   }
 }

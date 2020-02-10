@@ -1,12 +1,13 @@
 import TopicActions from "../actions/TopicActions"
 
 const initialState = {
-    topics: []
+    topics: [],
+    selectedTopicID: null
 }
 
 const TopicReducer = (state = initialState, action) => {
     switch (action.type) {
-        case TopicActions.FIND_TOPICS_FOR_MODULE:
+        case TopicActions.FIND_TOPICS_FOR_LESSON:
             return {
                 topics: action.allFoundTopics
             }
