@@ -13,6 +13,7 @@ import { updateTopicSelection } from "../../../actions/TopicActions";
       this.props.updateModuleSelection(null);
       this.props.updateLessonSelection(null);
       this.props.updateTopicSelection(null);
+      console.log(this.props.moduleList)
     };
 
     render() {
@@ -28,6 +29,21 @@ import { updateTopicSelection } from "../../../actions/TopicActions";
                 courseID={this.props.match.params.courseID}
               />
             })
+          }
+          {
+            this.props.moduleList.length === 0
+            &&
+            <div className="alert alert-warning mt-2" role="alert">
+              <div className="d-flex justify-content-center">
+                <i className="fas fa-2x fa-exclamation-triangle"></i>
+              </div>
+              <label className="d-flex justify-content-center">
+                No Modules found for selected course.
+              </label>
+              <label className="d-flex justify-content-center">
+                Start adding modules to proceed.
+              </label>
+            </div>
           }
           <div className="d-flex justify-content-center mt-4 mb-4">
             <div className="row w-100 vp-cs5610-each-module d-flex justify-content-center">

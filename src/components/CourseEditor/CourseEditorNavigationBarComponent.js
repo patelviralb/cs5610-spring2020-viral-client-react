@@ -6,7 +6,6 @@ import {connect} from "react-redux"
 
 class CourseEditorNavigationBar extends React.Component {
   componentDidMount = () => {
-    console.log(this.props.match.params.courseID);
     const selectedCourseID = this.props.match.params.courseID;
     this.props.findCourseDetails(selectedCourseID)
   };
