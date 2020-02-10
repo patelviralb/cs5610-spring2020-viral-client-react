@@ -128,6 +128,7 @@ const dispatcherToPropertyMapper = (dispatch) => {
           dispatch(deleteLesson(lessonID))
         )
         if (lessonID === selectedLessonID) {
+          dispatch(updateLessonSelection(null))
           dispatch(removeTopicsAfterLessonDelete())
           dispatch(updateTopicSelection(null))
         }

@@ -10,6 +10,21 @@ class TabPills extends React.Component {
     return (
       <div>
         {
+          (this.props.topicList.length === 0 && this.props.selectedLessonID)
+          &&
+          <div className="alert alert-warning mt-2" role="alert">
+            <div className="d-flex justify-content-center">
+              <i className="fas fa-2x fa-exclamation-triangle"></i>
+            </div>
+            <label className="d-flex justify-content-center">
+              No Topics found for selected lesson.
+            </label>
+            <label className="d-flex justify-content-center">
+              Start adding topics to proceed.
+            </label>
+          </div>
+        }
+        {
           (this.props.topicList && this.props.selectedLessonID !== null)
           &&
           <div className="nav nav-pills pt-3">
@@ -33,6 +48,18 @@ class TabPills extends React.Component {
                 </button>
               </div>
             }
+          </div>
+        }
+        {
+          !this.props.selectedLessonID
+          &&
+          <div className="alert alert-secondary mt-2" role="alert">
+            <div className="d-flex justify-content-center">
+              <i className="fas fa-2x fa-exclamation-triangle"></i>
+            </div>
+            <label className="d-flex justify-content-center">
+              No Lesson selected. Please select a lesson to view topics.
+            </label>
           </div>
         }
       </div>

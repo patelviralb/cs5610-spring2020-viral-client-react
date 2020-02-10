@@ -13,7 +13,6 @@ import { updateTopicSelection } from "../../../actions/TopicActions";
       this.props.updateModuleSelection(null);
       this.props.updateLessonSelection(null);
       this.props.updateTopicSelection(null);
-      console.log(this.props.moduleList)
     };
 
     render() {

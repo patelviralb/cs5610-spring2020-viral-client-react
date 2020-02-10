@@ -23,6 +23,18 @@ class WidgetPreviewSave extends React.Component {
             </div>
           </div>
         }
+        {
+          !this.props.selectedTopicID
+          &&
+          <div className="alert alert-secondary mt-2" role="alert">
+            <div className="d-flex justify-content-center">
+              <i className="fas fa-2x fa-exclamation-triangle"></i>
+            </div>
+            <label className="d-flex justify-content-center">
+              No Topic selected. Please select a topic to view widgets.
+            </label>
+          </div>
+        }
       </div>
     )
   }
