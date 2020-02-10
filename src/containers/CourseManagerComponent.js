@@ -8,13 +8,13 @@ import {
   updateCourse
 } from "../service/CourseService"
 
-import CourseEditorComponent
+import CourseEditor
   from "../components/CourseEditor/CourseEditorComponent";
 import CourseListView from "../components/CourseManager/ListView/CourseListViewComponent";
 import CourseGridView from "../components/CourseManager/GridView/CourseGridViewComponent";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom"
 
-class CourseManagerComponent extends React.Component {
+class CourseManager extends React.Component {
 
   state = {
     listView: true,
@@ -134,7 +134,7 @@ class CourseManagerComponent extends React.Component {
             path="/course/:courseID"
             exact={true}
             render={(props) =>
-              <CourseEditorComponent
+              <CourseEditor
                 {...props}
               />
             }
@@ -145,4 +145,4 @@ class CourseManagerComponent extends React.Component {
   }
 }
 
-export default CourseManagerComponent
+export default CourseManager

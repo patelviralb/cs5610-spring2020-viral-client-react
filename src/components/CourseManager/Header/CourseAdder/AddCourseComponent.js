@@ -1,7 +1,7 @@
 import React from "react";
 import '../../../../styles/course-manager-header-style-client.css';
 
-class AddCourseComponent extends React.Component {
+class AddCourse extends React.Component {
   state = {
     courseTitle: ""
   };
@@ -41,4 +41,4 @@ class AddCourseComponent extends React.Component {
   }
 }
 
-export default AddCourseComponent
+export default AddCourse

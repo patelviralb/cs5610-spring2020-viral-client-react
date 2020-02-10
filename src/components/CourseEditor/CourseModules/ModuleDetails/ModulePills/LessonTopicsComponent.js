@@ -1,11 +1,11 @@
 import React from "react";
 import "../../../../../styles/course-editor-style-client.css";
-import TabEachPill from "./TabEachPillComponent";
+import TabEachPill from "./LessonEachTopicComponent";
 import TopicService from "../../../../../service/TopicService";
 import { createNewTopic } from "../../../../../actions/TopicActions";
 import { connect } from "react-redux"
 
-class TabPills extends React.Component {
+class LessonTopics extends React.Component {
   render() {
     return (
       <div>
@@ -86,4 +86,4 @@ const dispatcherToPropertyMapper = (dispatch) => {
   }
 }
 
-export default connect(stateToPropertyMapper, dispatcherToPropertyMapper)(TabPills)
+export default connect(stateToPropertyMapper, dispatcherToPropertyMapper)(LessonTopics)

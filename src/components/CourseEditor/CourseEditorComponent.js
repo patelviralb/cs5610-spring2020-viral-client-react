@@ -18,7 +18,7 @@ const rootReducer = combineReducers({
 
 const store = createStore(rootReducer);
 
-const CourseEditorComponent = ({ history, match }) =>
+const CourseEditor = ({ history, match }) =>
   <Provider store={store}>
     <div>
       <CourseEditorNavigationBar
@@ -36,4 +36,4 @@ const CourseEditorComponent = ({ history, match }) =>
     </div>
   </Provider>
 
-export default CourseEditorComponent
+export default CourseEditor

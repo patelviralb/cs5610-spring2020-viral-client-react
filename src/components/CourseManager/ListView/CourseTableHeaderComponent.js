@@ -1,7 +1,7 @@
 import React from "react";
 import "../../../styles/course-table-style-client.css"
 
-const CourseTableHeaderComponent = () =>
+const CourseTableHeader = () =>
     <thead>
       <tr>
         <th scope="col"
@@ -20,4 +20,4 @@ const CourseTableHeaderComponent = () =>
       </tr>
     </thead>
 
-export default CourseTableHeaderComponent
+export default CourseTableHeader

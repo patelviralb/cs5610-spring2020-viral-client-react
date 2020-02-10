@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
 
-import CourseManagerComponent from "./containers/CourseManagerComponent";
+import CourseManager from "./containers/CourseManagerComponent";
 
 const App = () =>
-    <CourseManagerComponent />
+    <CourseManager />
 /*function App() {
   /!*return (
     <div className="App">

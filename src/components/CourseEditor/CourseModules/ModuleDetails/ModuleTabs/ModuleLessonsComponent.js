@@ -5,7 +5,7 @@ import LessonService from "../../../../../service/LessonService";
 import {createNewLesson} from "../../../../../actions/LessonActions";
 import {connect} from "react-redux";
 
-class CourseModuleTabs extends React.Component {
+class ModuleLessons extends React.Component {
   componentDidMount() {
     console.log(this.props.lessonList)
   }
@@ -94,4 +94,4 @@ const dispatcherToPropertyMapper = (dispatch) => {
 }
 
 export default connect(stateToPropertyMapper, dispatcherToPropertyMapper)(
-    CourseModuleTabs)
+    ModuleLessons)

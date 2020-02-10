@@ -4,7 +4,7 @@ import TopicService from "../../../../../service/TopicService";
 import { deleteTopic, updateTopic, updateTopicSelection } from "../../../../../actions/TopicActions";
 import { connect } from "react-redux"
 
-class TabEachPill extends React.Component {
+class LessonEachTopic extends React.Component {
   state = {
     isEdit: false,
     topic: this.props.topicPill
@@ -141,4 +141,4 @@ const dispatcherToPropertyMapper = (dispatch) => {
   }
 }
 
-export default connect(stateToPropertyMapper, dispatcherToPropertyMapper)(TabEachPill)
+export default connect(stateToPropertyMapper, dispatcherToPropertyMapper)(LessonEachTopic)

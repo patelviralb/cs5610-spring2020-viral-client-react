@@ -1,6 +1,6 @@
 import React from "react";
 import '../../../styles/course-manager-header-style-client.css';
-import AddCourseComponent from './CourseAdder/AddCourseComponent.js'
+import AddCourse from './CourseAdder/AddCourseComponent.js'
 
 const CourseManagerNavbarComponent = ({addCourse, newCourseTitle}) =>
 
@@ -15,7 +15,7 @@ const CourseManagerNavbarComponent = ({addCourse, newCourseTitle}) =>
             Course Manager
           </label>
         </div>
-        <AddCourseComponent addCourse={addCourse} newCourseTitle={newCourseTitle} />
+        <AddCourse addCourse={addCourse} newCourseTitle={newCourseTitle} />
       </nav>
     </div>
 

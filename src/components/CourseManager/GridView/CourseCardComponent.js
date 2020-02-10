@@ -4,7 +4,7 @@ import { getDate } from "../../../common/constants";
 import { Link } from "react-router-dom"
 import "../../../styles/course-grid-style-client.css"
 
-class CourseCardComponent extends React.Component {
+class CourseCard extends React.Component {
   state = {
     isEdit: false,
     course: this.props.course
@@ -125,4 +125,4 @@ class CourseCardComponent extends React.Component {
   }
 }
 
-export default CourseCardComponent
+export default CourseCard

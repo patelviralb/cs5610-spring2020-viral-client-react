@@ -3,7 +3,7 @@ import WidgetSelector from "./WidgetSelectorComponent"
 import WidgetTitle from "./WidgetTitleComponent"
 import ContentTitle from "./ContentTitleComponent"
 import WidgetSubSelector from "./WidgetSubSelectorComponent"
-import WidgetNameComponent from "./WidgetNameComponent"
+import WidgetName from "./WidgetNameComponent"
 
 const EachWidget = () =>
     <div className="row border border-warning rounded">
@@ -12,7 +12,7 @@ const EachWidget = () =>
       <WidgetTitle/>
       <ContentTitle/>
       <WidgetSubSelector/>
-      <WidgetNameComponent/>
+      <WidgetName/>
 
       <div className="col-12 d-flex justify-content-start pt-4">
         <h3>Preview</h3>

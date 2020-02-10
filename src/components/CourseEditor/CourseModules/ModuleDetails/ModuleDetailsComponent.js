@@ -1,6 +1,6 @@
 import React from "react"
-import CourseModuleLessons from "./ModuleTabs/ModuleLessonComponent";
-import TabPills from "./ModulePills/TabPillsComponent";
+import CourseModuleLessons from "./ModuleTabs/ModuleLessonsComponent";
+import TabPills from "./ModulePills/LessonTopicsComponent";
 import WidgetPreviewSave from "./ModuleWidgets/WidgetPreviewSaveComponent"
 import ModuleWidget from "./ModuleWidgets/ModuleWidgetComponent"
 

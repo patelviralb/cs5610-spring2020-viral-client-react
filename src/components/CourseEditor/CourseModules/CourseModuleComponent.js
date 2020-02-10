@@ -7,7 +7,7 @@ import { findCourseModules, createNewModule, updateModuleSelection } from "../..
 import { updateLessonSelection } from "../../../actions/LessonActions";
 import { updateTopicSelection } from "../../../actions/TopicActions";
 
-  class CourseModuleComponent extends React.Component {
+  class CourseModule extends React.Component {
     componentDidMount = () => {
       this.props.findModulesForCourse(this.props.match.params.courseID);
       this.props.updateModuleSelection(null);
@@ -98,4 +98,4 @@ export default connect(
   stateToPropertyMapper,
   dispatcherToPropertyMapper
 )
-  (CourseModuleComponent)
+  (CourseModule)

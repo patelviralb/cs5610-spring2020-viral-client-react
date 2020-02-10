@@ -1,6 +1,6 @@
 import React from "react"
 import CourseManagerHeader from "../Header/CourseManagerNavbarComponent";
-import CourseTableComponent
+import CourseTable
     from "./CourseTableComponent";
 import { Link } from "react-router-dom";
 
@@ -16,9 +16,9 @@ const CourseListView = ({ addCourse, newCourseTitle, courses, deleteCourse, upda
                 <i className="fas fa-th" title="Grid View"></i>
             </Link>
         </div>
-        <CourseTableComponent courses={courses}
-            deleteCourse={deleteCourse}
-            updateCourse={updateCourse}
+        <CourseTable courses={courses}
+                     deleteCourse={deleteCourse}
+                     updateCourse={updateCourse}
         />
     </div>
 

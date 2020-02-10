@@ -3,7 +3,7 @@ import "../../../styles/course-table-style-client.css"
 import { getDate } from "../../../common/constants";
 import { Link } from "react-router-dom";
 
-class CourseTableRowComponent extends React.Component {
+class CourseTableRow extends React.Component {
   state = {
     isEdit: false,
     course: this.props.course,
@@ -107,4 +107,4 @@ class CourseTableRowComponent extends React.Component {
   }
 }
 
-export default CourseTableRowComponent
+export default CourseTableRow

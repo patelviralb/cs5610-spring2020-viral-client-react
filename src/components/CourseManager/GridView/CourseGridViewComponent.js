@@ -1,6 +1,6 @@
 import React from "react"
 import CourseManagerHeader from "../Header/CourseManagerNavbarComponent";
-import CourseGridComponent from "./CourseGridComponent";
+import CourseGrid from "./CourseGridComponent";
 import { Link } from "react-router-dom"
 
 const CourseGridView = ({ addCourse, newCourseTitle, courses, deleteCourse, updateCourse }) =>
@@ -16,9 +16,9 @@ const CourseGridView = ({ addCourse, newCourseTitle, courses, deleteCourse, upda
             </Link>
         </div>
 
-        <CourseGridComponent courses={courses}
-            deleteCourse={deleteCourse}
-            updateCourse={updateCourse}
+        <CourseGrid courses={courses}
+                    deleteCourse={deleteCourse}
+                    updateCourse={updateCourse}
         />
     </div>
 
