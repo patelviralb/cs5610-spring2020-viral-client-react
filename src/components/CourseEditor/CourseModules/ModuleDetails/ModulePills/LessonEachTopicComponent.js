@@ -1,7 +1,11 @@
 import React from "react"
 import "../../../../../styles/course-editor-style-client.css";
 import TopicService from "../../../../../service/TopicService";
-import { deleteTopic, updateTopic, updateTopicSelection } from "../../../../../actions/TopicActions";
+import {
+  deleteTopic,
+  updateTopic,
+  updateTopicSelection
+} from "../../../../../actions/TopicActions";
 import { connect } from "react-redux"
 
 class LessonEachTopic extends React.Component {
@@ -9,7 +13,7 @@ class LessonEachTopic extends React.Component {
     isEdit: false,
     topic: this.props.topicPill
 
-  }
+  };
 
   editTopicTitle = () => {
     this.setState((previousState) => {
@@ -89,7 +93,7 @@ class LessonEachTopic extends React.Component {
             <button
               className="btn btn-outline-danger"
               title="Delete Topic"
-              onClick={() => this.props.deleteTopic(this.state.topic._id)}
+              onClick={() => this.props.deleteTopic(this.state.topic._id,this.props.selectedTopicID)}
             >
               <i className="fas fa-trash"></i>
             </button>
@@ -115,15 +119,18 @@ const stateToPropertyMapper = (state) => {
   return {
     selectedTopicID: state.topicReducer.selectedTopicID
   }
-}
+};
 
 const dispatcherToPropertyMapper = (dispatch) => {
   return {
-    deleteTopic: (topicID) => {
+    deleteTopic: (topicID,selectedTopicID) => {
       TopicService.deleteTopic(topicID)
         .then(status =>
           dispatch(deleteTopic(topicID))
-        )
+        );
+      if (topicID === selectedTopicID) {
+        dispatch(updateTopicSelection(null))
+      }
     },
 
     updateTopic: (topicID, updatedTopic) => {
@@ -139,6 +146,6 @@ const dispatcherToPropertyMapper = (dispatch) => {
         .then(allFoundTopics => dispatch(findLessonTopics(allFoundTopics))) */
     }
   }
-}
+};
 
 export default connect(stateToPropertyMapper, dispatcherToPropertyMapper)(LessonEachTopic)
