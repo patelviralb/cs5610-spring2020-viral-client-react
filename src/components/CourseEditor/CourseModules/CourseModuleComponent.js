@@ -48,7 +48,7 @@ const stateToPropertyMapper = (state) => {
   return {
     moduleList: state.moduleReducer.modules
   }
-}
+};
 
 const dispatcherToPropertyMapper = (dispatch) => {
   return {
@@ -60,7 +60,7 @@ const dispatcherToPropertyMapper = (dispatch) => {
     createNewModule: (courseID) => {
       const newModule = {
         "moduleName": "New Module"
-      }
+      };
       ModuleService.createModule(courseID, newModule)
         .then(newAddedModule => dispatch(createNewModule(newAddedModule)))
     },
@@ -77,7 +77,7 @@ const dispatcherToPropertyMapper = (dispatch) => {
       dispatch(updateTopicSelection(topicID))
     }
   }
-}
+};
 
 export default connect(
   stateToPropertyMapper,

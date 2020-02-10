@@ -2,6 +2,7 @@ import React from "react"
 import CourseEditorNavigationBar from "./CourseEditorNavigationBarComponent";
 import CourseModuleComponent from "./CourseModules/CourseModuleComponent";
 import CourseModuleDetails from "./CourseModules/ModuleDetails/ModuleDetailsComponent";
+import CourseReducer from "../../reducers/CourseReducer";
 import ModuleReducer from "../../reducers/ModuleReducer";
 import LessonReducer from "../../reducers/LessonReducer";
 import TopicReducer from "../../reducers/TopicReducer";
@@ -9,12 +10,13 @@ import { combineReducers, createStore } from "redux";
 import { Provider } from "react-redux";
 
 const rootReducer = combineReducers({
+  courseReducer: CourseReducer,
   moduleReducer: ModuleReducer,
   lessonReducer: LessonReducer,
   topicReducer: TopicReducer
-})
+});
 
-const store = createStore(rootReducer)
+const store = createStore(rootReducer);
 
 const CourseEditorComponent = ({ history, match }) =>
   <Provider store={store}>

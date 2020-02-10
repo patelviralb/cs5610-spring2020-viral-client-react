@@ -4,7 +4,7 @@ import CourseTableComponent
     from "./CourseTableComponent";
 import { Link } from "react-router-dom";
 
-const CourseListView = ({ addCourse, newCourseTitle, courses, deleteCourse, updateCourse, history }) =>
+const CourseListView = ({ addCourse, newCourseTitle, courses, deleteCourse, updateCourse }) =>
     <div>
         <CourseManagerHeader addCourse={addCourse}
             newCourseTitle={newCourseTitle} />

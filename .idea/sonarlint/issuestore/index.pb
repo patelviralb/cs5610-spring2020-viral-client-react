@@ -64,8 +64,6 @@ u
 Esrc/components/CourseManager/Header/CourseAdder/AddCourseComponent.js,f\7\f74f89fa43b9fc35c688e0266a594bca5e7622fb
 s
 Csrc/components/CourseManager/Header/CourseManagerNavbarComponent.js,9\0\904d0aa988717615ff0f13459169d8918c0300e6
-v
-Fsrc/components/CourseManager/ViewController/ViewControllerComponent.js,9\0\9027eba3ed59cda95faf2e8aa075f9444d31cd0c
 Y
 )src/styles/course-editor-style-client.css,a\4\a493190d6812f122d7e9e2bfc09636ec3ef3f881
 W
@@ -78,8 +76,6 @@ m
 =src/components/CourseManager/ListView/CourseTableComponent.js,c\0\c04b73e02f4a4cd49a8044b745f159f3e0439fe8
 s
 Csrc/components/CourseManager/ListView/CourseTableHeaderComponent.js,2\8\28cde72c4e6fc7ba6f41f3213cbf598984d67493
-w
-G.idea/sonarlint/issuestore/7/a/7a9ae67ea5ccf1a41581e11177dec727414b8a9e,b\9\b9d7f8b2e39348cbdc303c80f5a9dd753b017fb1
 l
 <src/components/CourseManager/GridView/CourseCardComponent.js,e\a\eadc5e4343c9d78b3fff7fb1323630b4fb554735
 p

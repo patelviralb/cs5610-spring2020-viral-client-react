@@ -3,7 +3,7 @@ import CourseManagerHeader from "../Header/CourseManagerNavbarComponent";
 import CourseGridComponent from "./CourseGridComponent";
 import { Link } from "react-router-dom"
 
-const CourseGridView = ({ addCourse, newCourseTitle, courses, deleteCourse, updateCourse, history }) =>
+const CourseGridView = ({ addCourse, newCourseTitle, courses, deleteCourse, updateCourse }) =>
     <div>
         <CourseManagerHeader addCourse={addCourse}
             newCourseTitle={newCourseTitle} />

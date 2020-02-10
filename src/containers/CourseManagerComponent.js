@@ -96,16 +96,13 @@ class CourseManagerComponent extends React.Component {
           <Route
             path="/table"
             exact={true}
-            render={(props) =>
+            render={() =>
               <CourseListView
                 addCourse={this.addCourse}
-                listView={this.state.listView}
-                toggleView={this.toggleView}
                 newCourseTitle={this.state.newCourseTitle}
                 courses={this.state.courses}
                 deleteCourse={this.deleteCourse}
                 updateCourse={this.updateCourse}
-                {...props}
               />
             }
           />
@@ -113,7 +110,7 @@ class CourseManagerComponent extends React.Component {
           <Route
             path="/"
             exact={true}
-            render={(props) =>
+            render={() =>
               <Redirect to="/table">
               </Redirect>
             }
@@ -122,16 +119,13 @@ class CourseManagerComponent extends React.Component {
           <Route
             path="/grid"
             exact={true}
-            render={(props) =>
+            render={() =>
               <CourseGridView
                 addCourse={this.addCourse}
-                listView={this.state.listView}
-                toggleView={this.toggleView}
                 newCourseTitle={this.state.newCourseTitle}
                 courses={this.state.courses}
                 deleteCourse={this.deleteCourse}
                 updateCourse={this.updateCourse}
-                {...props}
               />
             }
           />
