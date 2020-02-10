@@ -2,7 +2,7 @@ import React from "react";
 import "../../../../../styles/course-editor-style-client.css";
 import ModuleEachLesson from "./ModuleEachLessonComponent";
 import LessonService from "../../../../../service/LessonService";
-import { findModuleLessons, createNewLesson } from "../../../../../actions/LessonActions";
+import { createNewLesson } from "../../../../../actions/LessonActions";
 import { connect } from "react-redux";
 
 class CourseModuleTabs extends React.Component {
@@ -24,7 +24,7 @@ class CourseModuleTabs extends React.Component {
               })
             }
             {
-              (this.props.lessonList && this.props.selectedModuleID)
+              this.props.lessonList
               &&
               <div className="nav-item mt-3 mb-2 vp-cs5610-nav-item btn-group ml-2">
                 <button
@@ -51,11 +51,6 @@ const stateToPropertyMapper = (state) => {
 
 const dispatcherToPropertyMapper = (dispatch) => {
   return {
-    findLessonsForCourse: (moduleID) => {
-      LessonService.findLessonsForModule(moduleID)
-        .then(allFoundLessons => dispatch(findModuleLessons(allFoundLessons)))
-    },
-
     createNewLesson: (moduleID) => {
       const newLesson = {
         "lessonName": "New Lesson"

@@ -3,11 +3,12 @@ import "../../../styles/course-editor-style-client.css";
 import { connect } from "react-redux";
 import CourseModuleItem from "./CourseModuleItemComponent";
 import ModuleService from "../../../service/ModuleService";
-import { findCourseModules, createNewModule } from "../../../actions/ModuleActions";
+import { findCourseModules, createNewModule, updateModuleSelection } from "../../../actions/ModuleActions";
 
 class CourseModuleComponent extends React.Component {
   componentDidMount = () => {
     this.props.findModulesForCourse(this.props.match.params.courseID);
+    this.props.updateModuleSelection(null);
   };
 
   render() {
@@ -58,6 +59,10 @@ const dispatcherToPropertyMapper = (dispatch) => {
       }
       ModuleService.createModule(courseID, newModule)
         .then(newAddedModule => dispatch(createNewModule(newAddedModule)))
+    },
+
+    updateModuleSelection: (moduleID) => {
+      dispatch(updateModuleSelection(moduleID))
     }
   }
 }
