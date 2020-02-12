@@ -2,13 +2,28 @@ import React from "react";
 import "../../../../../styles/course-editor-style-client.css";
 import ModuleEachLesson from "./ModuleEachLessonComponent";
 import LessonService from "../../../../../service/LessonService";
-import {createNewLesson} from "../../../../../actions/LessonActions";
+import {
+  createNewLesson,
+  updateLessonSelection
+} from "../../../../../actions/LessonActions";
 import {connect} from "react-redux";
+import TopicService from "../../../../../service/TopicService";
+import {findLessonTopics} from "../../../../../actions/TopicActions";
+import {Route} from "react-router-dom";
+import {Router} from "react-router";
 
 class ModuleLessons extends React.Component {
   render() {
     return (
         <div>
+          <Router history={this.props.history}>
+            <Route
+                path="/course/:courseID/modules/:moduleID/lessons/:lessonID"
+                render={(props) => {
+                  this.props.updateLessonSelection(props.match.params.lessonID);
+                }}
+            />
+          </Router>
           {
             (this.props.lessonList.length === 0 && this.props.selectedModuleID)
             &&
@@ -35,6 +50,9 @@ class ModuleLessons extends React.Component {
                   return <ModuleEachLesson
                       eachLesson={eachLesson}
                       key={eachLesson._id}
+                      history={this.props.history}
+                      match={this.props.match}
+
                   />
                 })
               }
@@ -75,19 +93,25 @@ const stateToPropertyMapper = (state) => {
     selectedModuleID: state.moduleReducer.selectedModuleID,
     lessonList: state.lessonReducer.lessons
   }
-}
+};
 
 const dispatcherToPropertyMapper = (dispatch) => {
   return {
     createNewLesson: (moduleID) => {
       const newLesson = {
         "lessonName": "New Lesson"
-      }
+      };
       LessonService.createLesson(moduleID, newLesson)
       .then(newAddedLesson => dispatch(createNewLesson(newAddedLesson)))
+    },
+
+    updateLessonSelection: (lessonID) => {
+      dispatch(updateLessonSelection(lessonID));
+      TopicService.findTopicsForLesson(lessonID)
+      .then(allFoundTopics => dispatch(findLessonTopics(allFoundTopics)))
     }
   }
-}
+};
 
 export default connect(stateToPropertyMapper, dispatcherToPropertyMapper)(
     ModuleLessons)

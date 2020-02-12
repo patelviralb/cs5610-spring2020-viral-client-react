@@ -53,6 +53,7 @@ class CourseModuleItem extends React.Component {
             &&
             <button
               className={`${this.props.selectedModuleID === this.state.module._id ? "btn col-10 vp-cs5610-module-title btn-primary" : "btn col-10 vp-cs5610-module-title btn-dark"}`}
+              title={this.state.module.moduleName}
               onClick={this.editModuleSelection}
             >
               <i className="fas fa-book mr-2"></i>
@@ -76,7 +77,6 @@ class CourseModuleItem extends React.Component {
             <button
               className="btn btn-danger col-2"
               onClick={() => this.props.deleteModule(this.state.module._id, this.props.selectedModuleID, this.props.history, this.props.selectedCourse._id)}
-              /*this.props.history.push(`/course/${this.props.selectedCourse._id}`);*/
             >
               <i className="fas fa-trash-alt"></i>
             </button>
@@ -136,18 +136,7 @@ const dispatcherToPropertyMapper = (dispatch) => {
         .then(status =>
           dispatch(updateModule(moduleID, updatedModule))
         )
-    }/*,
-
-    updateModuleSelection: (moduleID) => {
-      dispatch(updateModuleSelection(moduleID))
-      LessonService.findLessonsForModule(moduleID)
-        .then(
-          allFoundLessons => dispatch(findModuleLessons(allFoundLessons)),
-          dispatch(updateLessonSelection(null)),
-          dispatch(updateTopicSelection(null)),
-          dispatch(removeTopicsAfterLessonDelete())
-        )
-    }*/
+    }
   }
 }
 

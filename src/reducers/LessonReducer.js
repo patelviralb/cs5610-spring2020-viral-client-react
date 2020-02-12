@@ -35,9 +35,7 @@ const LessonReducer = (state = initialState, action) => {
             };
         case LessonActions.SELECT_LESSON:
             return {
-                lessons: [
-                    ...state.lessons
-                ],
+                ...state,
                 selectedLessonID: action.selectedLessonID
             };
         case LessonActions.REMOVE_ALL_LESSONS:

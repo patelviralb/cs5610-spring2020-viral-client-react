@@ -32,7 +32,10 @@ const CourseEditor = ({history, match}) =>
                 history={history}
                 match={match}
             />
-            <CourseModuleDetails/>
+            <CourseModuleDetails
+                history={history}
+                match={match}
+            />
           </div>
         </div>
       </div>

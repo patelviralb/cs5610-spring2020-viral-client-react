@@ -2,9 +2,7 @@ import React from "react"
 import "../../../../../styles/course-editor-style-client.css"
 import { connect } from "react-redux"
 import LessonService from "../../../../../service/LessonService";
-import TopicService from "../../../../../service/TopicService";
 import { deleteLesson, updateLesson, updateLessonSelection } from "../../../../../actions/LessonActions";
-import {findLessonTopics} from "../../../../../actions/TopicActions";
 import { updateTopicSelection, removeTopicsAfterLessonDelete } from "../../../../../actions/TopicActions"
 
 class ModuleEachLesson extends React.Component {
@@ -43,7 +41,7 @@ class ModuleEachLesson extends React.Component {
   };
 
   editLessonSelection = () => {
-    this.props.updateLessonSelection(this.state.lesson._id)
+    this.props.history.push(`/course/${this.props.selectedCourse._id}/modules/${this.props.selectedModuleID}/lessons/${this.state.lesson._id}`)
   };
 
   render() {
@@ -92,7 +90,7 @@ class ModuleEachLesson extends React.Component {
             <button
               className="btn btn-outline-danger"
               title="Delete Lesson"
-              onClick={() => this.props.deleteLesson(this.state.lesson._id, this.props.selectedLessonID)}
+              onClick={() => this.props.deleteLesson(this.state.lesson._id, this.props.selectedLessonID, this.props.history, this.props.selectedCourse._id, this.props.selectedModuleID)}
             >
               <i className="fas fa-trash"></i>
             </button>
@@ -116,21 +114,24 @@ class ModuleEachLesson extends React.Component {
 
 const stateToPropertyMapper = (state) => {
   return {
-    selectedLessonID: state.lessonReducer.selectedLessonID
+    selectedLessonID: state.lessonReducer.selectedLessonID,
+    selectedCourse: state.courseReducer.course,
+    selectedModuleID: state.moduleReducer.selectedModuleID
   }
-}
+};
 
 const dispatcherToPropertyMapper = (dispatch) => {
   return {
-    deleteLesson: (lessonID, selectedLessonID) => {
+    deleteLesson: (lessonID, selectedLessonID, history, courseID, moduleID) => {
       LessonService.deleteLesson(lessonID)
         .then(status =>
           dispatch(deleteLesson(lessonID))
-        )
+        );
         if (lessonID === selectedLessonID) {
-          dispatch(updateLessonSelection(null))
-          dispatch(removeTopicsAfterLessonDelete())
+          dispatch(updateLessonSelection(null));
+          dispatch(removeTopicsAfterLessonDelete());
           dispatch(updateTopicSelection(null))
+          history.push(`/course/${courseID}/modules/${moduleID}`)
         }
     },
 
@@ -139,14 +140,8 @@ const dispatcherToPropertyMapper = (dispatch) => {
         .then(status =>
           dispatch(updateLesson(lessonID, updatedLesson))
         )
-    },
-
-    updateLessonSelection: (lessonID) => {
-      dispatch(updateLessonSelection(lessonID))
-      TopicService.findTopicsForLesson(lessonID)
-        .then(allFoundTopics => dispatch(findLessonTopics(allFoundTopics)))
     }
   }
-}
+};
 
 export default connect(stateToPropertyMapper, dispatcherToPropertyMapper)(ModuleEachLesson)

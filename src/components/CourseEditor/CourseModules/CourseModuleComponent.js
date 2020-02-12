@@ -32,7 +32,6 @@ class CourseModule extends React.Component {
                   this.props.updateModuleSelection(props.match.params.moduleID);
                 }}
             />
-
           </Router>
           {
             this.props.moduleList
