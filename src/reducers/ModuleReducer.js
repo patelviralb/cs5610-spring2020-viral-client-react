@@ -46,9 +46,7 @@ const ModuleReducer = (state = initialState, action) => {
             };
         case ModuleActions.SELECT_MODULE:
             return {
-                modules: [
-                    ...state.modules
-                ],
+                ...state,
                 selectedModuleID: action.selectedModuleID
             };
         default:

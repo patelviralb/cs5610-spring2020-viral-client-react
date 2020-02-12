@@ -41,7 +41,7 @@ class CourseModuleItem extends React.Component {
   };
 
   editModuleSelection = () => {
-    this.props.updateModuleSelection(this.state.module._id)
+    this.props.history.push(`/course/${this.props.selectedCourse._id}/modules/${this.state.module._id}`)
   };
 
   render() {
@@ -75,7 +75,8 @@ class CourseModuleItem extends React.Component {
             &&
             <button
               className="btn btn-danger col-2"
-              onClick={() => this.props.deleteModule(this.state.module._id, this.props.selectedModuleID)}
+              onClick={() => this.props.deleteModule(this.state.module._id, this.props.selectedModuleID, this.props.history, this.props.selectedCourse._id)}
+              /*this.props.history.push(`/course/${this.props.selectedCourse._id}`);*/
             >
               <i className="fas fa-trash-alt"></i>
             </button>
@@ -108,23 +109,25 @@ class CourseModuleItem extends React.Component {
 
 const stateToPropertyMapper = (state) => {
   return {
+    selectedCourse: state.courseReducer.course,
     selectedModuleID: state.moduleReducer.selectedModuleID
   }
-}
+};
 
 const dispatcherToPropertyMapper = (dispatch) => {
   return {
-    deleteModule: (moduleID, selectedModuleID) => {
+    deleteModule: (moduleID, selectedModuleID, history, courseID) => {
       ModuleService.deleteModule(moduleID)
         .then(status =>
           dispatch(deleteModule(moduleID))
-        )
+        );
       if (moduleID === selectedModuleID) {
-        dispatch(removeLessonsAfterModuleDelete())
-        dispatch(updateModuleSelection(null))
-        dispatch(updateLessonSelection(null))
-        dispatch(updateTopicSelection(null))
-        dispatch(removeTopicsAfterLessonDelete())
+        dispatch(removeLessonsAfterModuleDelete());
+        dispatch(updateModuleSelection(null));
+        dispatch(updateLessonSelection(null));
+        dispatch(updateTopicSelection(null));
+        dispatch(removeTopicsAfterLessonDelete());
+        history.push(`/course/${courseID}`)
       }
     },
 
@@ -133,7 +136,7 @@ const dispatcherToPropertyMapper = (dispatch) => {
         .then(status =>
           dispatch(updateModule(moduleID, updatedModule))
         )
-    },
+    }/*,
 
     updateModuleSelection: (moduleID) => {
       dispatch(updateModuleSelection(moduleID))
@@ -144,7 +147,7 @@ const dispatcherToPropertyMapper = (dispatch) => {
           dispatch(updateTopicSelection(null)),
           dispatch(removeTopicsAfterLessonDelete())
         )
-    }
+    }*/
   }
 }
 

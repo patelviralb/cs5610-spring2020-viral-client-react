@@ -6,10 +6,6 @@ import {createNewLesson} from "../../../../../actions/LessonActions";
 import {connect} from "react-redux";
 
 class ModuleLessons extends React.Component {
-  componentDidMount() {
-    console.log(this.props.lessonList)
-  }
-
   render() {
     return (
         <div>

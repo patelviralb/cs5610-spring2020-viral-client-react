@@ -132,7 +132,7 @@ class CourseManager extends React.Component {
 
           <Route
             path="/course/:courseID"
-            exact={true}
+            exact={false}
             render={(props) =>
               <CourseEditor
                 {...props}
