@@ -6,7 +6,7 @@ import {
   updateTopic,
   updateTopicSelection
 } from "../../../../../actions/TopicActions";
-import { connect } from "react-redux"
+import {connect} from "react-redux"
 
 class LessonEachTopic extends React.Component {
   state = {
@@ -44,108 +44,112 @@ class LessonEachTopic extends React.Component {
   };
 
   editTopicSelection = () => {
-    this.props.updateTopicSelection(this.state.topic._id)
+    this.props.history.push(`/course/${this.props.selectedCourse._id}/modules/${this.props.selectedModuleID}/lessons/${this.props.selectedLessonID}/topics/${this.state.topic._id}`)
   };
 
   render() {
     return (
-      <div>
-        <div
-          className="nav-item pr-3 vp-cs5610-nav-item btn-group ml-2"
-        >
-          {
-            !this.state.isEdit
-            &&
-            <span
-              className={`${this.props.selectedTopicID === this.state.topic._id ?
-                "nav-link text-left btn active" : "nav-link text-left btn"}`}
-              title={this.props.topicPill.topicName}
-              onClick={this.editTopicSelection}
-            >
+        <div>
+          <div
+              className="nav-item pr-3 vp-cs5610-nav-item btn-group ml-2"
+          >
+            {
+              !this.state.isEdit
+              &&
+              <span
+                  className={`${this.props.selectedTopicID
+                  === this.state.topic._id ?
+                      "nav-link text-left btn active"
+                      : "nav-link text-left btn"}`}
+                  title={this.props.topicPill.topicName}
+                  onClick={this.editTopicSelection}
+              >
               {this.props.topicPill.topicName}
             </span>
-          }
-          {
-            !this.state.isEdit
-            &&
-            <button
-              className="nav-link btn"
-              title="Edit Topic Title"
-              onClick={this.editTopicTitle}
-            >
-              <i className="fas fa-edit"></i>
-            </button>
-          }
+            }
+            {
+              !this.state.isEdit
+              &&
+              <button
+                  className="nav-link btn"
+                  title="Edit Topic Title"
+                  onClick={this.editTopicTitle}
+              >
+                <i className="fas fa-edit"></i>
+              </button>
+            }
 
-          {
-            this.state.isEdit
-            &&
-            <input
-              className="form-control"
-              title={this.state.topic.topicName}
-              value={this.state.topic.topicName}
-              onChange={this.updateTopicTitle}
-            />
-          }
-          {
-            this.state.isEdit
-            &&
-            <button
-              className="btn btn-outline-danger"
-              title="Delete Topic"
-              onClick={() => this.props.deleteTopic(this.state.topic._id,this.props.selectedTopicID)}
-            >
-              <i className="fas fa-trash"></i>
-            </button>
-          }
-          {
-            this.state.isEdit
-            &&
-            <button
-              className="btn btn-outline-success"
-              title="Edit Topic Title"
-              onClick={this.updateTopic}
-            >
-              <i className="fas fa-check"></i>
-            </button>
-          }
+            {
+              this.state.isEdit
+              &&
+              <input
+                  className="form-control"
+                  title={this.state.topic.topicName}
+                  value={this.state.topic.topicName}
+                  onChange={this.updateTopicTitle}
+              />
+            }
+            {
+              this.state.isEdit
+              &&
+              <button
+                  className="btn btn-outline-danger"
+                  title="Delete Topic"
+                  onClick={() => this.props.deleteTopic(this.state.topic._id,
+                      this.props.selectedTopicID, this.props.history,
+                      this.props.selectedCourse._id,
+                      this.props.selectedModuleID, this.props.selectedLessonID)}
+              >
+                <i className="fas fa-trash"></i>
+              </button>
+            }
+            {
+              this.state.isEdit
+              &&
+              <button
+                  className="btn btn-outline-success"
+                  title="Edit Topic Title"
+                  onClick={this.updateTopic}
+              >
+                <i className="fas fa-check"></i>
+              </button>
+            }
+          </div>
         </div>
-      </div>
     )
   }
 }
 
 const stateToPropertyMapper = (state) => {
   return {
-    selectedTopicID: state.topicReducer.selectedTopicID
+    selectedTopicID: state.topicReducer.selectedTopicID,
+    selectedLessonID: state.lessonReducer.selectedLessonID,
+    selectedCourse: state.courseReducer.course,
+    selectedModuleID: state.moduleReducer.selectedModuleID
   }
 };
 
 const dispatcherToPropertyMapper = (dispatch) => {
   return {
-    deleteTopic: (topicID,selectedTopicID) => {
+    deleteTopic: (topicID, selectedTopicID, history, courseID, moduleID, lessonID) => {
       TopicService.deleteTopic(topicID)
-        .then(status =>
+      .then(status =>
           dispatch(deleteTopic(topicID))
-        );
+      );
       if (topicID === selectedTopicID) {
         dispatch(updateTopicSelection(null))
+        history.push(`/course/${courseID}/modules/${moduleID}/lessons/${lessonID}`)
       }
     },
 
     updateTopic: (topicID, updatedTopic) => {
       TopicService.updateTopic(topicID, updatedTopic)
-        .then(status =>
+      .then(status =>
           dispatch(updateTopic(topicID, updatedTopic))
-        )
-    },
-
-    updateTopicSelection: (topicID) => {
-      dispatch(updateTopicSelection(topicID))
-      /* TopicService.findTopicsForLesson(topicID)
-        .then(allFoundTopics => dispatch(findLessonTopics(allFoundTopics))) */
+      )
     }
   }
 };
 
-export default connect(stateToPropertyMapper, dispatcherToPropertyMapper)(LessonEachTopic)
+export default connect(stateToPropertyMapper, dispatcherToPropertyMapper)(
+    LessonEachTopic)

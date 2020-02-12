@@ -2,13 +2,26 @@ import React from "react";
 import "../../../../../styles/course-editor-style-client.css";
 import TabEachPill from "./LessonEachTopicComponent";
 import TopicService from "../../../../../service/TopicService";
-import { createNewTopic } from "../../../../../actions/TopicActions";
+import {
+  createNewTopic,
+  updateTopicSelection
+} from "../../../../../actions/TopicActions";
 import { connect } from "react-redux"
+import {Router} from "react-router"
+import {Route} from "react-router-dom"
 
 class LessonTopics extends React.Component {
   render() {
     return (
       <div>
+        <Router history={this.props.history}>
+          <Route
+              path="/course/:courseID/modules/:moduleID/lessons/:lessonID/topics/:topicID"
+              render={(props) => {
+                this.props.updateTopicSelection(props.match.params.topicID);
+              }}
+          />
+        </Router>
         {
           (this.props.topicList.length === 0 && this.props.selectedLessonID)
           &&
@@ -33,6 +46,8 @@ class LessonTopics extends React.Component {
                 return <TabEachPill
                   topicPill={topicPill}
                   key={topicPill._id}
+                  history={this.props.history}
+                  match={this.props.match}
                 />
               })
             }
@@ -72,18 +87,24 @@ const stateToPropertyMapper = (state) => {
     selectedLessonID: state.lessonReducer.selectedLessonID,
     topicList: state.topicReducer.topics
   }
-}
+};
 
 const dispatcherToPropertyMapper = (dispatch) => {
   return {
     createNewTopic: (lessonID) => {
       const newTopic = {
         "topicName": "New Topic"
-      }
+      };
       TopicService.createTopic(lessonID, newTopic)
         .then(newAddedTopic => dispatch(createNewTopic(newAddedTopic)))
+    },
+
+    updateTopicSelection: (topicID) => {
+      dispatch(updateTopicSelection(topicID))
+      /* TopicService.findTopicsForLesson(topicID)
+        .then(allFoundTopics => dispatch(findLessonTopics(allFoundTopics))) */
     }
   }
-}
+};
 
 export default connect(stateToPropertyMapper, dispatcherToPropertyMapper)(LessonTopics)

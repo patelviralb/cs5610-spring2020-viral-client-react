@@ -36,9 +36,7 @@ const TopicReducer = (state = initialState, action) => {
             };
         case TopicActions.SELECT_TOPIC:
             return {
-                topics: [
-                    ...state.topics
-                ],
+                ...state,
                 selectedTopicID: action.selectedTopicID
             };
         case TopicActions.REMOVE_ALL_TOPICS:

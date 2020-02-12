@@ -12,7 +12,10 @@ const CourseModuleDetails = ({history, match}) =>
           match={match}
       />
       <div>
-        <TabPills/>
+        <TabPills
+            history={history}
+            match={match}
+        />
       </div>
       <div>
         <WidgetPreviewSave />
