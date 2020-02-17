@@ -16,10 +16,10 @@ class WidgetPreviewSave extends React.Component {
                 <label className="custom-control-label"
                   htmlFor="vp-cs5610-preview-switch">Preview</label>
               </div>
-              <label
-                className="form-control btn btn-success ml-4 w-auto d-flex justify-content-center vp-cs5610-save-topic">
+              {/*<label
+                  className="form-control btn btn-success ml-4 w-auto d-flex justify-content-center vp-cs5610-save-topic">
                 Save
-            </label>
+              </label>*/}
             </div>
           </div>
         }
