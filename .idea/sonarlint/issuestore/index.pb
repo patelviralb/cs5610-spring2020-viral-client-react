@@ -104,3 +104,9 @@ L
 _src/components/CourseEditor/CourseModules/ModuleDetails/ModulePills/LessonEachTopicComponent.js,9\e\9e79bd0e2f08454ab324d8aadebcd0f721dc4c78
 K
 src/actions/TopicActions.js,2\3\230c6b81eeb4859cb3080cb64b4f2f63580e2e30
+w
+G.idea/sonarlint/issuestore/4/b/4b3f334367c957c5ddbfa55b700a374a360f18e3,7\c\7c9e9c469796b7b9646bf823a5a23b88df7d47bc
+w
+G.idea/sonarlint/issuestore/7/9/79fb5a040d728665b1b3c6022ffc6dece793e2f6,9\f\9f7e347c96eb21f22839e1142c821520c7299f55
+w
+G.idea/sonarlint/issuestore/8/b/8b73e30ba5fbb28d4fa6cafb0ac8b0be4e54d37e,5\3\533da972806848635c6c3bcc7944e5b036221e0b
