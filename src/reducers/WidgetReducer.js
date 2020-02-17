@@ -1,4 +1,4 @@
-import TopicActions from "../actions/TopicActions"
+import WidgetActions from "../actions/WidgetActions"
 
 const initialState = {
   widgets: []
@@ -6,45 +6,43 @@ const initialState = {
 
 const WidgetReducer = (state = initialState, action) => {
   switch (action.type) {
-    case TopicActions.FIND_TOPIC_FOR_LESSON:
+    case WidgetActions.CREATE_WIDGET:
       return {
-        topics: action.allFoundTopics
+        widgets: [
+          ...state.widgets,
+          action.newAddedWidget
+        ]
       };
-    case TopicActions.CREATE_TOPIC:
+    case WidgetActions.DELETE_WIDGET:
       return {
-        topics: [
-          ...state.topics,
-          action.newAddedTopic
-        ],
-        selectedTopicID: state.selectedTopicID
+        widgets: state.widgets.filter(widget => widget._id !== action.widgetID)
       };
-    case TopicActions.DELETE_TOPIC:
+
+    case WidgetActions.UPDATE_WIDGET:
+      const index = state.widgets.findIndex(
+          (widget) => widget._id === action.widgetID)
       return {
-        topics: state.topics.filter(topic => topic._id !== action.topicID),
-        selectedTopicID: state.selectedTopicID
+        widgets: [
+          ...state.widget.slice(0, index),
+          action.updatedWidget,
+          ...state.widgets.slice(index + 1)
+        ]
       };
-    case TopicActions.UPDATE_TOPIC:
-      const index = state.topics.findIndex((topic) => topic._id === action.topicID)
+
+    case WidgetActions.FIND_ALL_WIDGETS_FOR_TOPIC:
+    case WidgetActions.FIND_ALL_WIDGETS:
       return {
-        topics: [
-          ...state.topics.slice(0, index),
-          action.updatedTopic,
-          ...state.topics.slice(index + 1)
-        ],
-        selectedTopicID: state.selectedTopicID
+        widgets: action.allFoundWidgets
       };
-    case TopicActions.SELECT_TOPIC:
+
+    case WidgetActions.FIND_WIDGET:
       return {
-        ...state,
-        selectedTopicID: action.selectedTopicID
+        widgets: state.widgets.filter(widget => widget._id === action.widgetID)
       };
-    case TopicActions.REMOVE_ALL_TOPICS:
-      return {
-        topics: []
-      };
+
     default:
       return state
   }
 };
 
-export default TopicReducer
+export default WidgetReducer

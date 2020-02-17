@@ -21,17 +21,19 @@ export const updateWidget = (widgetID, updatedWidget) => ({
   updatedWidget: updatedWidget
 });
 
-export const findAllWidgetsForTopic = (topicID) => ({
+export const findAllWidgetsForTopic = (allFoundWidgets) => ({
   type: FIND_ALL_WIDGETS_FOR_TOPIC,
-  topicID: topicID
+  allFoundWidgets: allFoundWidgets
 });
 
-export const findAllWidgets = () => ({
-  type: FIND_ALL_WIDGETS
+export const findAllWidgets = (allFoundWidgets) => ({
+  type: FIND_ALL_WIDGETS,
+  allFoundWidgets: allFoundWidgets
 });
 
 export const findSpecificWidgets = (widgetID) => ({
-  type: FIND_WIDGET
+  type: FIND_WIDGET,
+  widgetID: widgetID
 });
 
 export default {

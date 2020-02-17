@@ -17,6 +17,9 @@ const WidgetSelector = () =>
             <option value="list">List</option>
             <option value="image">Image</option>
           </select>
+          <button className="btn btn-outline-success ml-2">
+            <i className="fas fa-save"></i>
+          </button>
           <button className="btn btn-outline-danger ml-2">
             <i className="fas fa-trash-alt"></i>
           </button>
