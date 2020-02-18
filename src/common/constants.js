@@ -3,8 +3,8 @@ export const MODULE_API_URL = "https://wbdv-generic-server.herokuapp.com/api/001
 export const LESSON_API_URL = "https://wbdv-generic-server.herokuapp.com/api/001374158/lessons";
 export const TOPIC_API_URL = "https://wbdv-generic-server.herokuapp.com/api/001374158/topics";
 
-export const WIDGET_API_URL = "https://localhost:8080/api/widgets/";
-export const WIDGET_API_URL_FOR_TOPIC = "https://localhost:8080/api/topics/";
+export const WIDGET_API_URL = "http://localhost:8080/api/widgets";
+export const WIDGET_API_URL_FOR_TOPIC = "http://localhost:8080/api/topics";
 
 export const getDate = () => {
   const currentDateObject = new Date();

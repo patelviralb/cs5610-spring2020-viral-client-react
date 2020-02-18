@@ -12,7 +12,7 @@ const createWidget = (topicID, widget) => {
 };
 
 const findWidgetsForTopic = (topicID) => {
-  return fetch(`${WIDGET_API_URL_FOR_TOPIC}/${topicID}/topics`)
+  return fetch(`${WIDGET_API_URL_FOR_TOPIC}/${topicID}/widgets`)
   .then(response => response.json())
 };
 
