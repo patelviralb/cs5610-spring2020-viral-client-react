@@ -1,7 +1,4 @@
 import React, {useState} from "react";
-import ContentTitle from "../ContentTitleComponent";
-import WidgetSubSelector from "../WidgetSubSelectorComponent";
-import WidgetName from "../WidgetNameComponent";
 
 const HeadingWidget = ({widgetDetails}) => {
   const [widget, setWidget] = useState(widgetDetails);
