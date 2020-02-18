@@ -5,6 +5,7 @@ import { deleteModule, updateModule, updateModuleSelection } from "../../../acti
 import LessonService from "../../../service/LessonService";
 import { findModuleLessons, removeLessonsAfterModuleDelete, updateLessonSelection } from "../../../actions/LessonActions";
 import { updateTopicSelection, removeTopicsAfterLessonDelete } from "../../../actions/TopicActions"
+import {removeAllWidgetsAfterTopicDelete} from "../../../actions/WidgetActions";
 
 class CourseModuleItem extends React.Component {
   state = {
@@ -127,6 +128,7 @@ const dispatcherToPropertyMapper = (dispatch) => {
         dispatch(updateLessonSelection(null));
         dispatch(updateTopicSelection(null));
         dispatch(removeTopicsAfterLessonDelete());
+        dispatch(removeAllWidgetsAfterTopicDelete());
         history.push(`/course/${courseID}`)
       }
     },
