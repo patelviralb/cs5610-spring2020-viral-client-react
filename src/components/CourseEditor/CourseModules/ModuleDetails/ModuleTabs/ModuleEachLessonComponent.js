@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 import LessonService from "../../../../../service/LessonService";
 import { deleteLesson, updateLesson, updateLessonSelection } from "../../../../../actions/LessonActions";
 import { updateTopicSelection, removeTopicsAfterLessonDelete } from "../../../../../actions/TopicActions"
+import {removeAllWidgetsAfterTopicDelete} from "../../../../../actions/WidgetActions";
 
 class ModuleEachLesson extends React.Component {
   state = {
@@ -130,8 +131,9 @@ const dispatcherToPropertyMapper = (dispatch) => {
         if (lessonID === selectedLessonID) {
           dispatch(updateLessonSelection(null));
           dispatch(removeTopicsAfterLessonDelete());
-          dispatch(updateTopicSelection(null))
-          history.push(`/course/${courseID}/modules/${moduleID}`)
+          dispatch(updateTopicSelection(null));
+          history.push(`/course/${courseID}/modules/${moduleID}`);
+          dispatch(removeAllWidgetsAfterTopicDelete());
         }
     },
 
