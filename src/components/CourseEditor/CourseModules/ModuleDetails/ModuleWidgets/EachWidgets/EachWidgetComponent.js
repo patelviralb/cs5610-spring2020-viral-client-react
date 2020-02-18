@@ -10,8 +10,9 @@ import {connect} from "react-redux";
 
 const EachWidget = ({eachWidget, key, history, match, deleteWidget}) => {
   const [widget, setWidget] = useState(eachWidget);
-  const [widgetType, setWidgetType] = useState(eachWidget.type);
+  /*const [widgetType, setWidgetType] = useState(eachWidget.type);*/
   const [isDataChanged, setIsDataChanged] = useState(false);
+
   return (
       <div className="border border-warning rounded mb-2 mt-2 pl-3 pr-2">
         <div className="col-12 d-flex justify-content-end pt-3">
@@ -65,7 +66,9 @@ const EachWidget = ({eachWidget, key, history, match, deleteWidget}) => {
         {
           widget.type === "heading"
           &&
-          <HeadingWidget/>
+          <HeadingWidget
+              widgetDetails={widget}
+          />
         }
         {
           widget.type === "paragraph"
