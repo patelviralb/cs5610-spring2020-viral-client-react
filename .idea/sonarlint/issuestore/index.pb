@@ -110,3 +110,13 @@ w
 G.idea/sonarlint/issuestore/7/9/79fb5a040d728665b1b3c6022ffc6dece793e2f6,9\f\9f7e347c96eb21f22839e1142c821520c7299f55
 w
 G.idea/sonarlint/issuestore/8/b/8b73e30ba5fbb28d4fa6cafb0ac8b0be4e54d37e,5\3\533da972806848635c6c3bcc7944e5b036221e0b
+L
+src/service/WidgetService.js,2\f\2fdadff5f51e042f3f31083f812373b9fe02035d
+©
+ysrc/components/CourseEditor/CourseModules/ModuleDetails/ModuleWidgets/EachWidgets/HeadingWidget/HeadingWidgetComponent.js,3\c\3c7ffde6787098799c04c16f6de1cae50f12bb1b
+­
+}src/components/CourseEditor/CourseModules/ModuleDetails/ModuleWidgets/EachWidgets/ParagraphWidget/ParagraphWidgetComponent.js,f\c\fcee85efd982b5fdb1e8df450f180774814c312a
+M
+src/reducers/WidgetReducer.js,f\a\fadf850b5daaa9cf66c24a105fd846e4d260e41d
+L
+src/actions/WidgetActions.js,5\c\5cbb4f70f9d42561c4e92ddfce5c83665224c7bb
