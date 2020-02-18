@@ -35,6 +35,21 @@ class WidgetPreviewSave extends React.Component {
             </label>
           </div>
         }
+        {
+          (this.props.selectedTopicID && this.props.widgetList.length === 0)
+          &&
+          <div className="alert alert-warning mt-2" role="alert">
+            <div className="d-flex justify-content-center">
+              <i className="fas fa-2x fa-exclamation-triangle"></i>
+            </div>
+            <label className="d-flex justify-content-center">
+              No Widgets found for selected topic.
+            </label>
+            <label className="d-flex justify-content-center">
+              Start adding widgets to proceed.
+            </label>
+          </div>
+        }
       </div>
     )
   }
@@ -42,8 +57,9 @@ class WidgetPreviewSave extends React.Component {
 
 const stateToPropertyMapper = (state) => {
   return {
-    selectedTopicID: state.topicReducer.selectedTopicID
+    selectedTopicID: state.topicReducer.selectedTopicID,
+    widgetList: state.widgetReducer.widgets
   }
-}
+};
 
 export default connect(stateToPropertyMapper)(WidgetPreviewSave)
