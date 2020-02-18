@@ -7,6 +7,7 @@ import {
   updateTopicSelection
 } from "../../../../../actions/TopicActions";
 import {connect} from "react-redux"
+import {removeAllWidgetsAfterTopicDelete} from "../../../../../actions/WidgetActions"
 
 class LessonEachTopic extends React.Component {
   state = {
@@ -137,7 +138,8 @@ const dispatcherToPropertyMapper = (dispatch) => {
           dispatch(deleteTopic(topicID))
       );
       if (topicID === selectedTopicID) {
-        dispatch(updateTopicSelection(null))
+        dispatch(updateTopicSelection(null));
+        dispatch(removeAllWidgetsAfterTopicDelete());
         history.push(`/course/${courseID}/modules/${moduleID}/lessons/${lessonID}`)
       }
     },
