@@ -66,7 +66,7 @@ const dispatchToPropertyMapper = (dispatch) => {
       const newAddedWidget = {
         "name": "New Widget",
         "type": "heading",
-        "order": widgetListLength+1,
+        "order": "",
         "text": "New Widget Content",
         "source": "",
         "size": 0,
