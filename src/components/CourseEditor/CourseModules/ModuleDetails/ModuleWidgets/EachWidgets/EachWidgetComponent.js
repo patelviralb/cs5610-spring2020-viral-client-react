@@ -6,13 +6,13 @@ import WidgetSubSelector from "./WidgetSubSelectorComponent"
 import WidgetName from "./WidgetNameComponent"
 
 const EachWidget = () =>
-    <div className="row border border-warning rounded">
+    <div className="row border border-warning rounded mb-2">
       <WidgetSelector/>
 
       <WidgetTitle/>
+      <WidgetName/>
       <ContentTitle/>
       <WidgetSubSelector/>
-      <WidgetName/>
 
       <div className="col-12 d-flex justify-content-start pt-4">
         <h3>Preview</h3>
