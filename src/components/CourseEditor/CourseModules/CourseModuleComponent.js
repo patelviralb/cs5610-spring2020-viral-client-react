@@ -15,6 +15,7 @@ import {Route} from "react-router-dom"
 import LessonService from "../../../service/LessonService";
 import {findModuleLessons} from "../../../actions/LessonActions";
 import {removeTopicsAfterLessonDelete} from "../../../actions/TopicActions"
+import {removeAllWidgetsAfterTopicDelete} from "../../../actions/WidgetActions";
 
 class CourseModule extends React.Component {
   componentDidMount = () => {
@@ -104,7 +105,8 @@ const dispatcherToPropertyMapper = (dispatch) => {
           allFoundLessons => dispatch(findModuleLessons(allFoundLessons)),
           dispatch(updateLessonSelection(null)),
           dispatch(updateTopicSelection(null)),
-          dispatch(removeTopicsAfterLessonDelete())
+          dispatch(removeTopicsAfterLessonDelete()),
+          dispatch(removeAllWidgetsAfterTopicDelete())
       )
     },
 
