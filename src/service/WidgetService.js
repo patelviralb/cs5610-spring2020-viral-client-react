@@ -26,7 +26,7 @@ const findWidgetById = (widgetID) => {
   .then(response => response.json())
 };
 
-const updateWidget = (widgetID, widget) => {
+/*const updateWidget = (widgetID, widget) => {
   return fetch(`${WIDGET_API_URL}/${widgetID}`, {
     method: 'PUT',
     headers: {
@@ -34,7 +34,7 @@ const updateWidget = (widgetID, widget) => {
     },
     body: JSON.stringify(widget)
   }).then(response => response.json())
-};
+};*/
 
 const deleteTopic = (widgetID) => {
   return fetch(`${WIDGET_API_URL}/${widgetID}`, {

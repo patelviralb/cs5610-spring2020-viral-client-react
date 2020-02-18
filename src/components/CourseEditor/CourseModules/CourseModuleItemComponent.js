@@ -2,8 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import ModuleService from "../../../service/ModuleService";
 import { deleteModule, updateModule, updateModuleSelection } from "../../../actions/ModuleActions";
-import LessonService from "../../../service/LessonService";
-import { findModuleLessons, removeLessonsAfterModuleDelete, updateLessonSelection } from "../../../actions/LessonActions";
+import { removeLessonsAfterModuleDelete, updateLessonSelection } from "../../../actions/LessonActions";
 import { updateTopicSelection, removeTopicsAfterLessonDelete } from "../../../actions/TopicActions"
 import {removeAllWidgetsAfterTopicDelete} from "../../../actions/WidgetActions";
 
@@ -103,7 +102,7 @@ class CourseModuleItem extends React.Component {
             </button>
           }
         </div>
-      </div >
+      </div>
     )
   }
 }
@@ -140,7 +139,7 @@ const dispatcherToPropertyMapper = (dispatch) => {
         )
     }
   }
-}
+};
 
 export default connect(
   stateToPropertyMapper,
