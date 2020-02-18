@@ -69,7 +69,7 @@ const dispatchToPropertyMapper = (dispatch) => {
         "order": "",
         "text": "New Widget Content",
         "source": "",
-        "size": 0,
+        "size": 4,
         "width": 0,
         "height": 0,
         "cssClass": "",
