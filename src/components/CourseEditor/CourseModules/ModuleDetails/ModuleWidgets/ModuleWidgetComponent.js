@@ -5,10 +5,6 @@ import {createNewWidget} from "../../../../../actions/WidgetActions";
 import WidgetService from "../../../../../service/WidgetService";
 
 class ModuleWidget extends React.Component {
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log(prevProps.widgetID);
-  }
-
   render() {
     return (
         <div>
@@ -34,7 +30,7 @@ class ModuleWidget extends React.Component {
                     <button
                         className="btn btn-warning ml-2"
                         onClick={() => this.props.createNewWidget(
-                            this.props.selectedTopicID)}
+                            this.props.selectedTopicID, this.props.widgetList.length)}
                     >
                       <i className="fas fa-plus"></i>
                     </button>
@@ -66,11 +62,11 @@ const stateToPropertyMapper = (state) => {
 
 const dispatchToPropertyMapper = (dispatch) => {
   return {
-    createNewWidget: (topicID) => {
+    createNewWidget: (topicID, widgetListLength) => {
       const newAddedWidget = {
         "name": "New Widget",
         "type": "New Widget",
-        "order": 0,
+        "order": widgetListLength+1,
         "text": "New Widget Content",
         "source": "",
         "size": 0,
@@ -82,9 +78,9 @@ const dispatchToPropertyMapper = (dispatch) => {
         "topicID": `${topicID}`
       };
       WidgetService.createWidget(topicID, newAddedWidget)
-        .then(
-            newAddedWidget => dispatch(createNewWidget(newAddedWidget))
-        );
+      .then(
+          newAddedWidget => dispatch(createNewWidget(newAddedWidget))
+      );
     }
   }
 };
