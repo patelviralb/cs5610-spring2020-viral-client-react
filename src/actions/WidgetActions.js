@@ -4,6 +4,7 @@ const DELETE_WIDGET = "DELETE_WIDGET";
 const UPDATE_WIDGET = "UPDATE_WIDGET";
 const FIND_ALL_WIDGETS = "FIND_ALL_WIDGETS";
 const FIND_WIDGET = "FIND_WIDGET";
+const REMOVE_ALL_WIDGETS = "REMOVE_ALL_WIDGETS";
 
 export const createNewWidget = (newAddedWidget) => ({
   type: CREATE_WIDGET,
@@ -36,11 +37,16 @@ export const findSpecificWidgets = (widgetID) => ({
   widgetID: widgetID
 });
 
+export const removeAllWidgetsAfterTopicDelete = () => ({
+  type: REMOVE_ALL_WIDGETS
+});
+
 export default {
   FIND_ALL_WIDGETS_FOR_TOPIC,
   CREATE_WIDGET,
   DELETE_WIDGET,
   UPDATE_WIDGET,
   FIND_ALL_WIDGETS,
-  FIND_WIDGET
+  FIND_WIDGET,
+  REMOVE_ALL_WIDGETS
 }
