@@ -7,6 +7,7 @@ import CourseReducer from "../../reducers/CourseReducer";
 import ModuleReducer from "../../reducers/ModuleReducer";
 import LessonReducer from "../../reducers/LessonReducer";
 import TopicReducer from "../../reducers/TopicReducer";
+import WidgetReducer from "../../reducers/WidgetReducer";
 import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
 
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   courseReducer: CourseReducer,
   moduleReducer: ModuleReducer,
   lessonReducer: LessonReducer,
-  topicReducer: TopicReducer
+  topicReducer: TopicReducer,
+  widgetReducer: WidgetReducer
 });
 
 const store = createStore(rootReducer);
