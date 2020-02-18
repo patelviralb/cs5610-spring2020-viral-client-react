@@ -13,10 +13,10 @@ class ModuleWidget extends React.Component {
             &&
             <div className="container-fluid">
               {
-                this.props.widgetList.map((widgetList) => {
+                this.props.widgetList.map((eachWidget) => {
                   return <EachWidget
-                      widgetList={widgetList}
-                      key={widgetList.id}
+                      eachWidget={eachWidget}
+                      key={eachWidget.id}
                       history={this.props.history}
                       match={this.props.match}
                   />
@@ -65,7 +65,7 @@ const dispatchToPropertyMapper = (dispatch) => {
     createNewWidget: (topicID, widgetListLength) => {
       const newAddedWidget = {
         "name": "New Widget",
-        "type": "New Widget",
+        "type": "heading",
         "order": widgetListLength+1,
         "text": "New Widget Content",
         "source": "",
