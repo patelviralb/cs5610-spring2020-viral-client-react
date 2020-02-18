@@ -40,6 +40,11 @@ const WidgetReducer = (state = initialState, action) => {
         widgets: state.widgets.filter(widget => widget._id === action.widgetID)
       };
 
+    case WidgetActions.REMOVE_ALL_WIDGETS:
+      return {
+        widgets: []
+      };
+
     default:
       return state
   }
