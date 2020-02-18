@@ -11,6 +11,7 @@ import TopicService from "../../../../../service/TopicService";
 import {findLessonTopics} from "../../../../../actions/TopicActions";
 import {Route} from "react-router-dom";
 import {Router} from "react-router";
+import {removeAllWidgetsAfterTopicDelete} from "../../../../../actions/WidgetActions";
 
 class ModuleLessons extends React.Component {
   render() {
@@ -108,7 +109,10 @@ const dispatcherToPropertyMapper = (dispatch) => {
     updateLessonSelection: (lessonID) => {
       dispatch(updateLessonSelection(lessonID));
       TopicService.findTopicsForLesson(lessonID)
-      .then(allFoundTopics => dispatch(findLessonTopics(allFoundTopics)))
+        .then(
+            allFoundTopics => dispatch(findLessonTopics(allFoundTopics)),
+            dispatch(removeAllWidgetsAfterTopicDelete())
+        )
     }
   }
 };
