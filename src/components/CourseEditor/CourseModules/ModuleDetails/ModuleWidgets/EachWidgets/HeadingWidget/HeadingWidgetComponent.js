@@ -13,12 +13,10 @@ class HeadingWidget extends Component {
   };
 
   updateWidgetName = (event) => {
-    console.log("DEBUG: event", event.target.value);
     this.setState({
       currentWidget: {
         ...this.state.currentWidget,
-        "name": event.target.value,
-        "id": "1234"
+        "name": event.target.value
       }
     });
     this.props.updateWidgetName(event.target.value, this.props.currentIndex);
