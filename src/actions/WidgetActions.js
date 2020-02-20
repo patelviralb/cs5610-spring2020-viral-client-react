@@ -6,6 +6,11 @@ const FIND_ALL_WIDGETS = "FIND_ALL_WIDGETS";
 const FIND_WIDGET = "FIND_WIDGET";
 const REMOVE_ALL_WIDGETS = "REMOVE_ALL_WIDGETS";
 
+const UPDATE_WIDGET_TEXT = "UPDATE_WIDGET_TEXT";
+const UPDATE_WIDGET_NAME = "UPDATE_WIDGET_NAME";
+const UPDATE_WIDGET_TEXT_SIZE = "UPDATE_WIDGET_TEXT_SIZE";
+const UPDATE_WIDGET_TYPE = "UPDATE_WIDGET_TYPE";
+
 export const createNewWidget = (newAddedWidget) => ({
   type: CREATE_WIDGET,
   newAddedWidget: newAddedWidget
@@ -41,6 +46,31 @@ export const removeAllWidgetsAfterTopicDelete = () => ({
   type: REMOVE_ALL_WIDGETS
 });
 
+
+export const updateWidgetText = (widgetText, widgetIndex) => ({
+  type: UPDATE_WIDGET_TEXT,
+  widgetText: widgetText,
+  widgetIndex: widgetIndex
+});
+
+export const updateWidgetName = (widgetName, widgetIndex) => ({
+  type: UPDATE_WIDGET_NAME,
+  widgetName: widgetName,
+  widgetIndex: widgetIndex
+});
+
+export const updateWidgetTextSize = (widgetTextSize, widgetIndex) => ({
+  type: UPDATE_WIDGET_TEXT_SIZE,
+  widgetTextSize: widgetTextSize,
+  widgetIndex: widgetIndex
+});
+
+export const updateWidgetType = (widgetType, widgetIndex) => ({
+  type: UPDATE_WIDGET_TYPE,
+  widgetType: widgetType,
+  widgetIndex: widgetIndex
+});
+
 export default {
   FIND_ALL_WIDGETS_FOR_TOPIC,
   CREATE_WIDGET,
@@ -48,5 +78,10 @@ export default {
   UPDATE_WIDGET,
   FIND_ALL_WIDGETS,
   FIND_WIDGET,
-  REMOVE_ALL_WIDGETS
+  REMOVE_ALL_WIDGETS,
+
+  UPDATE_WIDGET_TEXT,
+  UPDATE_WIDGET_NAME,
+  UPDATE_WIDGET_TEXT_SIZE,
+  UPDATE_WIDGET_TYPE
 }

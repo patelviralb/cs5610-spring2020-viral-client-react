@@ -4,13 +4,17 @@ import ParagraphWidget from "./ParagraphWidget/ParagraphWidgetComponent";
 import WidgetService from "../../../../../../service/WidgetService";
 import {
   deleteWidget,
-  updateWidget
+  updateWidget,
+  updateWidgetType
 } from "../../../../../../actions/WidgetActions";
 import {connect} from "react-redux";
 
 class EachWidget extends Component {
+  state = {
+    currentWidget: this.props.widgetList[this.props.index]
+  };
+
   render() {
-    console.log("DEBUG: Inside Each Widget ",this.props.index,"|",this.props.widgetList,"|",this.props.widgetList[this.props.index],"|",this.props.widgetList[this.props.index].id);
     return (
         <div className="border border-warning rounded mb-2 mt-2 pl-3 pr-2">
           <div className="col-12 d-flex justify-content-end pt-3">
@@ -30,14 +34,16 @@ class EachWidget extends Component {
                     name="widget-selector"
                     className="form-control ml-2"
                     id="widget-selector"
-                    /*value={widget.type}
-                    onChange={(event) =>
-                        setWidget({
-                              ...widget,
-                              "type": event.target.value
-                            }
-                        )
-                    }*/
+                    value={this.state.currentWidget.type}
+                    onChange={(event) => {
+                      this.setState({
+                        currentWidget: {
+                          ...this.state.currentWidget,
+                          "type": event.target.value
+                        }
+                      })
+                      this.props.updateWidgetType(event.target.value, this.props.index)
+                    }}
                 >
                   <option hidden
                           value="none">Select Widget Type
@@ -50,28 +56,31 @@ class EachWidget extends Component {
 
                 <button
                     className="btn btn-outline-success ml-2"
-                    onClick={() => this.props.saveWidget(this.props.widgetList[this.props.index].id, this.props.widgetList[this.props.index], this.props.widgetList[this.props.index].order)}
+                    onClick={() => this.props.saveWidget(
+                        this.props.widgetList[this.props.index].id,
+                        this.props.widgetList[this.props.index])}
                 >
                   <i className="fas fa-save"></i>
                 </button>
 
                 <button
                     className="btn btn-outline-danger ml-2"
-                    onClick={() => this.props.deleteWidget(this.props.widgetList[this.props.index].id)}
+                    onClick={() => this.props.deleteWidget(
+                        this.state.currentWidget.id)}
                 >
                   <i className="fas fa-trash-alt"></i>
                 </button>
               </div>
             </div>
           </div>
-          {/*{
+          {
             this.props.widgetList[this.props.index].type === "heading"
             &&
             <HeadingWidget
                 currentIndex={this.props.index}
             />
           }
-          {
+          {/*{
             this.props.widgetList[this.props.index].type === "paragraph"
             &&
             <ParagraphWidget
@@ -105,6 +114,10 @@ const dispatchToPropertyMapper = (dispatch) => {
       .then(
           status => dispatch(updateWidget(widgetID, widget))
       )
+    },
+
+    updateWidgetType: (widgetType, widgetIndex) => {
+      dispatch(updateWidgetType(widgetType, widgetIndex))
     }
   }
 };
