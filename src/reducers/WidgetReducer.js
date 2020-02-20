@@ -20,10 +20,10 @@ const WidgetReducer = (state = initialState, action) => {
 
     case WidgetActions.UPDATE_WIDGET:
       const index = state.widgets.findIndex(
-          (widget) => widget._id === action.widgetID)
+          (widget) => widget.id === action.widgetID);
       return {
         widgets: [
-          ...state.widget.slice(0, index),
+          ...state.widgets.slice(0, index),
           action.updatedWidget,
           ...state.widgets.slice(index + 1)
         ]

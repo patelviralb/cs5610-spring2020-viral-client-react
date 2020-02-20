@@ -13,12 +13,14 @@ class ModuleWidget extends React.Component {
             &&
             <div className="container-fluid">
               {
-                this.props.widgetList.map((eachWidget) => {
+                this.props.widgetList
+                .sort((widgetOne, widgetTwo) =>
+                    (widgetOne.order - widgetTwo.order))
+                .map((eachWidget, index) => {
                   return <EachWidget
                       eachWidget={eachWidget}
                       key={eachWidget.id}
-                      history={this.props.history}
-                      match={this.props.match}
+                      index={index}
                   />
                 })
               }
@@ -30,7 +32,7 @@ class ModuleWidget extends React.Component {
                     <button
                         className="btn btn-warning ml-2"
                         onClick={() => this.props.createNewWidget(
-                            this.props.selectedTopicID, this.props.widgetList.length)}
+                            this.props.selectedTopicID)}
                     >
                       <i className="fas fa-plus"></i>
                     </button>
@@ -62,11 +64,11 @@ const stateToPropertyMapper = (state) => {
 
 const dispatchToPropertyMapper = (dispatch) => {
   return {
-    createNewWidget: (topicID, widgetListLength) => {
+    createNewWidget: (topicID) => {
       const newAddedWidget = {
         "name": "New Widget",
         "type": "heading",
-        "order": "",
+        "order": 0,
         "text": "New Widget Content",
         "source": "",
         "size": 4,
