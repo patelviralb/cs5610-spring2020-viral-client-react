@@ -76,10 +76,8 @@ const EachWidget = ({eachWidget, key, history, match, deleteWidget}) => {
           {/*For Padding*/}
         </div>
       </div>
-  )
-      ;
+  );
 };
-/*}*/
 
 const stateToPropertyMapper = (state) => {
   return {
