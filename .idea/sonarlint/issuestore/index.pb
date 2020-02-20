@@ -120,3 +120,5 @@ M
 src/reducers/WidgetReducer.js,f\a\fadf850b5daaa9cf66c24a105fd846e4d260e41d
 L
 src/actions/WidgetActions.js,5\c\5cbb4f70f9d42561c4e92ddfce5c83665224c7bb
+D
+src/serviceWorker.js,9\2\920ab6ab4a57ee20a36df4e3e2e73b70f9969d14

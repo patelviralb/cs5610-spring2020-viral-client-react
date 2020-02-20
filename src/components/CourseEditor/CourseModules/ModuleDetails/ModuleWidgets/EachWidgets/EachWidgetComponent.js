@@ -31,7 +31,11 @@ const EachWidget = ({eachWidget, key, history, match, deleteWidget}) => {
                   id="widget-selector"
                   value={widget.type}
                   onChange={(event) =>
-                      setWidget({"type":event.target.value})
+                      setWidget({
+                          ...widget,
+                          "type":event.target.value
+                        }
+                      )
                   }
               >
                 <option hidden
