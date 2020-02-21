@@ -10,6 +10,8 @@ const UPDATE_WIDGET_TEXT = "UPDATE_WIDGET_TEXT";
 const UPDATE_WIDGET_NAME = "UPDATE_WIDGET_NAME";
 const UPDATE_WIDGET_TEXT_SIZE = "UPDATE_WIDGET_TEXT_SIZE";
 const UPDATE_WIDGET_TYPE = "UPDATE_WIDGET_TYPE";
+const ACTIVATE_PREVIEW = "ACTIVATE_PREVIEW";
+const DEACTIVATE_PREVIEW = "DEACTIVATE_PREVIEW";
 
 export const createNewWidget = (newAddedWidget) => ({
   type: CREATE_WIDGET,
@@ -71,6 +73,14 @@ export const updateWidgetType = (widgetType, widgetIndex) => ({
   widgetIndex: widgetIndex
 });
 
+export const activatePreview = () => ({
+  type: ACTIVATE_PREVIEW
+});
+
+export const deactivatePreview = () => ({
+  type: DEACTIVATE_PREVIEW
+});
+
 export default {
   FIND_ALL_WIDGETS_FOR_TOPIC,
   CREATE_WIDGET,
@@ -83,5 +93,7 @@ export default {
   UPDATE_WIDGET_TEXT,
   UPDATE_WIDGET_NAME,
   UPDATE_WIDGET_TEXT_SIZE,
-  UPDATE_WIDGET_TYPE
+  UPDATE_WIDGET_TYPE,
+  ACTIVATE_PREVIEW,
+  DEACTIVATE_PREVIEW
 }

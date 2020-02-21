@@ -1,7 +1,8 @@
 import WidgetActions from "../actions/WidgetActions"
 
 const initialState = {
-  widgets: []
+  widgets: [],
+  isPreviewActive: false
 };
 
 const WidgetReducer = (state = initialState, action) => {
@@ -9,6 +10,7 @@ const WidgetReducer = (state = initialState, action) => {
   switch (action.type) {
     case WidgetActions.CREATE_WIDGET:
       return {
+        ...state,
         widgets: [
           ...state.widgets,
           action.newAddedWidget
@@ -16,6 +18,7 @@ const WidgetReducer = (state = initialState, action) => {
       };
     case WidgetActions.DELETE_WIDGET:
       return {
+        ...state,
         widgets: state.widgets.filter(widget => widget.id !== action.widgetID)
       };
 
@@ -23,6 +26,7 @@ const WidgetReducer = (state = initialState, action) => {
       const index = state.widgets.findIndex(
           (widget) => widget.id === action.widgetID);
       return {
+        ...state,
         widgets: [
           ...state.widgets.slice(0, index),
           action.updatedWidget,
@@ -33,16 +37,19 @@ const WidgetReducer = (state = initialState, action) => {
     case WidgetActions.FIND_ALL_WIDGETS_FOR_TOPIC:
     case WidgetActions.FIND_ALL_WIDGETS:
       return {
+        ...state,
         widgets: action.allFoundWidgets
       };
 
     case WidgetActions.FIND_WIDGET:
       return {
+        ...state,
         widgets: state.widgets.filter(widget => widget._id === action.widgetID)
       };
 
     case WidgetActions.REMOVE_ALL_WIDGETS:
       return {
+        ...state,
         widgets: []
       };
 
@@ -53,6 +60,7 @@ const WidgetReducer = (state = initialState, action) => {
         "text": action.widgetText
       };
       return {
+        ...state,
         widgets: [
           ...state.widgets.slice(0, widgetIndexForText),
           updatedWidgetText,
@@ -67,6 +75,7 @@ const WidgetReducer = (state = initialState, action) => {
         "name": action.widgetName
       };
       return {
+        ...state,
         widgets: [
           ...state.widgets.slice(0, widgetIndexForName),
           updatedWidgetName,
@@ -81,6 +90,7 @@ const WidgetReducer = (state = initialState, action) => {
         "size": action.widgetTextSize
       };
       return {
+        ...state,
         widgets: [
           ...state.widgets.slice(0, widgetIndexForTextSize),
           updatedWidgetTextSize,
@@ -95,11 +105,24 @@ const WidgetReducer = (state = initialState, action) => {
         "type": action.widgetType
       };
       return {
+        ...state,
         widgets: [
           ...state.widgets.slice(0, widgetIndexForType),
           updatedWidgetType,
           ...state.widgets.slice(widgetIndexForType + 1)
         ]
+      };
+
+    case WidgetActions.ACTIVATE_PREVIEW:
+      return {
+        ...state,
+        isPreviewActive: true
+      };
+
+    case WidgetActions.DEACTIVATE_PREVIEW:
+      return {
+        ...state,
+        isPreviewActive: false
       };
 
     default:

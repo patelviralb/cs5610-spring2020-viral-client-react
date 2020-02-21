@@ -95,54 +95,6 @@ class HeadingWidget extends Component {
               currentIndex={this.props.currentIndex}
           />
 
-          {/*<div className="col-12 d-flex justify-content-start pt-4">
-            {
-              this.state.currentWidget.size === 1
-              &&
-              <h1>{this.state.currentWidget.text}</h1>
-            }
-            {
-              this.state.currentWidget.size === 2
-              &&
-              <h2>{this.state.currentWidget.text}</h2>
-            }
-            {
-              this.state.currentWidget.size === 3
-              &&
-              <h3>{this.state.currentWidget.text}</h3>
-            }
-            {
-              this.state.currentWidget.size === 4
-              &&
-              <h4>{this.state.currentWidget.text}</h4>
-            }
-            {
-              this.state.currentWidget.size === 5
-              &&
-              <h5>{this.state.currentWidget.text}</h5>
-            }
-            {
-              this.state.currentWidget.size === 6
-              &&
-              <h6>{this.state.currentWidget.text}</h6>
-            }
-            {
-              (this.state.currentWidget.size !== 1
-                  &&
-                  this.state.currentWidget.size !== 2
-                  &&
-                  this.state.currentWidget.size !== 3
-                  &&
-                  this.state.currentWidget.size !== 4
-                  &&
-                  this.state.currentWidget.size !== 5
-                  &&
-                  this.state.currentWidget.size !== 6)
-              &&
-              <h4>{this.state.currentWidget.text}</h4>
-            }
-          </div>*/}
-
           <div className="col-12 pb-3">
             {/*For Padding*/}
           </div>

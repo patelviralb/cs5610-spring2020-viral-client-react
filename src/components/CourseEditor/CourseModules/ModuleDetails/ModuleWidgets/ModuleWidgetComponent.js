@@ -3,6 +3,8 @@ import EachWidget from "./EachWidgets/EachWidgetComponent";
 import {connect} from "react-redux";
 import {createNewWidget} from "../../../../../actions/WidgetActions";
 import WidgetService from "../../../../../service/WidgetService";
+import EachWidgetPreview
+  from "./EachWidgets/EachWidgetPreviewComponent";
 
 class ModuleWidget extends React.Component {
   render() {
@@ -25,7 +27,7 @@ class ModuleWidget extends React.Component {
                 })
               }
               {
-                this.props.selectedTopicID
+                (this.props.selectedTopicID && !this.props.isPreviewActive)
                 &&
                 <div className="row">
                   <div className="col-12 d-flex justify-content-end pt-4">
@@ -48,6 +50,20 @@ class ModuleWidget extends React.Component {
                   </div>
                 </div>
               }
+              {
+                (this.props.isPreviewActive && this.props.widgetList)
+                &&
+                this.props.widgetList
+                .sort((widgetOne, widgetTwo) =>
+                    (widgetOne.order - widgetTwo.order))
+                .map((eachWidget, index) => {
+                  return <EachWidgetPreview
+                      eachWidget={eachWidget}
+                      key={eachWidget.id}
+                      index={index}
+                  />
+                })
+              }
             </div>
           }
         </div>
@@ -58,7 +74,8 @@ class ModuleWidget extends React.Component {
 const stateToPropertyMapper = (state) => {
   return {
     selectedTopicID: state.topicReducer.selectedTopicID,
-    widgetList: state.widgetReducer.widgets
+    widgetList: state.widgetReducer.widgets,
+    isPreviewActive: state.widgetReducer.isPreviewActive
   }
 };
 

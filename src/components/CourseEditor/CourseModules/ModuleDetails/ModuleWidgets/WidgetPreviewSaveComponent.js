@@ -1,5 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
+import {
+  activatePreview,
+  deactivatePreview
+} from "../../../../../actions/WidgetActions";
 
 class WidgetPreviewSave extends React.Component {
   render() {
@@ -11,8 +15,18 @@ class WidgetPreviewSave extends React.Component {
           <div className="row">
             <div className="col-12 d-flex justify-content-end">
               <div className="custom-control custom-switch pt-2">
-                <input type="checkbox" className="custom-control-input"
-                  id="vp-cs5610-preview-switch" />
+                <input
+                    type="checkbox"
+                    className="custom-control-input"
+                    id="vp-cs5610-preview-switch"
+                    onChange={(event) =>{
+                      if (event.target.checked) {
+                        this.props.activatePreview();
+                      } else {
+                        this.props.deactivatePreview();
+                      }
+                    }}
+                />
                 <label className="custom-control-label"
                   htmlFor="vp-cs5610-preview-switch">Preview</label>
               </div>
@@ -58,8 +72,21 @@ class WidgetPreviewSave extends React.Component {
 const stateToPropertyMapper = (state) => {
   return {
     selectedTopicID: state.topicReducer.selectedTopicID,
-    widgetList: state.widgetReducer.widgets
+    widgetList: state.widgetReducer.widgets,
+    isPreviewActive: state.widgetReducer.isPreviewActive
   }
 };
 
-export default connect(stateToPropertyMapper)(WidgetPreviewSave)
+const dispatchToPropertyMapper = (dispatch) => {
+  return {
+    activatePreview: () => {
+      dispatch(activatePreview())
+    },
+    deactivatePreview: () => {
+      dispatch(deactivatePreview())
+    }
+  }
+};
+
+export default connect(stateToPropertyMapper, dispatchToPropertyMapper)
+  (WidgetPreviewSave)
