@@ -19,6 +19,7 @@ class WidgetPreviewSave extends React.Component {
                     type="checkbox"
                     className="custom-control-input"
                     id="vp-cs5610-preview-switch"
+                    checked={this.props.isPreviewActive}
                     onChange={(event) =>{
                       if (event.target.checked) {
                         this.props.activatePreview();

@@ -10,7 +10,10 @@ import {connect} from "react-redux"
 import {Router} from "react-router"
 import {Route} from "react-router-dom"
 import WidgetService from "../../../../../service/WidgetService";
-import {findAllWidgetsForTopic} from "../../../../../actions/WidgetActions"
+import {
+  deactivatePreview,
+  findAllWidgetsForTopic
+} from "../../../../../actions/WidgetActions";
 
 class LessonTopics extends React.Component {
   render() {
@@ -103,13 +106,12 @@ const dispatcherToPropertyMapper = (dispatch) => {
     },
 
     updateTopicSelection: (topicID) => {
-      dispatch(updateTopicSelection(topicID))
+      dispatch(updateTopicSelection(topicID));
       WidgetService.findWidgetsForTopic(topicID)
       .then(
           allFoundWidgets => dispatch(findAllWidgetsForTopic(allFoundWidgets))
-      )
-      /* TopicService.findTopicsForLesson(topicID)
-        .then(allFoundTopics => dispatch(findLessonTopics(allFoundTopics))) */
+      );
+      dispatch(deactivatePreview())
     }
   }
 };
