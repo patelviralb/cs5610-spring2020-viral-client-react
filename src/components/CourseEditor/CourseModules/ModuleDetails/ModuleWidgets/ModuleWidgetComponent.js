@@ -83,10 +83,10 @@ const dispatchToPropertyMapper = (dispatch) => {
   return {
     createNewWidget: (topicID) => {
       const newAddedWidget = {
-        "name": "New Widget",
+        "name": "",
         "type": "heading",
         "order": 0,
-        "text": "New Widget Content",
+        "text": "",
         "source": "",
         "size": 1,
         "width": 0,
