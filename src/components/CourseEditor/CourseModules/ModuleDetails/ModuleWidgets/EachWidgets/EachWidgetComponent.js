@@ -81,7 +81,7 @@ class EachWidget extends Component {
                             <option value="image">Image</option>*/}
                     </select>
 
-                    <button
+                    {/*<button
                         className="btn btn-outline-success ml-2"
                         onClick={() =>
                             this.props.saveAllWidgets(
@@ -91,7 +91,7 @@ class EachWidget extends Component {
                         }
                     >
                       <i className="fas fa-save"></i>
-                    </button>
+                    </button>*/}
 
                     <button
                         className="btn btn-outline-danger ml-2"
@@ -162,14 +162,14 @@ const dispatchToPropertyMapper = (dispatch) => {
 
     moveDown: (currentIndex) => {
       dispatch(moveDown(currentIndex))
-    },
+    }/*,
 
     saveAllWidgets: (topicID, allWidgetsToUpdate) => {
       WidgetService.updateAllWidgets(topicID ,allWidgetsToUpdate)
       .then(
           status => dispatch(updateAllWidgets())
       )
-    }
+    }*/
   }
 };
 
