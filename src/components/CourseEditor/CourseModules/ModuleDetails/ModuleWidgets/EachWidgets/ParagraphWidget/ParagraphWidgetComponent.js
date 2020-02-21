@@ -1,7 +1,7 @@
 import React, {Component} from "react"
 import {
   updateWidgetName,
-  updateWidgetText, updateWidgetTextSize
+  updateWidgetText
 } from "../../../../../../../actions/WidgetActions";
 import {connect} from "react-redux";
 import ParagraphWidgetPreview
