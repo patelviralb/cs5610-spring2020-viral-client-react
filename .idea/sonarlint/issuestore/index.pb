@@ -97,8 +97,6 @@ K
 w
 G.idea/sonarlint/issuestore/4/b/4b3f334367c957c5ddbfa55b700a374a360f18e3,7\c\7c9e9c469796b7b9646bf823a5a23b88df7d47bc
 w
-G.idea/sonarlint/issuestore/7/9/79fb5a040d728665b1b3c6022ffc6dece793e2f6,9\f\9f7e347c96eb21f22839e1142c821520c7299f55
-w
 G.idea/sonarlint/issuestore/8/b/8b73e30ba5fbb28d4fa6cafb0ac8b0be4e54d37e,5\3\533da972806848635c6c3bcc7944e5b036221e0b
 L
 src/service/WidgetService.js,2\f\2fdadff5f51e042f3f31083f812373b9fe02035d
@@ -118,3 +116,5 @@ D
 „src/components/CourseEditor/CourseModules/ModuleDetails/ModuleWidgets/EachWidgets/ParagraphWidget/ParagraphWidgetPreviewComponent.js,8\d\8dfc75082ff3048d7d2de42c637e777be8f28ab7
 Ÿ
 osrc/components/CourseEditor/CourseModules/ModuleDetails/ModuleWidgets/EachWidgets/EachWidgetPreviewComponent.js,1\f\1fe2b13917fcd1431c5047405ccc43c3644f7999
+d
+4src/styles/paragraph-widget-preview-style-client.css,b\4\b49bbe9cf892dc7117c3bad4383f168f01bd87df

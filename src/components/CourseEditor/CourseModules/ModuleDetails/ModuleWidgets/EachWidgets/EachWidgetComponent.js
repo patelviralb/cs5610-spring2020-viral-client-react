@@ -7,7 +7,7 @@ import {
   updateWidget,
   updateWidgetType,
   moveUp,
-  moveDown
+  moveDown, updateAllWidgets
 } from "../../../../../../actions/WidgetActions";
 import {connect} from "react-redux";
 
@@ -81,14 +81,17 @@ class EachWidget extends Component {
                             <option value="image">Image</option>*/}
                     </select>
 
-                    {/*<button
+                    <button
                         className="btn btn-outline-success ml-2"
-                        onClick={() => this.props.saveWidget(
-                            this.props.widgetList[this.props.index].id,
-                            this.props.widgetList[this.props.index])}
+                        onClick={() =>
+                            this.props.saveAllWidgets(
+                              this.props.widgetList[this.props.index].topicID,
+                              this.props.widgetList
+                            )
+                        }
                     >
                       <i className="fas fa-save"></i>
-                    </button>*/}
+                    </button>
 
                     <button
                         className="btn btn-outline-danger ml-2"
@@ -159,6 +162,13 @@ const dispatchToPropertyMapper = (dispatch) => {
 
     moveDown: (currentIndex) => {
       dispatch(moveDown(currentIndex))
+    },
+
+    saveAllWidgets: (topicID, allWidgetsToUpdate) => {
+      WidgetService.updateAllWidgets(topicID ,allWidgetsToUpdate)
+      .then(
+          status => dispatch(updateAllWidgets())
+      )
     }
   }
 };
