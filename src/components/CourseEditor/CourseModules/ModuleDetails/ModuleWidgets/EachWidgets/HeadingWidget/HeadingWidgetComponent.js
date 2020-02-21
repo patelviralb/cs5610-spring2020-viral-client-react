@@ -101,7 +101,7 @@ class HeadingWidget extends Component {
         </div>
     )
   }
-};
+}
 
 const stateToPropertyMapper = (state) => {
   return {

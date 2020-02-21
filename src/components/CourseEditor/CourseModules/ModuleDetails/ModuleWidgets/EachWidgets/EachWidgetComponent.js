@@ -45,7 +45,7 @@ class EachWidget extends Component {
                               ...this.state.currentWidget,
                               "type": event.target.value
                             }
-                          })
+                          });
                           this.props.updateWidgetType(event.target.value,
                               this.props.index)
                         }}
@@ -85,13 +85,13 @@ class EachWidget extends Component {
                       currentIndex={this.props.index}
                   />
                 }
-                {/*{
-                this.props.widgetList[this.props.index].type === "paragraph"
-                &&
-                <ParagraphWidget
-                    currentIndex={this.props.index}
-                />
-              }*/}
+                {
+                  this.props.widgetList[this.props.index].type === "paragraph"
+                  &&
+                  <ParagraphWidget
+                      currentIndex={this.props.index}
+                  />
+                }
                 <div className="col-12 pb-3">
                 {/*For Padding*/}
               </div>

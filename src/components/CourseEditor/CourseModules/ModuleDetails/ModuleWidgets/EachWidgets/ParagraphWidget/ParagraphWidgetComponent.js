@@ -1,13 +1,21 @@
-import React, {useState} from "react"
-import ContentTitle from "../ContentTitleComponent"
-import WidgetSubSelector from "../WidgetSubSelectorComponent"
-import WidgetName from "../WidgetNameComponent"
+import React, {Component} from "react"
+import {
+  updateWidgetName,
+  updateWidgetText, updateWidgetTextSize
+} from "../../../../../../../actions/WidgetActions";
+import {connect} from "react-redux";
+import ParagraphWidgetPreview
+  from "../ParagraphWidget/ParagraphWidgetPreviewComponent";
 
-const ParagraphWidget = ({widgetDetails}) => {
-  const [widget, setWidget] = useState(widgetDetails);
+class ParagraphWidget extends Component {
+  state = {
+    currentWidget: this.props.widgetList[this.props.currentIndex]
+  };
 
-  return (
-      <span>
+
+  render() {
+    return (
+        <span>
         <div className="row">
           <div className="col-12 d-flex justify-content-start pt-3">
             <h2>Paragraph Widget</h2>
@@ -18,13 +26,16 @@ const ParagraphWidget = ({widgetDetails}) => {
                 className="form-control"
                 type="text"
                 placeholder="Widget Name"
-                /*value={widget.name}*/
-                onChange={(event) =>
-                    setWidget({
-                      ...widget,
-                      name: event.target.value
-                    })
-                }
+                value={this.state.currentWidget.name}
+                onChange={(event) => {
+                  this.setState({
+                    currentWidget: {
+                      ...this.state.currentWidget,
+                      "name": event.target.value
+                    }
+                  });
+                  this.props.updateWidgetName(event.target.value, this.props.currentIndex);
+                }}
             />
           </div>
 
@@ -33,13 +44,18 @@ const ParagraphWidget = ({widgetDetails}) => {
                 className="form-control"
                 type="text"
                 placeholder="Paragraph Text"
-                /*value={widget.text}*/
-                onChange={(event) =>
-                    setWidget({
-                      ...widget,
-                      text: event.target.value
-                    })
-                }
+                value={this.state.currentWidget.text}
+                rows="4"
+                onChange={(event) => {
+                  this.setState({
+                    currentWidget: {
+                      ...this.state.currentWidget,
+                      "text": event.target.value
+                    }
+                  });
+                  this.props.updateWidgetText(event.target.value,
+                      this.props.currentIndex);
+                }}
             />
           </div>
 
@@ -47,16 +63,35 @@ const ParagraphWidget = ({widgetDetails}) => {
             <h3>Preview</h3>
           </div>
 
-          <div className="col-12 d-flex justify-content-start pt-4">
-            {/*{widget.text}*/}
-          </div>
+          <ParagraphWidgetPreview
+              currentIndex={this.props.currentIndex}
+          />
 
           <div className="col-12 pb-3">
             {/*For Padding*/}
           </div>
         </div>
       </span>
-  );
+    );
+  }
+}
+
+const stateToPropertyMapper = (state) => {
+  return {
+    widgetList: state.widgetReducer.widgets
+  }
 };
 
-export default ParagraphWidget
+const dispatchToPropertyMapper = (dispatch) => {
+  return {
+    updateWidgetText: (widgetText, widgetIndex) => {
+      dispatch(updateWidgetText(widgetText, widgetIndex))
+    },
+    updateWidgetName: (widgetName, widgetIndex) => {
+      dispatch(updateWidgetName(widgetName, widgetIndex))
+    }
+  }
+};
+
+export default connect(stateToPropertyMapper, dispatchToPropertyMapper)
+  (ParagraphWidget)
