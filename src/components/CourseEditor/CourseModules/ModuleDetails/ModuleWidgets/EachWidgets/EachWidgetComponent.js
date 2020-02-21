@@ -91,14 +91,14 @@ class EachWidget extends Component {
                             <option value="image">Image</option>*/}
                     </select>
 
-                    <button
+                    {/*<button
                         className="btn btn-outline-success ml-2"
                         onClick={() => this.props.saveWidget(
                             this.props.widgetList[this.props.index].id,
                             this.props.widgetList[this.props.index])}
                     >
                       <i className="fas fa-save"></i>
-                    </button>
+                    </button>*/}
 
                     <button
                         className="btn btn-outline-danger ml-2"

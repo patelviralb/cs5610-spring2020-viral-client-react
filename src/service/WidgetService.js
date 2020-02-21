@@ -42,11 +42,22 @@ const deleteTopic = (widgetID) => {
   }).then(response => response.json())
 };
 
+const updateAllWidgets = (topicID, allWidgetsToUpdate) => {
+  return fetch(`${WIDGET_API_URL_FOR_TOPIC}/${topicID}/widgets/allWidgets`, {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify(allWidgetsToUpdate)
+  }).then(response => response.json())
+};
+
 export default {
   createWidget,
   findWidgetsForTopic,
   findAllWidgets,
   findWidgetById,
   updateWidget,
-  deleteTopic
+  deleteTopic,
+  updateAllWidgets
 }

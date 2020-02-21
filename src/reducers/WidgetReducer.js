@@ -191,8 +191,9 @@ const WidgetReducer = (state = initialState, action) => {
         ]
       };
 
+    case WidgetActions.UPDATE_ALL_WIDGETS:
     default:
-      return state
+      return state;
   }
 };
 
