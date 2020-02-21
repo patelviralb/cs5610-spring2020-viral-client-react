@@ -6,7 +6,9 @@ const initialState = {
 };
 
 const WidgetReducer = (state = initialState, action) => {
-  let widgetIndex = action.widgetIndex;
+  let temporaryWidgetToMoveDown;
+  let temporaryWidgetToMoveUp;
+
   switch (action.type) {
     case WidgetActions.CREATE_WIDGET:
       return {
@@ -123,6 +125,70 @@ const WidgetReducer = (state = initialState, action) => {
       return {
         ...state,
         isPreviewActive: false
+      };
+
+    case WidgetActions.MOVE_WIDGET_UP:
+      let currentIndexForMoveUp = action.widgetIndex;
+      let previousIndexForMoveDown = action.widgetIndex - 1;
+      temporaryWidgetToMoveUp = {
+        ...state.widgets[currentIndexForMoveUp],
+        "order": state.widgets[previousIndexForMoveDown].order
+      };
+      temporaryWidgetToMoveDown = {
+        ...state.widgets[previousIndexForMoveDown],
+        "order": state.widgets[currentIndexForMoveUp].order
+      };
+
+      if (previousIndexForMoveDown === 0) {
+        return {
+          ...state,
+          widgets: [
+            temporaryWidgetToMoveUp,
+            temporaryWidgetToMoveDown,
+            ...state.widgets.slice(currentIndexForMoveUp + 1)
+          ]
+        };
+      } else if (previousIndexForMoveDown === 1) {
+        return {
+          ...state,
+          widgets: [
+            ...state.widgets.slice(0, 1),
+            temporaryWidgetToMoveUp,
+            temporaryWidgetToMoveDown,
+            ...state.widgets.slice(currentIndexForMoveUp + 1)
+          ]
+        };
+      } else {
+        return {
+          ...state,
+          widgets: [
+            ...state.widgets.slice(0, previousIndexForMoveDown - 1),
+            temporaryWidgetToMoveUp,
+            temporaryWidgetToMoveDown,
+            ...state.widgets.slice(currentIndexForMoveUp + 1)
+          ]
+        };
+      }
+
+    case WidgetActions.MOVE_WIDGET_DOWN:
+      let currentIndexForMoveDown = action.widgetIndex;
+      let nextIndexForMoveUp = action.widgetIndex + 1;
+      temporaryWidgetToMoveDown = {
+        ...state.widgets[currentIndexForMoveDown],
+        "order": state.widgets[nextIndexForMoveUp].order
+      };
+      temporaryWidgetToMoveUp = {
+        ...state.widgets[nextIndexForMoveUp],
+        "order": state.widgets[currentIndexForMoveDown].order
+      };
+      return {
+        ...state,
+        widgets: [
+          ...state.widgets.slice(0, currentIndexForMoveDown),
+          temporaryWidgetToMoveUp,
+          temporaryWidgetToMoveDown,
+          ...state.widgets.slice(currentIndexForMoveDown + 2)
+        ]
       };
 
     default:
