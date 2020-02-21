@@ -8,20 +8,6 @@ import {
 import HeadingWidgetPreview from "./HeadingWidgetPreviewComponent";
 
 class HeadingWidget extends Component {
-  state = {
-    currentWidget: this.props.widgetList[this.props.currentIndex]
-  };
-
-  updateWidgetName = (event) => {
-    this.setState({
-      currentWidget: {
-        ...this.state.currentWidget,
-        "name": event.target.value
-      }
-    });
-    this.props.updateWidgetName(event.target.value, this.props.currentIndex);
-  };
-
   render() {
     return (
         <div className="row">
@@ -34,8 +20,10 @@ class HeadingWidget extends Component {
                 className="form-control"
                 type="text"
                 placeholder="Widget Name"
-                value={this.state.currentWidget.name}
-                onChange={this.updateWidgetName}
+                value={this.props.widgetList[this.props.currentIndex].name}
+                onChange={(event) =>
+                    this.props.updateWidgetName(event.target.value, this.props.currentIndex)
+                }
             />
           </div>
 
@@ -44,17 +32,11 @@ class HeadingWidget extends Component {
                 className="form-control"
                 type="text"
                 placeholder="Heading Text"
-                value={this.state.currentWidget.text}
-                onChange={(event) => {
-                  this.setState({
-                    currentWidget: {
-                      ...this.state.currentWidget,
-                      "text": event.target.value
-                    }
-                  });
+                value={this.props.widgetList[this.props.currentIndex].text}
+                onChange={(event) =>
                   this.props.updateWidgetText(event.target.value,
-                      this.props.currentIndex);
-                }}
+                      this.props.currentIndex)
+                }
             />
           </div>
 
@@ -62,17 +44,11 @@ class HeadingWidget extends Component {
             <select
                 className="form-control"
                 name="heading-selector"
-                defaultValue={this.state.currentWidget.size}
-                onChange={(event) => {
-                    this.setState({
-                      currentWidget: {
-                        ...this.state.currentWidget,
-                        "size": parseInt(event.target.value)
-                      }
-                    });
+                defaultValue={this.props.widgetList[this.props.currentIndex].size}
+                onChange={(event) =>
                   this.props.updateWidgetTextSize(parseInt(event.target.value),
-                  this.props.currentIndex);
-                }}
+                  this.props.currentIndex)
+                }
             >
               <option value="none" disabled hidden>Select Heading Size</option>
               <option value="1">Heading 1</option>

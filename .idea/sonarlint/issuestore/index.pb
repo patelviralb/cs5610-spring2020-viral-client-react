@@ -32,18 +32,8 @@ v
 Fsrc/components/CourseEditor/CourseModules/CourseModuleItemComponent.js,0\5\0584283693eb6c92e73e0555854a28964d3af98d
 r
 Bsrc/components/CourseEditor/CourseModules/CourseModuleComponent.js,f\4\f4a43157f650f1c678d3cd2be86ddd906c33af7b
-š
-jsrc/components/CourseEditor/CourseModules/ModuleDetails/ModuleWidgets/EachWidgets/ContentTitleComponent.js,7\9\79fb5a040d728665b1b3c6022ffc6dece793e2f6
 ˜
 hsrc/components/CourseEditor/CourseModules/ModuleDetails/ModuleWidgets/EachWidgets/EachWidgetComponent.js,b\e\be70077dc56ff3f5568a410b9ade74661933f557
-˜
-hsrc/components/CourseEditor/CourseModules/ModuleDetails/ModuleWidgets/EachWidgets/WidgetNameComponent.js,4\4\44dcdb589f78e258f53ba67cf8ef765bdf666c54
-œ
-lsrc/components/CourseEditor/CourseModules/ModuleDetails/ModuleWidgets/EachWidgets/WidgetSelectorComponent.js,7\4\7482eb228bc7cab68b04073709033c31b2839c9b
-Ÿ
-osrc/components/CourseEditor/CourseModules/ModuleDetails/ModuleWidgets/EachWidgets/WidgetSubSelectorComponent.js,7\7\776ee27f6ff233977f36a40a0f219cb6e49f42ae
-™
-isrc/components/CourseEditor/CourseModules/ModuleDetails/ModuleWidgets/EachWidgets/WidgetTitleComponent.js,e\2\e24a7d1287bd0fa7d7192bcf1e4a5608af914dda
 Ž
 ^src/components/CourseEditor/CourseModules/ModuleDetails/ModuleWidgets/ModuleWidgetComponent.js,1\7\17d60b9347c9acffd33bd8dbac3fdf86ef11288d
 “
@@ -122,3 +112,9 @@ L
 src/actions/WidgetActions.js,5\c\5cbb4f70f9d42561c4e92ddfce5c83665224c7bb
 D
 src/serviceWorker.js,9\2\920ab6ab4a57ee20a36df4e3e2e73b70f9969d14
+±
+€src/components/CourseEditor/CourseModules/ModuleDetails/ModuleWidgets/EachWidgets/HeadingWidget/HeadingWidgetPreviewComponent.js,2\4\24db011d51274b008f6db3ca8d586ab76c9c8a37
+µ
+„src/components/CourseEditor/CourseModules/ModuleDetails/ModuleWidgets/EachWidgets/ParagraphWidget/ParagraphWidgetPreviewComponent.js,8\d\8dfc75082ff3048d7d2de42c637e777be8f28ab7
+Ÿ
+osrc/components/CourseEditor/CourseModules/ModuleDetails/ModuleWidgets/EachWidgets/EachWidgetPreviewComponent.js,1\f\1fe2b13917fcd1431c5047405ccc43c3644f7999

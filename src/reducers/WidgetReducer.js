@@ -1,3 +1,5 @@
+//Check Move Up from last widget
+
 import WidgetActions from "../actions/WidgetActions"
 
 const initialState = {
@@ -148,21 +150,11 @@ const WidgetReducer = (state = initialState, action) => {
             ...state.widgets.slice(currentIndexForMoveUp + 1)
           ]
         };
-      } else if (previousIndexForMoveDown === 1) {
-        return {
-          ...state,
-          widgets: [
-            ...state.widgets.slice(0, 1),
-            temporaryWidgetToMoveUp,
-            temporaryWidgetToMoveDown,
-            ...state.widgets.slice(currentIndexForMoveUp + 1)
-          ]
-        };
       } else {
         return {
           ...state,
           widgets: [
-            ...state.widgets.slice(0, previousIndexForMoveDown - 1),
+            ...state.widgets.slice(0, previousIndexForMoveDown),
             temporaryWidgetToMoveUp,
             temporaryWidgetToMoveDown,
             ...state.widgets.slice(currentIndexForMoveUp + 1)

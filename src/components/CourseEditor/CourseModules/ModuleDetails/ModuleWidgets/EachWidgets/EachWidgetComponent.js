@@ -12,10 +12,6 @@ import {
 import {connect} from "react-redux";
 
 class EachWidget extends Component {
-  state = {
-    currentWidget: this.props.widgetList[this.props.index]
-  };
-
   render() {
     return (
         <span>
@@ -70,17 +66,11 @@ class EachWidget extends Component {
                         name="widget-selector"
                         className="form-control ml-2"
                         id="widget-selector"
-                        value={this.state.currentWidget.type}
-                        onChange={(event) => {
-                          this.setState({
-                            currentWidget: {
-                              ...this.state.currentWidget,
-                              "type": event.target.value
-                            }
-                          });
+                        value={this.props.widgetList[this.props.index].type}
+                        onChange={(event) =>
                           this.props.updateWidgetType(event.target.value,
                               this.props.index)
-                        }}
+                        }
                     >
                       <option hidden
                               value="none">Select Widget Type
@@ -103,7 +93,7 @@ class EachWidget extends Component {
                     <button
                         className="btn btn-outline-danger ml-2"
                         onClick={() => this.props.deleteWidget(
-                            this.state.currentWidget.id)}
+                            this.props.widgetList[this.props.index].id)}
                     >
                       <i className="fas fa-trash-alt"></i>
                     </button>

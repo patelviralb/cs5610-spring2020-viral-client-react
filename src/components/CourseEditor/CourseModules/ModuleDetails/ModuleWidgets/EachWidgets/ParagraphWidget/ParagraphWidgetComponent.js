@@ -8,11 +8,6 @@ import ParagraphWidgetPreview
   from "../ParagraphWidget/ParagraphWidgetPreviewComponent";
 
 class ParagraphWidget extends Component {
-  state = {
-    currentWidget: this.props.widgetList[this.props.currentIndex]
-  };
-
-
   render() {
     return (
         <span>
@@ -26,16 +21,10 @@ class ParagraphWidget extends Component {
                 className="form-control"
                 type="text"
                 placeholder="Widget Name"
-                value={this.state.currentWidget.name}
-                onChange={(event) => {
-                  this.setState({
-                    currentWidget: {
-                      ...this.state.currentWidget,
-                      "name": event.target.value
-                    }
-                  });
-                  this.props.updateWidgetName(event.target.value, this.props.currentIndex);
-                }}
+                value={this.props.widgetList[this.props.currentIndex].name}
+                onChange={(event) =>
+                    this.props.updateWidgetName(event.target.value, this.props.currentIndex)
+                }
             />
           </div>
 
@@ -44,15 +33,9 @@ class ParagraphWidget extends Component {
                 className="form-control"
                 type="text"
                 placeholder="Paragraph Text"
-                value={this.state.currentWidget.text}
+                value={this.props.widgetList[this.props.currentIndex].text}
                 rows="4"
                 onChange={(event) => {
-                  this.setState({
-                    currentWidget: {
-                      ...this.state.currentWidget,
-                      "text": event.target.value
-                    }
-                  });
                   this.props.updateWidgetText(event.target.value,
                       this.props.currentIndex);
                 }}
