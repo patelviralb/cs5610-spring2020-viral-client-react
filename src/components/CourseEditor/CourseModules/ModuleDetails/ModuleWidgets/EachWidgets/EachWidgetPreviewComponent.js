@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import HeadingWidgetPreview
   from "./HeadingWidget/HeadingWidgetPreviewComponent";
+import ParagraphWidgetPreview
+  from "./ParagraphWidget/ParagraphWidgetPreviewComponent";
 
 class EachWidgetPreview extends Component {
   render() {
@@ -14,13 +16,13 @@ class EachWidgetPreview extends Component {
                     currentIndex={this.props.index}
                 />
           }
-          {/*{
+          {
             this.props.widgetList[this.props.index].type === "paragraph"
             &&
-            <HeadingWidgetPreview
+            <ParagraphWidgetPreview
                 currentIndex={this.props.index}
             />
-          }*/}
+          }
         </div>
     )
   }
