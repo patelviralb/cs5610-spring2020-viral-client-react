@@ -48,7 +48,7 @@ class HeadingWidgetPreview extends Component {
                 &&
                 this.props.widgetList[this.props.currentIndex].size !== 6)
             &&
-            <h4>{this.props.widgetList[this.props.currentIndex].text}</h4>
+            <h1>{this.props.widgetList[this.props.currentIndex].text}</h1>
           }
         </div>
     )
