@@ -5,6 +5,7 @@ import HeadingWidgetPreview
 import ParagraphWidgetPreview
   from "./ParagraphWidget/ParagraphWidgetPreviewComponent";
 import ListWidgetPreview from "./ListWidget/ListWidgetPreviewComponent";
+import ImageWidgetPreview from "./ImageWidget/ImageWidgetPreviewComponent";
 
 class EachWidgetPreview extends Component {
   render() {
@@ -28,6 +29,13 @@ class EachWidgetPreview extends Component {
             this.props.widgetList[this.props.index].type === "list"
             &&
             <ListWidgetPreview
+                currentIndex={this.props.index}
+            />
+          }
+          {
+            this.props.widgetList[this.props.index].type === "image"
+            &&
+            <ImageWidgetPreview
                 currentIndex={this.props.index}
             />
           }

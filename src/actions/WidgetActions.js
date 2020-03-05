@@ -17,6 +17,7 @@ const MOVE_WIDGET_DOWN = "MOVE_WIDGET_DOWN";
 const UPDATE_ALL_WIDGETS = "UPDATE_ALL_WIDGETS";
 
 const UPDATE_LIST_TYPE = "UPDATE_LIST_TYPE";
+const UPDATE_IMAGE_SOURCE = "UPDATE_IMAGE_SOURCE";
 
 export const createNewWidget = (newAddedWidget) => ({
   type: CREATE_WIDGET,
@@ -106,6 +107,12 @@ export const updateWidgetStyle = (listType, widgetIndex) => ({
   widgetIndex: widgetIndex
 });
 
+export const updateWidgetSource = (imageSource, widgetIndex) => ({
+  type: UPDATE_IMAGE_SOURCE,
+  imageSource: imageSource,
+  widgetIndex: widgetIndex
+});
+
 export default {
   FIND_ALL_WIDGETS_FOR_TOPIC,
   CREATE_WIDGET,
@@ -125,5 +132,6 @@ export default {
   MOVE_WIDGET_DOWN,
   UPDATE_ALL_WIDGETS,
 
-  UPDATE_LIST_TYPE
+  UPDATE_LIST_TYPE,
+  UPDATE_IMAGE_SOURCE
 }

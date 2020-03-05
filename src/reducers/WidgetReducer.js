@@ -198,6 +198,21 @@ const WidgetReducer = (state = initialState, action) => {
         ]
       };
 
+    case WidgetActions.UPDATE_IMAGE_SOURCE:
+      let widgetIndexForImageType = action.widgetIndex;
+      let updatedWidgetImageType = {
+        ...state.widgets[widgetIndexForImageType],
+        "source": action.imageSource
+      };
+      return {
+        ...state,
+        widgets: [
+          ...state.widgets.slice(0, widgetIndexForImageType),
+          updatedWidgetImageType,
+          ...state.widgets.slice(widgetIndexForImageType + 1)
+        ]
+      };
+
       case WidgetActions.UPDATE_ALL_WIDGETS:
     default:
       return state;

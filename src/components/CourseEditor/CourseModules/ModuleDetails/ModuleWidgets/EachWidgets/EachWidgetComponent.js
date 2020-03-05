@@ -11,6 +11,7 @@ import {
 } from "../../../../../../actions/WidgetActions";
 import {connect} from "react-redux";
 import ListWidget from "./ListWidget/ListWidgetComponent";
+import ImageWidget from "./ImageWidget/ImageWidgetComponent";
 
 class EachWidget extends Component {
   render() {
@@ -79,7 +80,7 @@ class EachWidget extends Component {
                       <option value="heading">Heading</option>
                       <option value="paragraph">Paragraph</option>
                       <option value="list">List</option>
-                      {/*<option value="image">Image</option>*/}
+                      <option value="image">Image</option>
                     </select>
 
                     {/*<button
@@ -122,6 +123,13 @@ class EachWidget extends Component {
                 this.props.widgetList[this.props.index].type === "list"
                 &&
                 <ListWidget
+                    currentIndex={this.props.index}
+                />
+              }
+              {
+                this.props.widgetList[this.props.index].type === "image"
+                &&
+                <ImageWidget
                     currentIndex={this.props.index}
                 />
               }
