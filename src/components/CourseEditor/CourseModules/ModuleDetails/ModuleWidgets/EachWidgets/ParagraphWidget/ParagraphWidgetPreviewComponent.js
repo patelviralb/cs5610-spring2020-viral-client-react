@@ -2,7 +2,7 @@ import React, {Component} from "react"
 import "../../../../../../../styles/paragraph-widget-preview-style-client.css"
 import {connect} from "react-redux";
 
-class HeadingWidgetPreview extends Component {
+class ParagraphWidgetPreview extends Component {
   render() {
     return (
         <div
@@ -22,4 +22,4 @@ const stateToPropertyMapper = (state) => {
   }
 };
 
-export default connect(stateToPropertyMapper)(HeadingWidgetPreview)
+export default connect(stateToPropertyMapper)(ParagraphWidgetPreview)
