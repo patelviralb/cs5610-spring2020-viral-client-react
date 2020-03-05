@@ -4,22 +4,30 @@ import HeadingWidgetPreview
   from "./HeadingWidget/HeadingWidgetPreviewComponent";
 import ParagraphWidgetPreview
   from "./ParagraphWidget/ParagraphWidgetPreviewComponent";
+import ListWidgetPreview from "./ListWidget/ListWidgetPreviewComponent";
 
 class EachWidgetPreview extends Component {
   render() {
-    return(
+    return (
         <div>
           {
             this.props.widgetList[this.props.index].type === "heading"
-                &&
-                <HeadingWidgetPreview
-                    currentIndex={this.props.index}
-                />
+            &&
+            <HeadingWidgetPreview
+                currentIndex={this.props.index}
+            />
           }
           {
             this.props.widgetList[this.props.index].type === "paragraph"
             &&
             <ParagraphWidgetPreview
+                currentIndex={this.props.index}
+            />
+          }
+          {
+            this.props.widgetList[this.props.index].type === "list"
+            &&
+            <ListWidgetPreview
                 currentIndex={this.props.index}
             />
           }
@@ -35,4 +43,4 @@ const stateToPropertyMapper = (state) => {
 };
 
 export default connect(stateToPropertyMapper)
-  (EachWidgetPreview)
+(EachWidgetPreview)

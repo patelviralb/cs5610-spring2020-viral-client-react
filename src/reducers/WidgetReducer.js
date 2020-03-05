@@ -183,7 +183,22 @@ const WidgetReducer = (state = initialState, action) => {
         ]
       };
 
-    case WidgetActions.UPDATE_ALL_WIDGETS:
+    case WidgetActions.UPDATE_LIST_TYPE:
+      let widgetIndexForListType = action.widgetIndex;
+      let updatedWidgetListType = {
+        ...state.widgets[widgetIndexForListType],
+        "style": action.listType
+      };
+      return {
+        ...state,
+        widgets: [
+          ...state.widgets.slice(0, widgetIndexForListType),
+          updatedWidgetListType,
+          ...state.widgets.slice(widgetIndexForListType + 1)
+        ]
+      };
+
+      case WidgetActions.UPDATE_ALL_WIDGETS:
     default:
       return state;
   }

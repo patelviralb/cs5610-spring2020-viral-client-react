@@ -118,3 +118,7 @@ D
 osrc/components/CourseEditor/CourseModules/ModuleDetails/ModuleWidgets/EachWidgets/EachWidgetPreviewComponent.js,1\f\1fe2b13917fcd1431c5047405ccc43c3644f7999
 d
 4src/styles/paragraph-widget-preview-style-client.css,b\4\b49bbe9cf892dc7117c3bad4383f168f01bd87df
+ª
+zsrc/components/CourseEditor/CourseModules/ModuleDetails/ModuleWidgets/EachWidgets/ListWidget/ListWidgetPreviewComponent.js,a\d\ad524f5a56327ce19deab77cbbd41d77a204e704
+£
+ssrc/components/CourseEditor/CourseModules/ModuleDetails/ModuleWidgets/EachWidgets/ListWidget/ListWidgetComponent.js,b\3\b3c402419430c6c0755f52aaed62a50a1312d3fc

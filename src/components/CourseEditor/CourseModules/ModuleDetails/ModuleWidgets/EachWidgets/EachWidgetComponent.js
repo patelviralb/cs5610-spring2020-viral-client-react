@@ -10,6 +10,7 @@ import {
   moveDown, updateAllWidgets
 } from "../../../../../../actions/WidgetActions";
 import {connect} from "react-redux";
+import ListWidget from "./ListWidget/ListWidgetComponent";
 
 class EachWidget extends Component {
   render() {
@@ -26,8 +27,8 @@ class EachWidget extends Component {
                       this.props.index === 0
                       &&
                       <button
-                        className="btn btn-secondary"
-                        disabled={true}
+                          className="btn btn-secondary"
+                          disabled={true}
                       >
                         <i className="fas fa-arrow-up"></i>
                       </button>
@@ -68,8 +69,8 @@ class EachWidget extends Component {
                         id="widget-selector"
                         value={this.props.widgetList[this.props.index].type}
                         onChange={(event) =>
-                          this.props.updateWidgetType(event.target.value,
-                              this.props.index)
+                            this.props.updateWidgetType(event.target.value,
+                                this.props.index)
                         }
                     >
                       <option hidden
@@ -77,8 +78,8 @@ class EachWidget extends Component {
                       </option>
                       <option value="heading">Heading</option>
                       <option value="paragraph">Paragraph</option>
-                      {/*<option value="list">List</option>
-                            <option value="image">Image</option>*/}
+                      <option value="list">List</option>
+                      {/*<option value="image">Image</option>*/}
                     </select>
 
                     {/*<button
@@ -103,21 +104,28 @@ class EachWidget extends Component {
                   </div>
                 </div>
               </div>
-                {
-                  this.props.widgetList[this.props.index].type === "heading"
-                  &&
-                  <HeadingWidget
-                      currentIndex={this.props.index}
-                  />
-                }
-                {
-                  this.props.widgetList[this.props.index].type === "paragraph"
-                  &&
-                  <ParagraphWidget
-                      currentIndex={this.props.index}
-                  />
-                }
-                <div className="col-12 pb-3">
+              {
+                this.props.widgetList[this.props.index].type === "heading"
+                &&
+                <HeadingWidget
+                    currentIndex={this.props.index}
+                />
+              }
+              {
+                this.props.widgetList[this.props.index].type === "paragraph"
+                &&
+                <ParagraphWidget
+                    currentIndex={this.props.index}
+                />
+              }
+              {
+                this.props.widgetList[this.props.index].type === "list"
+                &&
+                <ListWidget
+                    currentIndex={this.props.index}
+                />
+              }
+              <div className="col-12 pb-3">
                 {/*For Padding*/}
               </div>
             </div>
