@@ -134,11 +134,11 @@ const WidgetReducer = (state = initialState, action) => {
       let previousIndexForMoveDown = action.widgetIndex - 1;
       temporaryWidgetToMoveUp = {
         ...state.widgets[currentIndexForMoveUp],
-        "order": state.widgets[previousIndexForMoveDown].order
+        "orderOfWidget": state.widgets[previousIndexForMoveDown].order
       };
       temporaryWidgetToMoveDown = {
         ...state.widgets[previousIndexForMoveDown],
-        "order": state.widgets[currentIndexForMoveUp].order
+        "orderOfWidget": state.widgets[currentIndexForMoveUp].order
       };
 
       if (previousIndexForMoveDown === 0) {
@@ -167,11 +167,11 @@ const WidgetReducer = (state = initialState, action) => {
       let nextIndexForMoveUp = action.widgetIndex + 1;
       temporaryWidgetToMoveDown = {
         ...state.widgets[currentIndexForMoveDown],
-        "order": state.widgets[nextIndexForMoveUp].order
+        "orderOfWidget": state.widgets[nextIndexForMoveUp].order
       };
       temporaryWidgetToMoveUp = {
         ...state.widgets[nextIndexForMoveUp],
-        "order": state.widgets[currentIndexForMoveDown].order
+        "orderOfWidget": state.widgets[currentIndexForMoveDown].order
       };
       return {
         ...state,
