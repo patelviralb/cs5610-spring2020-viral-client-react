@@ -10,7 +10,7 @@ const ImageWidgetPreview = ({currentIndex, widgetList}) => {
         {console.log(widgetList[currentIndex])}
         <img src={widgetList[currentIndex].source}
              className="rounded vp-cs5610-image-widget-preview"
-             alt="Responsive image"/>
+             alt="Widget"/>
       </div>
   )
 };

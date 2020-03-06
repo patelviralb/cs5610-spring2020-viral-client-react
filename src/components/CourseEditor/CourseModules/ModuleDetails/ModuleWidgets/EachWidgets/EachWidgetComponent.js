@@ -7,7 +7,7 @@ import {
   updateWidget,
   updateWidgetType,
   moveUp,
-  moveDown, updateAllWidgets
+  moveDown
 } from "../../../../../../actions/WidgetActions";
 import {connect} from "react-redux";
 import ListWidget from "./ListWidget/ListWidgetComponent";

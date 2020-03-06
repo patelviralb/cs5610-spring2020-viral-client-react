@@ -122,3 +122,9 @@ d
 zsrc/components/CourseEditor/CourseModules/ModuleDetails/ModuleWidgets/EachWidgets/ListWidget/ListWidgetPreviewComponent.js,a\d\ad524f5a56327ce19deab77cbbd41d77a204e704
 £
 ssrc/components/CourseEditor/CourseModules/ModuleDetails/ModuleWidgets/EachWidgets/ListWidget/ListWidgetComponent.js,b\3\b3c402419430c6c0755f52aaed62a50a1312d3fc
+¥
+usrc/components/CourseEditor/CourseModules/ModuleDetails/ModuleWidgets/EachWidgets/ImageWidget/ImageWidgetComponent.js,b\1\b1808e3fa01d9c0c1c5c994e8f580c2fad35a6c8
+¬
+|src/components/CourseEditor/CourseModules/ModuleDetails/ModuleWidgets/EachWidgets/ImageWidget/ImageWidgetPreviewComponent.js,d\e\dec84bd2a443f4666f1801fca1b8a30920b23002
+`
+0src/styles/image-widget-preview-style-client.css,6\e\6e97d2d36935e030c94d8aab47277e56b661c5ed
