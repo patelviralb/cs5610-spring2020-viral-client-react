@@ -17,7 +17,7 @@ class ModuleWidget extends React.Component {
               {
                 this.props.widgetList
                 .sort((widgetOne, widgetTwo) =>
-                    (widgetOne.order - widgetTwo.order))
+                    (widgetOne.orderOfWidget - widgetTwo.orderOfWidget))
                 .map((eachWidget, index) => {
                   return <EachWidget
                       eachWidget={eachWidget}
@@ -55,7 +55,7 @@ class ModuleWidget extends React.Component {
                 &&
                 this.props.widgetList
                 .sort((widgetOne, widgetTwo) =>
-                    (widgetOne.order - widgetTwo.order))
+                    (widgetOne.orderOfWidget - widgetTwo.orderOfWidget))
                 .map((eachWidget, index) => {
                   return <EachWidgetPreview
                       eachWidget={eachWidget}
