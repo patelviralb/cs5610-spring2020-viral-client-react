@@ -1,8 +1,8 @@
-import { LESSON_API_URL } from "../common/constants"
+import { TOPIC_API_URL_FOR_LESSON } from "../common/constants"
 import { TOPIC_API_URL } from "../common/constants"
 
 const createTopic = (lessonID, topic) => {
-    return fetch(`${LESSON_API_URL}/${lessonID}/topics`, {
+    return fetch(`${TOPIC_API_URL_FOR_LESSON}/${lessonID}/topics`, {
         method: 'POST',
         headers: {
             'content-type': 'application/json'
@@ -12,7 +12,7 @@ const createTopic = (lessonID, topic) => {
 };
 
 const findTopicsForLesson = (lessonID) => {
-    return fetch(`${LESSON_API_URL}/${lessonID}/topics`)
+    return fetch(`${TOPIC_API_URL_FOR_LESSON}/${lessonID}/topics`)
         .then(response => response.json())
 };
 

@@ -50,7 +50,7 @@ class LessonTopics extends React.Component {
                 this.props.topicList.map((topicPill) => {
                   return <TabEachPill
                       topicPill={topicPill}
-                      key={topicPill._id}
+                      key={topicPill.id}
                       history={this.props.history}
                       match={this.props.match}
                   />
@@ -99,7 +99,7 @@ const dispatcherToPropertyMapper = (dispatch) => {
   return {
     createNewTopic: (lessonID) => {
       const newTopic = {
-        "topicName": "New Topic"
+        "title": "New Topic"
       };
       TopicService.createTopic(lessonID, newTopic)
       .then(newAddedTopic => dispatch(createNewTopic(newAddedTopic)))

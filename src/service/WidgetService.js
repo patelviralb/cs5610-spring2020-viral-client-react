@@ -1,8 +1,8 @@
-import { WIDGET_API_URL_FOR_TOPIC } from "../common/constants"
+import { TOPIC_API_URL } from "../common/constants"
 import { WIDGET_API_URL } from "../common/constants"
 
 const createWidget = (topicID, widget) => {
-  return fetch(`${WIDGET_API_URL_FOR_TOPIC}/${topicID}/widgets`, {
+  return fetch(`${TOPIC_API_URL}/${topicID}/widgets`, {
     method: 'POST',
     headers: {
       'content-type': 'application/json'
@@ -12,7 +12,7 @@ const createWidget = (topicID, widget) => {
 };
 
 const findWidgetsForTopic = (topicID) => {
-  return fetch(`${WIDGET_API_URL_FOR_TOPIC}/${topicID}/widgets`)
+  return fetch(`${TOPIC_API_URL}/${topicID}/widgets`)
   .then(response => response.json())
 };
 
@@ -43,7 +43,7 @@ const deleteTopic = (widgetID) => {
 };
 
 const updateAllWidgets = (topicID, allWidgetsToUpdate) => {
-  return fetch(`${WIDGET_API_URL_FOR_TOPIC}/${topicID}/widgets/allWidgets`, {
+  return fetch(`${TOPIC_API_URL}/${topicID}/widgets/allWidgets`, {
     method: 'POST',
     headers: {
       'content-type': 'application/json'

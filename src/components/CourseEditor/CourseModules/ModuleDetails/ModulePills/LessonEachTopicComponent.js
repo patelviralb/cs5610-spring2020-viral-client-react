@@ -34,18 +34,18 @@ class LessonEachTopic extends React.Component {
     this.setState({
       topic: {
         ...this.state.topic,
-        topicName: event.target.value
+        title: event.target.value
       }
     });
   };
 
   updateTopic = (event) => {
     this.editTopicTitle();
-    this.props.updateTopic(this.state.topic._id, this.state.topic)
+    this.props.updateTopic(this.state.topic.id, this.state.topic)
   };
 
   editTopicSelection = () => {
-    this.props.history.push(`/course/${this.props.selectedCourse._id}/modules/${this.props.selectedModuleID}/lessons/${this.props.selectedLessonID}/topics/${this.state.topic._id}`)
+    this.props.history.push(`/course/${this.props.selectedCourse._id}/modules/${this.props.selectedModuleID}/lessons/${this.props.selectedLessonID}/topics/${this.state.topic.id}`)
   };
 
   render() {
@@ -59,13 +59,13 @@ class LessonEachTopic extends React.Component {
               &&
               <span
                   className={`${this.props.selectedTopicID
-                  === this.state.topic._id ?
+                  === this.state.topic.id ?
                       "nav-link text-left btn active"
                       : "nav-link text-left btn"}`}
-                  title={this.props.topicPill.topicName}
+                  title={this.props.topicPill.title}
                   onClick={this.editTopicSelection}
               >
-              {this.props.topicPill.topicName}
+              {this.props.topicPill.title}
             </span>
             }
             {
@@ -85,8 +85,8 @@ class LessonEachTopic extends React.Component {
               &&
               <input
                   className="form-control"
-                  title={this.state.topic.topicName}
-                  value={this.state.topic.topicName}
+                  title={this.state.topic.title}
+                  value={this.state.topic.title}
                   onChange={this.updateTopicTitle}
               />
             }
@@ -96,7 +96,7 @@ class LessonEachTopic extends React.Component {
               <button
                   className="btn btn-outline-danger"
                   title="Delete Topic"
-                  onClick={() => this.props.deleteTopic(this.state.topic._id,
+                  onClick={() => this.props.deleteTopic(this.state.topic.id,
                       this.props.selectedTopicID, this.props.history,
                       this.props.selectedCourse._id,
                       this.props.selectedModuleID, this.props.selectedLessonID)}

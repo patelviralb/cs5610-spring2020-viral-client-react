@@ -1,6 +1,6 @@
 import React from "react"
 import ModuleLessons from "./ModuleTabs/ModuleLessonsComponent";
-import TabPills from "./ModulePills/LessonTopicsComponent";
+import LessonTopics from "./ModulePills/LessonTopicsComponent";
 import WidgetPreviewSave from "./ModuleWidgets/WidgetPreviewSaveComponent"
 import ModuleWidget from "./ModuleWidgets/ModuleWidgetComponent"
 
@@ -11,7 +11,7 @@ const CourseModuleDetails = ({history, match}) =>
           match={match}
       />
       <div>
-        <TabPills
+        <LessonTopics
             history={history}
             match={match}
         />

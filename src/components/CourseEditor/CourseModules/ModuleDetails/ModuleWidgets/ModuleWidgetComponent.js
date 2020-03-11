@@ -94,7 +94,7 @@ const dispatchToPropertyMapper = (dispatch) => {
         "cssClass": "",
         "style": "",
         "value": "",
-        "topicID": `${topicID}`
+        "topic_id": `${topicID}`
       };
       WidgetService.createWidget(topicID, newAddedWidget)
       .then(
